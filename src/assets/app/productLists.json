@@ -1,0 +1,41 @@
+{
+  "title": "产品展示",
+  "body": [
+    {
+      "type": "title",
+      "label": "产品展示",
+      "style": "h1",
+      "align": "center"
+    },
+    {
+      "type": "chip-list",
+      "elements": [
+        {
+          "label": "全部",
+          "active": true
+        },
+        {
+          "label": "智能硬件"
+        },
+        {
+          "label": "软件产品"
+        },
+        {
+          "label": "解决方案"
+        }
+      ]
+    },
+
+
+
+    {
+  "type": "custom-template",
+  "isAPI": true,
+  "api": "/app-api/product2",
+  "html":  "<div class='flex flex-wrap gap-3 p-6'>\n  {{#rows}}\n  <a \n    href='http://localhost:4201/erupt-api/file/download-attachment{{pdf}}' \n    class='\n      inline-flex items-center px-4 py-2 rounded-full text-sm font-medium\n      bg-white border border-gray-200 text-gray-700\n      hover:bg-blue-50 hover:border-blue-400 hover:text-blue-600 \n      hover:shadow-md hover:-translate-y-0.5\n      transition-all duration-300 ease-out\n    '\n  >\n    {{name}}\n  </a>\n  {{/rows}}\n</div>",
+  "json": null,
+  "animate": false
+}
+
+  ]
+}

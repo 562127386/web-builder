@@ -1,0 +1,124 @@
+{
+  "title": "关于我们",
+  "body": [
+{
+  "id": "form",
+  "type": "showcase-1v3",
+  "text": {
+    "title": {
+      "label": "关于我们",
+      "style": "style-v1",
+      "classes": "mat-headline-3"
+    }
+  },
+  "spacer": "md",
+  "classes": "",
+  "bg": {
+    "classes": ""
+  },
+  "elements": [
+    {
+      "type": "text",
+      "spacer": "none",
+      "classes": "text-center",
+      "body": "<p style=\"display: inline-block; margin-bottom: 0px;\">信使是以 Material UI为基础的 Angular 前端框架，为Drupal的数字创新提供友好的用户体验。</p>"
+    },
+    {
+      "type": "contact-us",
+      "params": {
+        "webform_id": "contact"
+      },
+      "bg": {
+        "classes": "",
+        "icon": "wave"
+      },
+      "action": {
+        "label": "提交表单"
+      },
+      "formOrder": "1",
+      "contact": [
+        {
+          "title": {
+            "label": "地址"
+          },
+          "icon": {
+            "name": "location_on"
+          },
+          "style": "style-v7 small-box",
+          "content": "创客城2栋"
+        },
+        {
+          "title": {
+            "label": "电话号码"
+          },
+          "style": "style-v7 small-box",
+          "icon": {
+            "name": "phone"
+          },
+          "content": "+086 0771xxxx"
+        },
+        {
+          "title": {
+            "label": "邮件"
+          },
+          "style": "style-v7 small-box",
+          "icon": {
+            "name": "mail"
+          },
+          "content": "service@example.com"
+        },
+        {
+          "title": {
+            "label": "微信"
+          },
+          "style": "style-v7 small-box",
+          "icon": {
+            "name": "chat_bubble"
+          },
+          "content": "biaogebusy"
+        }
+      ],
+      "form": [
+        {
+          "type": "input",
+          "key": "name",
+          "className": "w-full",
+          "props": {
+            "label": "姓名",
+            "required": true
+          }
+        },
+        {
+          "type": "input",
+          "key": "email",
+          "className": "w-full",
+          "props": {
+            "label": "邮箱",
+            "required": true
+          }
+        },
+        {
+          "type": "input",
+          "key": "subject",
+          "className": "w-full",
+          "props": {
+            "label": "主题"
+          }
+        },
+        {
+          "type": "textarea",
+          "key": "message",
+          "className": "w-full",
+          "props": {
+            "label": "内容",
+            "placeholder": "Message",
+            "rows": 5
+          }
+        }
+      ]
+    }
+  ],
+  "animate": false
+}
+  ]
+}

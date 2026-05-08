@@ -12,7 +12,7 @@
   "editor.wordWrap": "on",
   "editor.wrappingIndent": "indent",
   "html.format.enable": true,
-  "workbench.colorTheme": "One Monokai",
+  "workbench.colorTheme": "Default Dark Modern",
   "workbench.iconTheme": "vscode-icons",
   "editor.accessibilitySupport": "off",
   "git.ignoreMissingGitWarning": true,
@@ -30,13 +30,13 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
+      "source.fixAll.eslint": "explicit"
     }
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
+      "source.fixAll.eslint": "explicit"
     }
   }
 }

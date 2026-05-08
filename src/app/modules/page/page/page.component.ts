@@ -38,7 +38,7 @@ export class PageComponent implements AfterViewInit {
   public mobileMenuOpened: boolean;
   public drawerLoading: boolean;
   public drawerContent: IPage;
-  public opened: boolean;
+  public opened: boolean = false;
   public user$ = inject(USER);
   private contentState = inject(ContentState);
   private destroyRef = inject(DestroyRef);

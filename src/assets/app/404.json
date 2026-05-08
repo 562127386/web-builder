@@ -1,0 +1,28 @@
+{
+  "title": "404 - 页面未找到",
+  "body": [
+    {
+      "type": "title",
+      "label": "404",
+      "style": "h1",
+      "align": "center"
+    },
+    {
+      "type": "text",
+      "content": "<p style=\"text-align: center;\">抱歉，您访问的页面不存在。</p>",
+      "align": "center"
+    },
+    {
+      "type": "action",
+      "elements": [
+        {
+          "type": "button",
+          "label": "返回首页",
+          "href": "/home",
+          "color": "primary"
+        }
+      ],
+      "align": "center"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "title": "产品中心",
+  "body": [
+    {
+      "type": "title",
+      "label": "产品中心",
+      "style": "h1",
+      "align": "center"
+    },
+    {
+      "type": "chip-list",
+      "elements": [
+        {
+          "label": "全部",
+          "active": true
+        },
+        {
+          "label": "智能硬件"
+        },
+        {
+          "label": "软件产品"
+        },
+        {
+          "label": "解决方案"
+        }
+      ]
+    },
+
+
+
+    {
+  "type": "custom-template",
+  "isAPI": true,
+  "api": "/app-api/dict?ParentId=0e28bab2-30fa-74b4-57d5-3a20ea7de51f",
+  "html": "<div class=\"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 p-6\">\n    {{#rows}}\n    <article class=\"bg-white rounded-xl shadow-md overflow-hidden group relative hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 border border-gray-100 hover:border-blue-300\">\n        <div class=\"absolute inset-0 bg-gradient-to-br from-blue-50/0 via-blue-100/40 to-purple-50/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10\"></div>\n        <div class=\"w-full h-48 sm:h-56 relative overflow-hidden\">\n            <a href=\"/productLists?TagTypes1={{name}}\" class=\"block w-full h-full\">\n                {{#img}}\n                <img src=\"http://localhost:4201/erupt-api/file/download-attachment{{icon}}\" alt=\"{{name}}\" class=\"w-full h-full object-cover transition-transform duration-700 group-hover:scale-110\" />\n                {{/img}}\n                {{^img}}\n                <img src=\"http://localhost:4201/erupt-api/file/download-attachment{{icon}}\" alt=\"{{name}}\" class=\"w-full h-full object-cover transition-transform duration-700 group-hover:scale-110\" />\n                {{/img}}\n            </a>\n        </div>\n        <div class=\"p-6 flex flex-col justify-between relative z-10\">\n            <div class=\"flex items-center justify-between mb-3\">\n                <h3 class=\"text-xl font-semibold text-gray-800 line-clamp-1\">\n                    <a href=\"/productLists?TagTypes1={{name}}\" class=\"hover:text-blue-600 transition-all duration-300\">{{name}}</a>\n                </h3>\n                <a href=\"/productLists?TagTypes1={{name}}\" class=\"text-blue-600 hover:text-blue-800 font-medium whitespace-nowrap transition-all duration-300 hover:translate-x-1\">更多 <svg class=\"w-4 h-4 ml-1 inline\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\" /></svg></a>\n            </div>\n              </article>\n    {{/rows}}\n</div>",
+  "json": null,
+  "animate": false
+}
+
+  ]
+}

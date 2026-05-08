@@ -4,11 +4,13 @@ import {
   Input,
   OnInit,
   signal,
-  output
+  output,
+  inject
 } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import type { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { cloneDeep } from 'lodash-es';
+import { FormChangeService } from '@core/service/form-change.service';
 
 interface IFormly {
   fields?: FormlyFieldConfig[];
@@ -31,6 +33,9 @@ export class FormlyComponent implements OnInit, AfterViewInit {
   readonly modelChange = output<any>();
 
   fieldsConfig = signal<FormlyFieldConfig[]>([]);
+  
+  private formChangeService = inject(FormChangeService);
+
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
@@ -41,6 +46,10 @@ export class FormlyComponent implements OnInit, AfterViewInit {
   }
 
   onModelChange(event: any): void {
+    const componentId = this.fieldsConfig()?.[0]?.templateOptions?.componentId;
+    if (componentId) {
+      this.formChangeService.onFormChange(componentId, event);
+    }
     this.modelChange.emit(event);
   }
 }

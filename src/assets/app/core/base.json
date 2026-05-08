@@ -1,0 +1,60 @@
+{
+  "defaultTheme": "blue-theme",
+  "theme": [
+    {
+      "style": "blue-theme",
+      "label": "蓝色主题"
+    },
+    {
+      "style": "green-theme",
+      "label": "绿色主题"
+    },
+    {
+      "style": "purple-theme",
+      "label": "紫色主题"
+    }
+  ],
+  "multiLang": true,
+  "langs": [
+    {
+      "label": "中文",
+      "langCode": "zh-hans",
+      "prefix": "/",
+      "default": true
+    },
+    {
+      "label": "English",
+      "langCode": "en",
+      "prefix": "/en"
+    }
+  ],
+  "log": {
+    "content": {
+      "enabel": false,
+      "api": ""
+    }
+  },
+  "apiUrl": {
+    "node": "/api/v1/node",
+    "user": "/api/v1/user",
+    "media": "/api/v1/media",
+    "taxonomy": "/api/v1/taxonomy_term"
+  },
+  "auth": {
+    "enable": true,
+    "type": "oauth",
+    "oauth": {
+      "clientId": "xxx",
+      "tokenUrl": "/oauth/token",
+      "scope": ""
+    }
+  },
+  "notify": {
+    "api": {},
+    "params": {
+      "interval": 120000
+    }
+  },
+  "pageSize": 10,
+  "paginationSize": 5
+}

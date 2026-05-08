@@ -1,0 +1,39 @@
+{
+  "title": "新闻中心",
+  "body": [
+    {
+      "type": "title",
+      "label": "新闻中心",
+      "style": "h1",
+      "align": "center"
+    },
+    {
+      "type": "chip-list",
+      "elements": [
+        {
+          "label": "全部",
+          "active": true
+        },
+        {
+          "label": "公司新闻"
+        },
+        {
+          "label": "行业动态"
+        },
+        {
+          "label": "技术分享"
+        }
+      ]
+    },
+
+
+    {
+  "type": "custom-template",
+  "isAPI": true,
+  "api": "/api/v1/content?type=blog",
+  "html": "<div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6\">\n    {{#rows}}\n    <article\n        class=\"bg-white hover:bg-gray-50 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group relative\">\n        <div class=\"w-full h-48 sm:h-56 relative overflow-hidden\">\n            <a href=\"{{url}}\" class=\"block hover:brightness-95 transition-all duration-200\">\n                {{#img}}\n                <img\n          src=\"{{img}}\"\n          alt=\"{{title}}\"\n          class=\"w-full h-full object-cover transition-transform duration-300 group-hover:scale-105\"\n        />\n        {{/img}}\n        {{^img}}\n                <img\n          src=\"/assets/images/hero/182.jpg\"\n          alt=\"{{title}}\"\n          class=\"w-full h-full object-cover transition-transform duration-300 group-hover:scale-105\"\n        />\n        {{/img}}\n            </a>\n        </div>\n\n        <div class=\"p-6 flex flex-col justify-between\">\n           \n            <h3 class=\"mb-3 relative z-10\">\n                <a href=\"{{url}}\"\n                    class=\"text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200 line-clamp-2\">\n                    {{title}}\n                </a>\n            </h3>\n\n            <!-- 内容区域背景过渡 -->\n            <div class=\"relative z-10\">\n                <p class=\"text-gray-600 line-clamp-3 mb-4\">\n                    {{body}}\n                </p>\n                <a href=\"{{url}}\"\n                    class=\"text-blue-600 hover:text-blue-800 font-medium inline-flex items-center transition-colors duration-200\">\n                    更多\n                    <svg class=\"w-4 h-4 ml-2\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\">\n                        <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\" />\n                    </svg>\n                </a>\n            </div>\n        </div>\n    </article>\n    {{/rows}}\n\n</div>",
+  "json": null,
+  "animate": false
+}
+  ]
+}

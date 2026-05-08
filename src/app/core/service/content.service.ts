@@ -70,9 +70,15 @@ export class ContentService extends ApiService {
 
   loadBranding(): Observable<IBranding> {
     const { lang } = this.getUrlPath(this.pageUrl);
-    return this.http
-      .get<IBranding>(`${this.apiUrl}${lang}/api/v3/landingPage?content=/core/branding`)
-      .pipe(catchError(() => of({} as IBranding)));
+    if (environment.production) {
+      return this.http
+        .get<IBranding>(`${this.apiUrl}${lang}/api/v3/landingPage?content=/core/branding`)
+        .pipe(catchError(() => of({} as IBranding)));
+    } else {
+      return this.http
+        .get<IBranding>(`${this.apiUrl}/assets/app/core/branding.json`)
+        .pipe(catchError(() => of({} as IBranding)));
+    }
   }
 
   loadConfig(coreConfig: object): any {

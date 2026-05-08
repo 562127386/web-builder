@@ -179,6 +179,13 @@ export interface ICustomTemplate extends ICombsBase {
   json: any;
   isAPI?: boolean;
   api?: string;
+  id?: string;
+  selectOptions?: {
+    [key: string]: {
+      api: string;
+      params?: any;
+    };
+  };
 }
 
 export interface ICodeEditor {

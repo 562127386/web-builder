@@ -29,10 +29,20 @@ const PROXY_CONFIG = [
       '/print',
       '/wechat',
       '/media',
+      '/assets/app',
     ],
     target: 'https://base.builder.design',
     secure: false,
     changeOrigin: true,
+  },
+  {
+    context: ['/app-api'],
+    target: 'https://localhost:44388',
+    secure: false,
+    changeOrigin: true,
+    // pathRewrite: {
+    //   '^/app-api': '/api/app',
+    // },
   },
 ];
 

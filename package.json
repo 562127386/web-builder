@@ -60,6 +60,7 @@
     "monaco-editor": "^0.50.0",
     "mustache": "^4.2.0",
     "ngx-cookie-service": "^20.0.1",
+    "ngx-extended-pdf-viewer": "^27.0.0",
     "ngx-file-drop": "^16.0.0",
     "ngx-mat-select-search": "^8.0.2",
     "ngx-monaco-editor-v2": "^20.0.0",

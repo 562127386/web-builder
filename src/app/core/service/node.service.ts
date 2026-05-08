@@ -43,7 +43,7 @@ export class NodeService extends ApiService {
       lang = `/${langCode}`;
     }
     const hasApiParam = api.indexOf('?') > 0;
-    if (api.startsWith('/api/')) {
+    if (api.startsWith('/api/') || api.startsWith('/app-api/')) {
       apiParams = hasApiParam
         ? `${this.apiUrl}${lang}${api}&${params}`
         : `${this.apiUrl}${lang}${api}?${params}`;

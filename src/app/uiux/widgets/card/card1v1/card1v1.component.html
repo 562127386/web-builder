@@ -21,7 +21,14 @@
     @if (content.moreLabel) {
       <div class="post-meta">
         @if (content.link) {
-          <a [href]="content.link.href" class="text-muted readmore">
+          <!--  [href]="content.link.href"  换成和 content.link 一样的超链接处理 主要是？被编码导致跳转不对 -->
+          <a
+            [routerLink]="[content.link.href]"
+            [routerLinkActive]="['active']"
+            [target]="content.link.target || '_self'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            [queryParams]="content.link.queryParams"
+            class="text-muted readmore">
             <span contentedit="moreLabel" [innerHTML]="content.moreLabel | safeHtml"></span>
             <mat-icon>navigate_next</mat-icon>
           </a>

@@ -11,6 +11,38 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'home',
+    component: PageComponent,
+  },
+  {
+    path: 'news',
+    component: PageComponent,
+  },
+  {
+    path: 'news/:slug',
+    component: PageComponent,
+  },
+  {
+    path: 'products',
+    component: PageComponent,
+  },
+  {
+    path: 'productLists/:id',
+    component: PageComponent,
+  },
+  {
+    path: 'about',
+    component: PageComponent,
+  },
+  {
+    path: 'careers',
+    component: PageComponent,
+  },
+  {
+    path: 'contact',
+    component: PageComponent,
+  },
+  {
     path: 'me',
     loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule),
   },

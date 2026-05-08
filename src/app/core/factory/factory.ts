@@ -23,6 +23,7 @@ import { DOCUMENT, inject } from '@angular/core';
 import { IBuilderConfig } from '@core/interface/IBuilder';
 import { BuilderService } from '@core/service/builder.service';
 import { UtilitiesService } from '@core/service/utilities.service';
+import { PageDataService } from '@core/service/page-data.service';
 
 export const THEMKEY = 'themeMode';
 export const DEBUG_ANIMATE_KEY = 'debugAnimate';
@@ -32,13 +33,16 @@ export function pageContentFactory(): Observable<IPage | object | boolean> {
   const activateRoute = inject(ActivatedRoute);
   const contentService = inject(ContentService);
   const contentState = inject(ContentState);
+  const pageDataService = inject(PageDataService);
 
   const $pageContent = new BehaviorSubject<IPage | object | boolean>(false);
   activateRoute.url.subscribe(async url => {
     const page = await contentService.loadPageContent().toPromise();
     if (page) {
-      $pageContent.next(page);
-      contentState.pageConfig$.next(page.config);
+      const pageUrl = contentService.pageUrl;
+      const enrichedPage = await pageDataService.enrichPageContent(page, pageUrl).toPromise();
+      $pageContent.next(enrichedPage);
+      contentState.pageConfig$.next(enrichedPage.config);
     }
   });
   return $pageContent;
