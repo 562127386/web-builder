@@ -3,6 +3,8 @@ import {
   Component,
   Input,
   OnInit,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 @Component({
@@ -16,10 +18,21 @@ export class SearchHeaderComponent implements OnInit {
   @Input() content: any;
   @Input() filterForm: any;
   @Input() form: UntypedFormGroup;
+  @Output() search = new EventEmitter<any>();
 
   formControl: any;
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  onSearch(): void {
+    this.search.emit(this.form.value);
+  }
+
+  onKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
+      this.onSearch();
+    }
+  }
 }

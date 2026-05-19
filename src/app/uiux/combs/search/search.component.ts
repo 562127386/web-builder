@@ -3,9 +3,11 @@ import {
   Component,
   Input,
   OnInit,
-  ChangeDetectorRef,
   inject,
   DestroyRef,
+  signal,
+  effect,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { omitBy, isEmpty } from 'lodash-es';
@@ -34,7 +36,7 @@ export class SearchComponent extends BaseComponent implements OnInit {
   public form: UntypedFormGroup = new UntypedFormGroup({});
   public filterForm: any[];
   public nodes: any[];
-  public loading = false;
+  public loading = signal(false);
   private vauleChange$: Subject<any> = new Subject<any>();
 
   private nodeService = inject(NodeService);
@@ -42,8 +44,16 @@ export class SearchComponent extends BaseComponent implements OnInit {
   private routerService = inject(RouteService);
   private formService = inject(FormService);
   private screenService = inject(ScreenService);
-  private cd = inject(ChangeDetectorRef);
   private destroyRef = inject(DestroyRef);
+  private cd = inject(ChangeDetectorRef);
+
+  constructor() {
+    super();
+    effect(() => {
+      this.loading();
+      this.cd.markForCheck();
+    });
+  }
 
   ngOnInit(): void {
     if (this.screenService.isPlatformBrowser()) {
@@ -58,8 +68,10 @@ export class SearchComponent extends BaseComponent implements OnInit {
           ),
           isEmpty
         );
-        if (this.content.sidebar) {
+        if (this.content.sidebar && this.content.sidebar.length > 0) {
           this.initFilterForm(querys, this.content.sidebar);
+        } else {
+          this.initDefaultForm();
         }
         this.form.patchValue({ ...querys });
         this.nodeSearch(querys);
@@ -69,15 +81,24 @@ export class SearchComponent extends BaseComponent implements OnInit {
     }
   }
 
+  initDefaultForm(): void {
+    this.form = this.formService.toFormGroup([
+      {
+        key: 'keys',
+        type: 'text',
+        value: '',
+      },
+    ]);
+    this.filterForm = [{ key: 'keys', type: 'text' }];
+  }
+
   initFilterForm(querys: any, sidebar: any[]): void {
     this.filterForm = this.initFormValueWithUrlQuery(querys, sidebar);
     this.initForm(this.filterForm);
-    this.cd.detectChanges();
   }
 
   initForm(items: any[]): void {
     this.form = this.formService.toFormGroup(items);
-    this.cd.detectChanges();
     this.vauleChange$
       .pipe(debounceTime(1000), distinctUntilChanged(), takeUntilDestroyed(this.destroyRef))
       .subscribe(value => {
@@ -90,7 +111,8 @@ export class SearchComponent extends BaseComponent implements OnInit {
     if (keys) {
       this.form.patchValue({ keys });
     }
-    this.vauleChange$.next(value);
+    this.page = 0;
+    this.nodeSearch(value);
   }
 
   onPageChange(page: any): void {
@@ -104,26 +126,66 @@ export class SearchComponent extends BaseComponent implements OnInit {
   }
 
   nodeSearch(options: any): void {
-    this.loading = true;
+    this.loading.set(true);
+    if (!this.content || !this.content.api) {
+      console.error('SearchComponent: content or api is undefined');
+      this.loading.set(false);
+      return;
+    }
     const { api } = this.content;
     const formValue = this.form?.value || {};
     const state = this.getParamsState(formValue, options);
     const params = this.getApiParams(state);
+    console.log('SearchComponent: calling API', api, params);
     this.nodeService
       .fetch(api, params)
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(data => {
-        this.updateList(data, formValue, options);
-        this.loading = false;
-        this.cd.detectChanges();
+      .subscribe({
+        next: (data) => {
+          console.log('SearchComponent: API response', data);
+          this.loading.set(false);
+          this.updateList(data, formValue, options);
+        },
+        error: (error) => {
+          console.error('SearchComponent: API error', error);
+          this.loading.set(false);
+        }
       });
   }
 
   updateList(data: any, formValues: any, options: any): void {
     const pager = data.pager;
     this.pager = this.handlerPager(pager);
-    this.nodes = data.rows;
+    this.nodes = this.processNodes(data.rows);
     this.routerService.updateQueryParams(this.getUrlQuery(formValues, options));
-    this.cd.detectChanges();
+  }
+
+  private processNodes(rows: any[]): any[] {
+    if (!rows || !Array.isArray(rows)) return [];
+    const colors = [
+      'bg-blue-100 text-blue-700 border-blue-200',
+      'bg-green-100 text-green-700 border-green-200',
+      'bg-purple-100 text-purple-700 border-purple-200',
+      'bg-pink-100 text-pink-700 border-pink-200',
+      'bg-yellow-100 text-yellow-700 border-yellow-200',
+      'bg-indigo-100 text-indigo-700 border-indigo-200',
+    ];
+    return rows.map((item, index) => {
+      let tags: string[] = [];
+      if (item.tagTypes) {
+        try {
+          tags = JSON.parse(item.tagTypes);
+        } catch {
+          tags = [];
+        }
+      }
+      return {
+        ...item,
+        tags: tags.map((tag, i) => ({
+          label: tag,
+          colorClass: colors[i % colors.length],
+        })),
+      };
+    });
   }
 }

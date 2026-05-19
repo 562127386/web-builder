@@ -1,0 +1,299 @@
+{
+  "header": {
+    "logo": {
+      "label": "朗光科技",
+      "href": "/home",
+      "img": {
+        "src": "/assets/images/logo/logo.png",
+        "alt": "朗光科技"
+      },
+      "invert": "/assets/images/logo/logo-white.png"
+    },
+    "mainMenu": [
+      {
+        "label": "首页",
+        "href": "/home"
+      },
+      {
+        "label": "新闻中心",
+        "href": "/news"
+      },
+      {
+        "label": "产品中心",
+        "href": "/products"
+      },
+      {
+        "label": "关于我们",
+        "href": "/about"
+      },
+      {
+        "label": "人才招聘",
+        "href": "/careers"
+      },
+      {
+        "label": "联系方式",
+        "href": "/contact"
+      }
+    ],
+    "search": {
+      "enable": false
+    },
+    "actions": [],
+    "params": {
+      "themeSwitch": false,
+      "userInfo": false
+    }
+  },
+  "footer": {
+    "params": {
+      "mode": "inverse",
+      "shape": true
+    },
+    "logo": {
+      "label": "朗光科技"
+    },
+    "copyRight": "© 2024 朗光科技有限公司 版权所有",
+    "footerBrand": {
+      "logo": {
+        "img": {
+          "src": "/assets/images/logo/logo.png",
+          "alt": "朗光科技",
+          "width": 120,
+          "height": 40
+        }
+      },
+      "summary": "专注于光电领域的科技创新企业，致力于为客户提供高品质的光学产品和解决方案",
+      "social": [
+        {
+          "label": "微信",
+          "icon": {
+            "icon": "mdi-wechat",
+            "size": "lg",
+            "color": "primary"
+          },
+          "href": "#"
+        },
+        {
+          "label": "微博",
+          "icon": {
+            "icon": "mdi-twitter",
+            "size": "lg",
+            "color": "primary"
+          },
+          "href": "#"
+        },
+        {
+          "label": "邮箱",
+          "icon": {
+            "icon": "mdi-email",
+            "size": "lg",
+            "color": "primary"
+          },
+          "href": "mailto:contact@langguang.com"
+        },
+        {
+          "label": "电话",
+          "icon": {
+            "icon": "mdi-phone",
+            "size": "lg",
+            "color": "primary"
+          },
+          "href": "tel:400-888-8888"
+        }
+      ]
+    },
+    "mainMenu": [
+      {
+        "label": "关于我们",
+        "child": [
+          {
+            "label": "公司简介",
+            "href": "/about",
+            "target": "_self"
+          },
+          {
+            "label": "发展历程",
+            "href": "/about/history",
+            "target": "_self"
+          },
+          {
+            "label": "企业文化",
+            "href": "/about/culture",
+            "target": "_self"
+          },
+          {
+            "label": "荣誉资质",
+            "href": "/about/awards",
+            "target": "_self"
+          }
+        ]
+      },
+      {
+        "label": "产品中心",
+        "child": [
+          {
+            "label": "激光产品",
+            "href": "/products/laser",
+            "target": "_self"
+          },
+          {
+            "label": "光学元件",
+            "href": "/products/optics",
+            "target": "_self"
+          },
+          {
+            "label": "光通信器件",
+            "href": "/products/communication",
+            "target": "_self"
+          },
+          {
+            "label": "定制服务",
+            "href": "/products/custom",
+            "target": "_self"
+          }
+        ]
+      },
+      {
+        "label": "新闻中心",
+        "child": [
+          {
+            "label": "公司新闻",
+            "href": "/news/company",
+            "target": "_self"
+          },
+          {
+            "label": "行业动态",
+            "href": "/news/industry",
+            "target": "_self"
+          },
+          {
+            "label": "技术分享",
+            "href": "/news/tech",
+            "target": "_self"
+          }
+        ]
+      },
+      {
+        "label": "服务支持",
+        "child": [
+          {
+            "label": "技术支持",
+            "href": "/support/tech",
+            "target": "_self"
+          },
+          {
+            "label": "下载中心",
+            "href": "/support/download",
+            "target": "_self"
+          },
+          {
+            "label": "常见问题",
+            "href": "/support/faq",
+            "target": "_self"
+          },
+          {
+            "label": "联系我们",
+            "href": "/contact",
+            "target": "_self"
+          }
+        ]
+      },
+      {
+        "label": "人才招聘",
+        "child": [
+          {
+            "label": "招聘职位",
+            "href": "/careers/openings",
+            "target": "_self"
+          },
+          {
+            "label": "人才理念",
+            "href": "/careers/culture",
+            "target": "_self"
+          },
+          {
+            "label": "校园招聘",
+            "href": "/careers/campus",
+            "target": "_self"
+          }
+        ]
+      }
+    ],
+    "mobileMenu": [
+      {
+        "label": "关于我们",
+        "child": [
+          { "label": "公司简介", "href": "/about" },
+          { "label": "发展历程", "href": "/about/history" }
+        ]
+      },
+      {
+        "label": "产品中心",
+        "child": [
+          { "label": "激光产品", "href": "/products/laser" },
+          { "label": "光学元件", "href": "/products/optics" }
+        ]
+      },
+      {
+        "label": "新闻中心",
+        "href": "/news"
+      },
+      {
+        "label": "联系我们",
+        "href": "/contact"
+      }
+    ],
+    "footerBottom": {
+      "left": "© 2024 朗光科技有限公司 版权所有 | 粤ICP备12345678号",
+      "right": [
+        {
+          "label": "隐私政策",
+          "href": "/privacy",
+          "target": "_blank"
+        },
+        {
+          "label": "服务条款",
+          "href": "/terms",
+          "target": "_blank"
+        },
+        {
+          "label": "网站地图",
+          "href": "/sitemap",
+          "target": "_blank"
+        }
+      ]
+    },
+    "content": {
+      "left": {
+        "spacer": "md",
+        "body": "<p>朗光科技成立于2010年，总部位于深圳，是一家专注于光电领域的高新技术企业。</p>"
+      },
+      "middle": {
+        "spacer": "md",
+        "body": "<p>全国服务热线：<strong>400-888-8888</strong></p><p>邮箱：contact@langguang.com</p>"
+      }
+    },
+    "socialLinks": [
+      {
+        "icon": "github",
+        "href": "#"
+      },
+      {
+        "icon": "linkedin",
+        "href": "#"
+      },
+      {
+        "icon": "twitter",
+        "href": "#"
+      }
+    ],
+    "copyright": "2024 朗光科技. 保留所有权利.",
+    "contact": {
+      "address": "深圳市南山区科技园88号",
+      "phone": "400-888-8888",
+      "email": "contact@langguang.com"
+    }
+  },
+  "siteName": "朗光科技",
+  "siteSlogan": "创新科技，引领未来"
+}

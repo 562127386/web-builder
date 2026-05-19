@@ -1,0 +1,38 @@
+{
+  "title": "新闻详情",
+  "body": [
+
+    {
+  "type": "banner-simple",
+  "style": "banner-home",
+  "bannerBg": {
+    "img": {
+            "src": "/assets/images/bg/news.png",
+            "alt": ""
+          } ,
+    "classes": "bg-fill-width",
+    "overlay": true,
+    "overlayColor": "rgba(0, 0, 0, 0.5)"
+  },
+  "title": "<span class=\"text-primary\">欢迎来到</span> 新闻中心",
+  "subTitle": "探索更多精彩内容，开启您的旅程",
+  "breadcrumb": [
+    { "label": "首页", "href": "/", "icon": { "svg": "home", "color": "primary" } },
+    { "label": "新闻中心", "href": "/news", "icon": { "svg": "shopping-cart" } },
+    { "label": "详情", "href": "#", "classes": "active", "icon": { "svg": "file-text", "style": "w-4 h-4" } }
+  ]
+},
+
+
+    {
+      "type": "custom-template",
+      "isAPI": true,
+      "api": "/app-api/new",
+
+      "html": "{{#rows}}\n <article class=\"overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg\">\n   <div class=\"bg-white p-4 sm:p-6\">\n  \n  <h1 class=\"mt-0.5  text-gray-900\">{{name}}</h1>\n   <div class=\"time\">{{ publishDate }}</div>  <p class=\"mt-2 line-clamp-3 text-sm/relaxed text-gray-500\">\n{{{content}}}\n    </p>\n  </div>\n</article> {{/rows}}",
+      "json": null,
+      "animate": false
+    }
+
+  ]
+}

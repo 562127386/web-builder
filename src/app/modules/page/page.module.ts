@@ -16,7 +16,7 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
     ShareModule,
     WidgetsModule,
     MatSidenavModule,
-    BuilderModule,
+    BuilderModule,  //后面要去掉减少体积 但是token里貌似引用需要处理
     BrandingModule,
     LoadingBarHttpClientModule,
     LoadingBarModule,

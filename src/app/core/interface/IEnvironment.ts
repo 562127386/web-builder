@@ -12,6 +12,7 @@ export interface IEnvironment {
   multiLang?: boolean;
   langs?: ILanguage[];
   oauth: IOAuth;
+  abpApi: IAbpUrl;
 }
 
 export interface ILanguage {
@@ -19,4 +20,9 @@ export interface ILanguage {
   langCode: string;
   default?: boolean;
   prefix: string;
+}
+
+
+export interface IAbpUrl {
+  url: string;
 }

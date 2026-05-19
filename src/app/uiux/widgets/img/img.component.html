@@ -19,7 +19,7 @@
           [height]="content.height || 300"
         />
       } @else {
-        <a href="{{ content.href }}" target="{{ content.target }}">
+        <a href="{{ content.href }}" target="{{ content.target }}" (click)="onImgClick($event)">
           <img
             contentedit="src"
             loading="lazy"

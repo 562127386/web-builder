@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectorRef, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
@@ -38,7 +38,7 @@ import { MatIconModule } from '@angular/material/icon';
     ])
   ]
 })
-export class PdfPreviewComponent {
+export class PdfPreviewComponent implements OnInit {
   // 外部传入PDF地址
   @Input() pdfUrl = '';
 
@@ -46,11 +46,18 @@ export class PdfPreviewComponent {
   isLoading = false;
   isDarkMode = false;
 
+  constructor(private cdRef: ChangeDetectorRef) {}
+
+  ngOnInit(): void {
+    this.cdRef.detectChanges();
+  }
+
   // 外部调用打开弹窗
   open(url: string) {
     this.pdfUrl = url;
     this.isLoading = true;
     this.showModal = true;
+    this.cdRef.detectChanges();
   }
 
   // 关闭弹窗
@@ -73,8 +80,20 @@ export class PdfPreviewComponent {
     }
   }
 
-  // PDF加载完成
+  // 页面渲染完成
   onPdfLoaded() {
     this.isLoading = false;
+  }
+
+  // 文档加载完成
+  onDocumentLoaded() {
+    this.isLoading = false;
+  }
+
+  // PDF加载错误
+  onPdfError(error: any) {
+    console.error('PDF加载错误:', error);
+    this.isLoading = false;
+    // 可以显示错误消息给用户
   }
 }

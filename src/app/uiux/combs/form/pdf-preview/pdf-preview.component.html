@@ -1,17 +1,9 @@
 <!-- PDF 酷炫弹窗 90%窗口 全套功能 -->
-<div *ngIf="showModal" class="fixed inset-0 z-[9999]">
-  <!-- 磨砂遮罩 -->
-  <div
-    @fadeInMask
-    class="absolute inset-0 bg-black/70 backdrop-blur-sm"
-    (click)="closeModal()"
-  ></div>
-
+<div *ngIf="showModal" class="fixed inset-0 z-[9999] flex items-center justify-center p-4">
   <!-- 弹窗主体 90vw 90vh 动画弹出 -->
   <div
     @zoomModal
-    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
-    w-[90vw] h-[90vh] rounded-2xl overflow-hidden shadow-2xl
+    class="w-[90vw] h-[90vh] rounded-2xl overflow-hidden shadow-2xl
     bg-white dark:bg-gray-900 flex flex-col"
     (contextmenu)="$event.preventDefault()"
   >
@@ -34,24 +26,24 @@
       </div>
     </div>
 
-    <!-- Loading 转圈 -->
-    <div *ngIf="isLoading" class="flex-1 flex items-center justify-center">
-      <div class="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-    </div>
-
     <!-- PDF预览 -->
-    <div class="flex-1" *ngIf="!isLoading && pdfUrl">
+    <div class="flex-1" *ngIf="pdfUrl">
+      <!-- Loading 遮罩 -->
+      <div *ngIf="isLoading" class="absolute inset-0 flex items-center justify-center bg-white dark:bg-gray-900 z-10">
+        <div class="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+      </div>
       <ngx-extended-pdf-viewer
         [src]="pdfUrl"
         [height]="'100%'"
-        [width]="'100%'"
         [showDownloadButton]="false"
         [showPrintButton]="false"
         [showOpenFileButton]="false"
-        [showBookmarkButton]="false"
+        [sidebarVisible]="false"
         [showSidebarButton]="false"
         [backgroundColor]="isDarkMode ? '#1f2937' : '#ffffff'"
-        (loaded)="onPdfLoaded()"
+        (pageRendered)="onPdfLoaded()"
+        (documentLoaded)="onDocumentLoaded()"
+        (error)="onPdfError($event)"
       ></ngx-extended-pdf-viewer>
     </div>
   </div>

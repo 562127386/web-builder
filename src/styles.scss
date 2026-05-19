@@ -137,4 +137,16 @@ pre {
   --sidebar-width: 68px;
 }
 
+// PDF Preview Styles
+.pdf-preview-panel {
+  ::ng-deep .cdk-overlay-backdrop {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    backdrop-filter: blur(4px);
+  }
+}
+
+.custom-swiper-height .swiper-slide {
+  max-height: 400px;
+}
+
 

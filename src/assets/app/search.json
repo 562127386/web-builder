@@ -1,0 +1,46 @@
+{
+  "type": "page",
+  "config": {
+    "title": "搜索",
+    "slug": "search"
+  },
+  "body": [
+    {
+      "type": "search",
+      "header": {
+        "placeholder": "输入关键词搜索...",
+        "tooltip": "搜索",
+        "enable": true,
+        "type": "search",
+        "key": "keys",
+        "bg": {
+          "classes": "bg-cover bg-center",
+          "overlay": "bg-black/40",
+          "img": {
+            "src": "/assets/images/bg/search.png",
+            "alt": "搜索背景"
+          }
+        }
+      },
+      "api": "/app-api/search?MaxResultCount=12",
+      "label": {
+        "clear": "清除",
+        "filter": "筛选",
+        "total": "个结果",
+        "empty": "没有找到匹配的结果"
+      },
+      "sidebar": [
+        {
+          "key": "keys",
+          "type": "text",
+          "label": "关键词",
+          "placeholder": "请输入关键词"
+        }
+      ],
+      "template": "<div class='bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-4 border border-gray-100'> <a data-action='previewPdf' data-url='http://newapi.lightcomm.com/erupt-api/file/download-attachment{{pdf}}' class='cursor-pointer block'> <h3 class='text-lg font-semibold text-gray-900 mb-2 whitespace-normal break-all line-clamp-3'>{{name}}</h3><p class='text-sm text-gray-500 line-clamp-2 mb-3'>{{description}}</p>{{#tags}}<span class='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium mr-2 mb-2 {{colorClass}}'>{{label}}</span>{{/tags}}</a></div>",
+      "wrapperClasses": "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-6 mx-auto",
+      "colClasses": "",
+      "showSidebar": false
+    }
+  ]
+}

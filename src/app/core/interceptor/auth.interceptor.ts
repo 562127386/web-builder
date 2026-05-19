@@ -34,7 +34,38 @@ export class AuthInterceptor implements HttpInterceptor {
       req = this.addToken(req, storedUser.access_token);
     }
 
+    // Add Anti-Forgery token for ABP backend
+    req = this.addAntiForgeryToken(req);
+
     return next.handle(req).pipe(catchError(error => this.handleError(error, req, next)));
+  }
+
+  private addAntiForgeryToken(req: HttpRequest<any>): HttpRequest<any> {
+    if (typeof document === 'undefined') {
+      return req;
+    }
+
+    // ABP uses .AspNetCore.Antiforgery.xxx cookie format
+    const antiForgeryToken = this.getAntiForgeryToken();
+    if (antiForgeryToken) {
+      return req.clone({
+        setHeaders: {
+          'RequestVerificationToken': antiForgeryToken,
+        },
+        withCredentials: true,
+      });
+    }
+    return req.clone({ withCredentials: true });
+  }
+
+  private getAntiForgeryToken(): string | null {
+    if (typeof document === 'undefined') {
+      return null;
+    }
+    // Match .AspNetCore.Antiforgery.xxx=value pattern
+    const pattern = /\.AspNetCore\.Antiforgery\.[^=]+=([^;]+)/;
+    const match = document.cookie.match(pattern);
+    return match ? match[1] : null;
   }
 
   private addToken(req: HttpRequest<any>, token: string): HttpRequest<any> {

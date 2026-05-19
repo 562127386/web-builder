@@ -3,15 +3,19 @@
   "theme": [
     {
       "style": "blue-theme",
-      "label": "蓝色主题"
+      "name": "蓝色主题"
     },
     {
       "style": "green-theme",
-      "label": "绿色主题"
+      "name": "绿色主题"
     },
     {
-      "style": "purple-theme",
-      "label": "紫色主题"
+      "style": "dark-theme",
+      "name": "深色主题"
+    },
+    {
+      "style": "pink-theme",
+      "name": "粉色主题"
     }
   ],
   "multiLang": true,
@@ -55,6 +59,7 @@
       "interval": 120000
     }
   },
+  "animate": true,
   "pageSize": 10,
   "paginationSize": 5
 }

@@ -1,0 +1,65 @@
+{
+  "status": true,
+  "message": "",
+  "title": "关于我们",
+  "uuid": "201d438d-93b5-4ad5-8523-66a7979e63d9",
+  "nid": "613",
+  "vid": "2682",
+  "changed": "1737262293",
+  "langcode": "zh-hans",
+  "label": "关于我们",
+  "body": [
+    {
+      "extra": {
+        "uuid": "6175d67e-aa0b-43b6-b6a3-bc76abba6318",
+        "id": "801",
+        "type": "json"
+      },
+      "fullWidth": true,
+      "spacer": "none",
+      "bgClasses": "bg- bg-fill-width",
+      "overlay": "",
+      "containerClasses": "",
+      "id": "",
+      "bg": {
+        "img": {
+          "src": "",
+          "alt": ""
+        },
+        "classes": "bg- bg-fill-width",
+        "overlay": ""
+      },
+      "animate": {
+        "aos": {
+          "enable": false
+        }
+      },
+      "type": "banner-simple",
+      "style": "normal",
+      "bannerBg": {
+        "classes": "bg-fill-width",
+        "img": {
+          "hostClasses": "bg-center",
+          "src": "/assets/images/16-9/nature-05.jpg",
+          "alt": ""
+        }
+      },
+      "title": "关于我们",
+      "breadcrumb": []
+    },
+
+
+     {
+      "type": "custom-template",
+      "isAPI": true,
+      "api": "/app-api/new?id=19",
+
+      "html": " {{#rows}}\n <article class=\"overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg\">\n   <div class=\"bg-white p-4 sm:p-6\">\n\n  <h1 class=\"mt-0.5  text-gray-900\">{{name}}</h1>\n   <p class=\"mt-2 line-clamp-3 text-sm/relaxed text-gray-500\">\n{{{content}}}\n    </p>\n  </div>\n</article> {{/rows}}",
+      "json": null,
+      "animate": false
+    }
+
+  ],
+  "current": true,
+  "time": "2026/5/9 13:44:34"
+}

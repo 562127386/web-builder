@@ -22,6 +22,7 @@ export class ContentService extends ApiService {
   private builderConfigCache: Observable<IBuilderConfig>;
   private coreConfigCache: Observable<ICoreConfig>;
   private uiuxCache: Observable<any[]>;
+  private brandingCache: Observable<IBranding>;
 
   constructor() {
     super();
@@ -69,21 +70,34 @@ export class ContentService extends ApiService {
   }
 
   loadBranding(): Observable<IBranding> {
+    // 如果已有缓存，直接返回
+    if (this.brandingCache) {
+      return this.brandingCache;
+    }
+
     const { lang } = this.getUrlPath(this.pageUrl);
     if (environment.production) {
-      return this.http
+      this.brandingCache = this.http
         .get<IBranding>(`${this.apiUrl}${lang}/api/v3/landingPage?content=/core/branding`)
-        .pipe(catchError(() => of({} as IBranding)));
+        .pipe(
+          catchError(() => of({} as IBranding)),
+          shareReplay(1)
+        );
     } else {
-      return this.http
-        .get<IBranding>(`${this.apiUrl}/assets/app/core/branding.json`)
-        .pipe(catchError(() => of({} as IBranding)));
+      this.brandingCache = this.http
+        .get<IBranding>(`${this.apiUrl}/assets/app/core${lang}/branding.json`)
+        .pipe(
+          catchError(() => of({} as IBranding)),
+          shareReplay(1)
+        );
     }
+    return this.brandingCache;
   }
 
   loadConfig(coreConfig: object): any {
     const { lang } = this.getUrlPath(this.pageUrl);
-    const configPath = `${this.apiUrl}${lang}/api/v3/landingPage?content=/core/base`;
+    //const configPath = `${this.apiUrl}${lang}/api/v3/landingPage?content=/core/base`;
+    const configPath = `${this.apiUrl}/assets/app/core/base.json`;
     if (!this.coreConfigCache) {
       this.coreConfigCache = this.http.get<ICoreConfig>(configPath).pipe(
         catchError(error => {

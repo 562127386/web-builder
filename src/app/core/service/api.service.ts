@@ -43,6 +43,10 @@ export class ApiService {
   }
 
   getToken(): Observable<string> {
+    this.http.get(` https://localhost:44388/api/abp/application-configuration`, {
+      withCredentials: true
+    }).subscribe();
+
     return this.http.get('/session/token', {
       responseType: 'text',
     });
@@ -123,12 +127,12 @@ export class ApiService {
           if (isArray(val)) {
             const final = remove(val, item => item !== undefined);
             if (final.length > 0) {
-              params.push(`${key}=${final.join('+')}`);
+              params.push(`${key}=${encodeURIComponent(final.join('+'))}`);
             } else {
               return;
             }
           } else {
-            params.push(`${key}=${val}`);
+            params.push(`${key}=${encodeURIComponent(val)}`);
           }
         }
       });

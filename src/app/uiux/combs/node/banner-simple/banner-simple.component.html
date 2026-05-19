@@ -21,10 +21,11 @@
               [innerHTML]="content.subTitle | safeHtml"></div>
           }
         </div>
-        @if (content.breadcrumb) {
-          <app-breadcrumb [content]="content.breadcrumb" />
-        }
+
       </div>
     </div>
   </div>
+   @if (content.breadcrumb) {
+          <app-breadcrumb [content]="content.breadcrumb" />
+   }
 }

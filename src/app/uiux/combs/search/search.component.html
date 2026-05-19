@@ -1,4 +1,4 @@
-<app-search-header [content]="content.header" [filterForm]="filterForm" [form]="form" />
+<app-search-header [content]="content.header" [filterForm]="filterForm" [form]="form" (search)="onSearch($event)" />
 <div class="container">
   <div class="search-body">
     @if (filterForm && content.showSidebar) {
@@ -16,7 +16,7 @@
       [label]="content.label"
       [wrapperClasses]="content.wrapperClasses"
       [colClasses]="content.colClasses"
-      [loading]="loading"
+      [loading]="loading()"
       [pager]="pager"
       (pageChange)="onPageChange($event)"
       [template]="content.template"

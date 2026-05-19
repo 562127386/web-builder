@@ -2,7 +2,10 @@
   <div class="breadcrumb">
     <ul>
       @for (link of content; track link) {
-        <li>
+        <li class="flex items-center gap-1">
+          @if (link.icon) {
+            <app-icon [content]="link.icon" />
+          }
           <app-link [content]="link" />
           <app-icon [content]="{ svg: 'chevron-right' }" />
         </li>

@@ -1,8 +1,8 @@
 import { IEnvironment } from '../app/core/interface/IEnvironment';
 
 export const environment: IEnvironment = {
-  apiUrl: 'https://yourdomain.com',
-  production: true,
+  apiUrl: 'http://web.lightcomm.com:8087',
+  production: false,
   port: 4200,
   cache: true,
   multiLang: true,
@@ -23,5 +23,8 @@ export const environment: IEnvironment = {
     clientId: 'xxx',
     tokenUrl: '/oauth/token',
     scope: '',
+  },
+  abpApi: {
+    url: 'http://newapi.lightcomm.com',
   },
 };

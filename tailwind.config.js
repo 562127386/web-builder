@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{html,ts,mdx}'],
+  content: ['./src/**/*.{html,ts,mdx,json}'],
   safelist: [
     // ==================== Standalone ====================
     'group',

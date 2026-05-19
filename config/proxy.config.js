@@ -2,7 +2,7 @@ const PROXY_CONFIG = [
   {
     context: [
       '/en/api',
-      '/api',
+     // '/api',
       '/oauth',
       '/session',
       '/user',
@@ -38,6 +38,7 @@ const PROXY_CONFIG = [
   {
     context: ['/app-api'],
     target: 'https://localhost:44388',
+    //target: 'http://newapi.lightcomm.com',
     secure: false,
     changeOrigin: true,
     // pathRewrite: {

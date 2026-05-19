@@ -67,14 +67,26 @@ export class FormService {
         const headers = new HttpHeaders({
           Accept: 'application/json',
           'Content-Type': 'application/json',
+          // 关键：从Cookie读取防伪令牌
+          RequestVerificationToken: this.getCookie('.AspNetCore.Antiforgery.UCJP0csReIw')
         });
-        return this.http.post(`${this.apiService.apiUrl}/webform_rest/submit`, data, {
+
+        return this.http.post(`${this.apiService.apiUrl}/app-api/submit`, data, {
           headers,
+          withCredentials: true
         });
       })
     );
   }
-
+  //这些方法都不行白扯
+//   .AspNetCore.Antiforgery.UCJP0csReIw 是 HttpOnly 的，前端 JS 读不到
+// 你手动写的 getCookie 对它完全无效
+// 直接加 RequestVerificationToken 头是做不到的，除非你用 ABP 官方的 Angular 包
+// 工具方法：读取防伪Cookie
+private getCookie(name: string): string   {
+  const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  return match ? decodeURIComponent(match[2]) : '';
+}
   handleRangeDate(value: any): any {
     if (value.date) {
       if (value.date.start) {

@@ -186,6 +186,14 @@ export interface ICustomTemplate extends ICombsBase {
       params?: any;
     };
   };
+  sanitizeHtml?: boolean;
+  conditions?: {
+    [key: string]: {
+      field: string;
+      operator: string;
+      value: any;
+    };
+  };
 }
 
 export interface ICodeEditor {

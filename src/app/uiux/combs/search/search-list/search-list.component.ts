@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy, output } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy, output, signal } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 
 @Component({
@@ -12,7 +12,10 @@ export class SearchListComponent implements OnInit {
   @Input() content: any[];
   @Input() label: any;
   @Input() pager: any;
-  @Input() loading: boolean;
+  @Input() set loading(value: boolean) {
+    this.loadingSignal.set(value);
+  }
+  loadingSignal = signal(false);
   @Input() template: string;
   @Input() wrapperClasses: string;
   @Input() colClasses: string;

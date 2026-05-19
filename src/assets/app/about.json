@@ -1,124 +1,75 @@
 {
+  "status": true,
+  "message": "",
   "title": "关于我们",
+  "uuid": "201d438d-93b5-4ad5-8523-66a7979e63d9",
+  "nid": "613",
+  "vid": "2682",
+  "changed": "1737262293",
+  "langcode": "zh-hans",
+  "label": "关于我们",
   "body": [
-{
-  "id": "form",
-  "type": "showcase-1v3",
-  "text": {
-    "title": {
-      "label": "关于我们",
-      "style": "style-v1",
-      "classes": "mat-headline-3"
-    }
-  },
-  "spacer": "md",
-  "classes": "",
-  "bg": {
-    "classes": ""
-  },
-  "elements": [
     {
-      "type": "text",
+      "extra": {
+        "uuid": "6175d67e-aa0b-43b6-b6a3-bc76abba6318",
+        "id": "801",
+        "type": "json"
+      },
+      "fullWidth": true,
       "spacer": "none",
-      "classes": "text-center",
-      "body": "<p style=\"display: inline-block; margin-bottom: 0px;\">信使是以 Material UI为基础的 Angular 前端框架，为Drupal的数字创新提供友好的用户体验。</p>"
-    },
-    {
-      "type": "contact-us",
-      "params": {
-        "webform_id": "contact"
-      },
+      "bgClasses": "bg- bg-fill-width",
+      "overlay": "",
+      "containerClasses": "",
+      "id": "",
       "bg": {
-        "classes": "",
-        "icon": "wave"
+        "img": {
+          "src": "",
+          "alt": ""
+        },
+        "classes": "bg- bg-fill-width",
+        "overlay": ""
       },
-      "action": {
-        "label": "提交表单"
+    "animate": {
+        "aos": {
+          "enable": true,
+          "animation": "fade-up",
+          "behaviour": {
+            "offset": 120,
+            "duration": 400,
+            "delay": 0,
+            "easing": "ease"
+          }
+        },
+        "gsap": {
+          "enable": false
+        }
       },
-      "formOrder": "1",
-      "contact": [
-        {
-          "title": {
-            "label": "地址"
-          },
-          "icon": {
-            "name": "location_on"
-          },
-          "style": "style-v7 small-box",
-          "content": "创客城2栋"
-        },
-        {
-          "title": {
-            "label": "电话号码"
-          },
-          "style": "style-v7 small-box",
-          "icon": {
-            "name": "phone"
-          },
-          "content": "+086 0771xxxx"
-        },
-        {
-          "title": {
-            "label": "邮件"
-          },
-          "style": "style-v7 small-box",
-          "icon": {
-            "name": "mail"
-          },
-          "content": "service@example.com"
-        },
-        {
-          "title": {
-            "label": "微信"
-          },
-          "style": "style-v7 small-box",
-          "icon": {
-            "name": "chat_bubble"
-          },
-          "content": "biaogebusy"
+      "type": "banner-simple",
+      "style": "normal",
+      "bannerBg": {
+        "classes": "bg-fill-width",
+        "img": {
+          "hostClasses": "bg-center",
+          "src": "/assets/images/16-9/nature-05.jpg",
+          "alt": ""
         }
-      ],
-      "form": [
-        {
-          "type": "input",
-          "key": "name",
-          "className": "w-full",
-          "props": {
-            "label": "姓名",
-            "required": true
-          }
-        },
-        {
-          "type": "input",
-          "key": "email",
-          "className": "w-full",
-          "props": {
-            "label": "邮箱",
-            "required": true
-          }
-        },
-        {
-          "type": "input",
-          "key": "subject",
-          "className": "w-full",
-          "props": {
-            "label": "主题"
-          }
-        },
-        {
-          "type": "textarea",
-          "key": "message",
-          "className": "w-full",
-          "props": {
-            "label": "内容",
-            "placeholder": "Message",
-            "rows": 5
-          }
-        }
-      ]
+      },
+      "title": "关于我们",
+      "breadcrumb": []
+    },
+
+
+     {
+      "type": "custom-template",
+      "isAPI": true,
+      "api": "/app-api/new?id=19",
+
+      "html": " {{#rows}}\n <article class=\"overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg\">\n   <div class=\"bg-white p-4 sm:p-6\">\n\n  <h1 class=\"mt-0.5  text-gray-900\">{{name}}</h1>\n   <p class=\"mt-2 line-clamp-3 text-sm/relaxed text-gray-500\">\n{{{content}}}\n    </p>\n  </div>\n</article> {{/rows}}",
+      "json": null,
+      "animate": false
     }
+
   ],
-  "animate": false
-}
-  ]
+  "current": true,
+  "time": "2026/5/9 13:44:34"
 }

@@ -5,6 +5,7 @@ import {
   withHttpTransferCacheOptions,
   withIncrementalHydration,
 } from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 import {
   NgModule,
@@ -18,6 +19,7 @@ import {
   provideHttpClient,
   withFetch,
   withInterceptorsFromDi,
+  withXsrfConfiguration,
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
@@ -64,6 +66,7 @@ import { environment } from 'src/environments/environment';
   providers: [
     Title,
     CookieService,
+    provideAnimations(),
     provideClientHydration(
       withIncrementalHydration(),
       withHttpTransferCacheOptions({
@@ -74,7 +77,13 @@ import { environment } from 'src/environments/environment';
         },
       })
     ),
-    provideHttpClient(withFetch()),
+    provideHttpClient(
+      withFetch(),
+      withXsrfConfiguration({
+        cookieName: 'XSRF-TOKEN',
+        headerName: 'X-XSRF-TOKEN',
+      })
+    ),
     provideZonelessChangeDetection(),
     provideNgxWebstorage(
       withNgxWebstorageConfig({ separator: ':', caseSensitive: true }),

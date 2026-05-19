@@ -21,6 +21,7 @@ import { Router } from '@angular/router';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { PdfPreviewService } from '@core/service/pdf-preview.service';
 
 @Component({
   selector: 'app-link',
@@ -45,6 +46,7 @@ export class LinkComponent extends BaseComponent implements OnInit {
   private util = inject(UtilitiesService);
   private destroyRef = inject(DestroyRef);
   private dialog = inject(MatDialog);
+  private pdfPreviewService = inject(PdfPreviewService);
 
   constructor() {
     super();
@@ -65,6 +67,13 @@ export class LinkComponent extends BaseComponent implements OnInit {
   }
 
   nav(event: any): any {
+    if (this.content.previewPdf && this.content.href) {
+      event.preventDefault();
+      event.stopPropagation();
+      this.pdfPreviewService.open(this.content.href);
+      return false;
+    }
+
     if (this.content.dialog) {
       event.preventDefault();
       event.stopPropagation();
@@ -84,7 +93,6 @@ export class LinkComponent extends BaseComponent implements OnInit {
         });
       return false;
     }
-
     if (this.content.href && this.content.href.includes(':id')) {
       if (this.user) {
         const id = this.user.current_user.uid;
@@ -93,8 +101,29 @@ export class LinkComponent extends BaseComponent implements OnInit {
         return;
       }
     }
+    //添加了相对URL的处理逻辑
+    if (this.content.href && !this.isAbsolute(this.content.href)) {
+        var queryParams= this.content.queryParams;
+        this.router.navigate([this.content.href], { queryParams } );
+        return ;
+    }
+//添加了同域绝对URL的处理逻辑
+    if (this.content.href && this.isAbsolute(this.content.href)) {
+      const url = new URL(this.content.href);
+      if (url.origin === window.location.origin) {
+        event.preventDefault();
+        event.stopPropagation();
+        const path = url.pathname;
+        const queryParams: { [key: string]: string } = {};
+        url.searchParams.forEach((value, key) => {
+          queryParams[key] = value;
+        });
+        this.router.navigate([path], { queryParams });
+        return false;
+      }
+    }
+
     if (this.router.url === '/builder') {
-      // builder contenteditable link
       if (event.target && event.target.closest('.component-item')) {
         this.router.navigateByUrl(this.router.url);
       }
@@ -110,6 +139,12 @@ export class LinkComponent extends BaseComponent implements OnInit {
       ...config,
       data: {
         inputData: dialog.data,
+        disableActions: dialog?.params?.disableActions,
+        disableClose: dialog?.params?.disableClose,
+        title: dialog?.params?.title,
+        yesLabel: dialog?.params?.yesLabel,
+        noLabel: dialog?.params?.noLabel,
+        actionsAlign: dialog?.params?.actionsAlign,
       },
     });
     if (dialog?.afterClosed) {

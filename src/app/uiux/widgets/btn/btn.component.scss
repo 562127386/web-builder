@@ -66,6 +66,19 @@ a,
   padding-right: 20px;
 }
 
+:host ::ng-deep {
+  .mdc-button--raised {
+    transition: all 0.3s ease;
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 40px rgba(var(--mat-primary-rgb), 0.3);
+    }
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
 :host(.disabled) {
   @apply pointer-events-none;
 }

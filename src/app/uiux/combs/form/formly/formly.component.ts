@@ -9,9 +9,7 @@ import {
 } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import type { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
-import { cloneDeep } from 'lodash-es';
 import { FormChangeService } from '@core/service/form-change.service';
-
 interface IFormly {
   fields?: FormlyFieldConfig[];
 }
@@ -33,8 +31,8 @@ export class FormlyComponent implements OnInit, AfterViewInit {
   readonly modelChange = output<any>();
 
   fieldsConfig = signal<FormlyFieldConfig[]>([]);
-  
-  private formChangeService = inject(FormChangeService);
+
+  private formChangeService = inject<FormChangeService>(FormChangeService);
 
   ngOnInit(): void {}
 
@@ -42,10 +40,29 @@ export class FormlyComponent implements OnInit, AfterViewInit {
     let config: FormlyFieldConfig[] = [];
     const fields = this.content?.fields;
     config = fields ?? this.fields;
-    this.fieldsConfig.set(cloneDeep(config));
+    this.fieldsConfig.set(this.safeClone(config));
   }
 
-  onModelChange(event: any): void {
+  private safeClone(obj: any): any {
+    if (obj === null || typeof obj !== 'object') {
+      return obj;
+    }
+    if (Array.isArray(obj)) {
+      return obj.map(item => this.safeClone(item));
+    }
+    if (obj.constructor && obj.constructor.name !== 'Object') {
+      return obj;
+    }
+    const clone: any = {};
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        clone[key] = this.safeClone(obj[key]);
+      }
+    }
+    return clone;
+  }
+
+  onModelChange(event: Record<string, any>): void {
     const componentId = this.fieldsConfig()?.[0]?.templateOptions?.componentId;
     if (componentId) {
       this.formChangeService.onFormChange(componentId, event);

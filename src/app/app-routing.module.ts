@@ -3,6 +3,7 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { AuthGuard } from '@core/guards/auth.guard';
 import { PreviewComponent } from '@modules/builder/preview/preview.component';
 import { PageComponent } from '@modules/page/page/page.component';
+import { SearchComponent } from '@uiux/combs/search/search.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,58 @@ const routes: Routes = [
     path: 'contact',
     component: PageComponent,
   },
+  {
+    path: 'search',
+    component: PageComponent,
+  },
+  {
+    path: 'submitReq',
+    component: PageComponent,
+  },
+
+
+  {
+    path: 'en/home',
+    component: PageComponent,
+  },
+  {
+    path: 'en/news',
+    component: PageComponent,
+  },
+  {
+    path: 'en/news/:slug',
+    component: PageComponent,
+  },
+  {
+    path: 'en/products',
+    component: PageComponent,
+  },
+  {
+    path: 'en/productLists/:id',
+    component: PageComponent,
+  },
+  {
+    path: 'en/about',
+    component: PageComponent,
+  },
+  {
+    path: 'en/careers',
+    component: PageComponent,
+  },
+  {
+    path: 'en/contact',
+    component: PageComponent,
+  },
+  {
+    path: 'en/search',
+    component: PageComponent,
+  },
+  {
+    path: 'en/submitReq',
+    component: PageComponent,
+  },
+
+
   {
     path: 'me',
     loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule),

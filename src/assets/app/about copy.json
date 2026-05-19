@@ -1,0 +1,240 @@
+{
+  "title": "关于我们",
+  "body": [
+{
+  "id": "form",
+  "type": "showcase-1v3",
+  "text": {
+    "title": {
+      "label": "关于我们",
+      "style": "style-v1",
+      "classes": "mat-headline-3"
+    }
+  },
+
+  "classes": "",
+
+
+  "fullWidth": true,
+  "spacer": "none",
+  "bgClasses": "bg- bg-fill-width",
+  "overlay": "",
+  "containerClasses": "",
+  "bg": {
+    "img": {
+      "src": "",
+      "alt": ""
+    },
+    "classes": "bg- bg-fill-width",
+    "overlay": ""
+  },
+
+
+
+
+  "elements": [
+ {
+  "fullWidth": false,
+  "spacer": "lg",
+  "bgClasses": "bg-primary bg-fill-width",
+  "overlay": "overlay overlay-80",
+  "containerClasses": "text-white",
+  "id": "",
+  "bg": {
+    "img": {
+      "src": "",
+      "alt": "",
+      "classes": "object-fit"
+    },
+    "classes": "bg-primary bg-fill-width",
+    "overlay": "overlay overlay-80"
+  },
+  "horizontal": "center",
+  "vertical": "center",
+  "alignItems": "center",
+  "wrapperClass": "",
+  "animate": {
+    "aos": {
+      "enable": true,
+      "animation": "fade-up",
+      "behaviour": {
+        "offset": 120,
+        "duration": 400,
+        "delay": 0,
+        "easing": "ease"
+      }
+    },
+    "gsap": {
+      "enable": false
+    }
+  },
+  "classes": "",
+  "type": "layout-builder",
+  "elements": [
+    {
+      "row": {
+        "xs": 12,
+        "sm": 12,
+        "md": 4,
+        "lg": 4
+      },
+      "horizontal": "start",
+      "vertical": "stretch",
+      "gap": {
+        "xs": "4",
+        "sm": "4",
+        "md": "8",
+        "lg": "8"
+      },
+      "bg": {
+        "img": {
+          "src": "",
+          "alt": "",
+          "classes": "object-fit"
+        },
+        "overlay": "",
+        "classes": "bg-fill-width"
+      },
+      "classes": "",
+      "blockClasses": "",
+      "animate": {
+        "aos": {
+          "enable": false
+        }
+      },
+      "style": {
+        "borderRadius": "none"
+      },
+      "layoutAlign": "start start",
+      "elements": [
+        {
+          "style": "style-v4",
+          "classes": "mat-headline-1 bold",
+          "typed": {
+            "enable": false,
+            "config": {
+              "typeSpeed": 120
+            },
+            "strings": [
+              {
+                "label": "web builder"
+              }
+            ]
+          },
+          "animate": {
+            "aos": {
+              "enable": false
+            }
+          },
+          "type": "title",
+          "label": "<p style=\"display: inline-block; margin-bottom: 0px;\">Drupal CMS 候选版本现已推出</p>"
+        },
+        {
+          "type": "text",
+          "spacer": "none",
+          "body": "<p style=\"display: inline-block; margin-bottom: 0px; font-size: 20px;\">抢先体验迄今为止最人性化的 Drupal 版本！Drupal 官方邀请社区探索、测试并提供反馈以形成最终版本。</p>"
+        },
+        {
+          "type": "text",
+          "spacer": "none",
+          "body": "<p style=\"display: inline-block; margin-bottom: 0px; font-size: 22px; line-height: 1.6;\">A first look at the most user-friendly version of Drupal yet! We invite the community to explore, test, and provide feedback to shape the final release.</p>"
+        },
+        {
+          "color": "primary",
+          "mode": "raised",
+          "href": "https://new.drupal.org/download",
+          "icon": {
+            "svg": "chevron-right"
+          },
+          "classes": "",
+          "pill": false,
+          "animate": {
+            "aos": {
+              "enable": false
+            }
+          },
+          "label": "下载 Drupal CMS",
+          "target": "_blank",
+          "type": "btn"
+        }
+      ]
+    },
+    {
+      "row": {
+        "xs": 12,
+        "sm": 12,
+        "md": 8,
+        "lg": 8
+      },
+      "horizontal": "start",
+      "vertical": "stretch",
+      "gap": {
+        "xs": "4",
+        "sm": "4",
+        "md": "4",
+        "lg": "4"
+      },
+      "bg": {
+        "img": {
+          "src": "",
+          "alt": "",
+          "classes": "object-fit"
+        },
+        "overlay": "",
+        "classes": "bg-fill-width"
+      },
+      "classes": "",
+      "blockClasses": "",
+      "animate": {
+        "aos": {
+          "enable": false
+        }
+      },
+      "style": {
+        "borderRadius": "none"
+      },
+      "layoutAlign": "start start",
+      "elements": [
+        {
+          "src": "/sites/default/files/2024-12/background-yellow-line.png",
+          "alt": "alt",
+          "classes": "mover p-10",
+          "hostClasses": "",
+          "width": 700,
+          "height": 700,
+          "style": {
+            "aspectRatio": "4 / 3",
+            "objectFit": "contain",
+            "opacity": "",
+            "borderRadius": "",
+            "boxShadow": ""
+          },
+          "animate": {
+            "aos": {
+              "enable": false
+            }
+          },
+          "type": "img"
+        }
+      ]
+    }
+  ]
+},
+
+
+
+    {
+      "type": "custom-template",
+      "isAPI": true,
+      "api": "/app-api/new?id=19",
+
+      "html": " {{#rows}}\n <article class=\"overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg\">\n   <div class=\"bg-white p-4 sm:p-6\">\n\n  <h1 class=\"mt-0.5  text-gray-900\">{{name}}</h1>\n   <p class=\"mt-2 line-clamp-3 text-sm/relaxed text-gray-500\">\n{{{content}}}\n    </p>\n  </div>\n</article> {{/rows}}",
+      "json": null,
+      "animate": false
+    }
+
+  ],
+  "animate": false
+}
+  ]
+}

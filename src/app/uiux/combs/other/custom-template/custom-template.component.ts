@@ -38,9 +38,10 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { UtilitiesService } from '@core/service/utilities.service';
 import { ICoreConfig } from '@core/interface/IAppConfig';
 import { CORE_CONFIG } from '@core/token/token-providers';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { QueryStateService } from '@core/service/query-state.service';  // 查询状态管理服务
 import { CompanyService } from '@core/service/company.service';
+import { PdfPreviewService } from '@core/service/pdf-preview.service';
 declare let Swiper: any;
 declare let echarts: any;
 
@@ -78,6 +79,9 @@ export class CustomTemplateComponent implements AfterViewInit {
   private componentId: string;          // 组件唯一标识
   private queryParams = signal<any>({}); // 查询参数信号
 
+  private pdfPreviewService = inject(PdfPreviewService);
+  private router = inject(Router);
+
   ngAfterViewInit(): void {
     this.template = this.ele.nativeElement.querySelector('.template');
     // 生成组件唯一 ID，优先使用配置中的 id，否则自动生成
@@ -90,9 +94,29 @@ export class CustomTemplateComponent implements AfterViewInit {
     // 初始化监听
     this.setupRouteParamsListener();   // 监听路由参数和查询参数
     this.setupQueryStateListener();    // 监听查询状态变化
-    this.loadSelectOptions();          // 加载动态 select 选项
-    this.render(this.content);         // 渲染模板
+    //this.setupPdfPreviewListener();    // 监听 PDF 预览事件
+    // 等待所有 select 选项加载完成后再渲染模板
+    this.loadSelectOptions().then(() => {
+      this.render(this.content);       // 渲染模板
+    });
   }
+
+    // 接收PDF路径，打开弹窗
+  viewPdf(pdfPath: string) {
+    alert(pdfPath);
+    //this.pdfPreviewRef.open(pdfPath);
+  }
+  // /**
+  //  * 设置 PDF 预览事件监听器
+  //  */
+  // private setupPdfPreviewListener(): void {
+  //   window.addEventListener('preview-pdf', (event: Event) => {
+  //     const detail = (event as CustomEvent).detail;
+  //     if (detail?.url) {
+  //       this.pdfPreviewService.open(detail.url);
+  //     }
+  //   });
+  // }
 
   /**
    * 设置路由参数监听器
@@ -162,7 +186,7 @@ export class CustomTemplateComponent implements AfterViewInit {
         const response = await this.fetchSelectOptions(config.api, config.params);
         // 更新 selectOptions 信号
         this.selectOptions.update((map: Map<string, any[]>) => {
-          map.set(fieldName, response.items || []);
+          map.set(fieldName, response.rows || []);
           return map;
         });
       } catch (error) {
@@ -235,13 +259,14 @@ export class CustomTemplateComponent implements AfterViewInit {
 
   /**
    * 设置 select 选择事件监听
-   * 当 select 值变化时更新查询状态
+   * 使用事件委托方式，支持动态生成的 select 元素
    */
   private setupSelectEventListeners(): void {
-    const selects = this.ele.nativeElement.querySelectorAll('select[data-query-field]');
-    selects.forEach((select: HTMLSelectElement) => {
-      select.addEventListener('change', (event: Event) => {
-        const target = event.target as HTMLSelectElement;
+    // 使用事件委托，监听模板容器内的所有 select 变化
+    this.template.addEventListener('change', (event: Event) => {
+      const target = event.target as HTMLSelectElement;
+      // 只处理带有 data-query-field 属性的 select
+      if (target.tagName === 'SELECT') {
         const fieldName = target.getAttribute('data-query-field');
         const value = target.value;
 
@@ -258,7 +283,7 @@ export class CustomTemplateComponent implements AfterViewInit {
           // 更新查询状态，触发重新查询
           this.queryState.setQuery(this.componentId, currentParams);
         }
-      });
+      }
     });
   }
 
@@ -306,7 +331,6 @@ export class CustomTemplateComponent implements AfterViewInit {
     const { html, api } = this.content;
     if (api) {
       let fullUrl = api.trim();
-      let queryParams = '';
 
       // 保留原始 URL 中的查询参数，追加新参数
       if (params && params.length > 0) {
@@ -314,7 +338,7 @@ export class CustomTemplateComponent implements AfterViewInit {
       }
 
       this.nodeService
-        .fetch(fullUrl, queryParams)
+        .fetch(fullUrl, params)
         .pipe(
           timeout(10000),           // 10秒超时
           takeUntilDestroyed(this.destroyRef),
@@ -368,12 +392,216 @@ export class CustomTemplateComponent implements AfterViewInit {
    * @param html - 模板 HTML
    */
   renderView(content: any, html: string): void {
-    const data = {
+    // 保存当前 select 的选中状态
+    const selectedValues: { [key: string]: string } = {};
+    const selects = this.template.querySelectorAll('select[data-query-field]') as NodeListOf<HTMLSelectElement>;
+    selects.forEach((select: HTMLSelectElement) => {
+      const fieldName = select.getAttribute('data-query-field');
+      if (fieldName) {
+        selectedValues[fieldName] = select.value;
+      }
+    });
+
+    const data = this.processData(content);
+    // 根据配置决定是否进行 HTML 安全编码
+    let renderedHtml: string;
+    if (this.content.sanitizeHtml === false) {
+      // 不进行安全编码，直接渲染原始 HTML（适用于富文本内容）
+      renderedHtml = Mustache.render(html, data);
+    } else {
+      // 默认进行 HTML 安全编码，防止 XSS 攻击
+      const sanitized = DOMPurify.sanitize(html, { ADD_TAGS: ['style'], FORCE_BODY: true });
+      renderedHtml = Mustache.render(sanitized, data);
+    }
+    this.template.innerHTML = renderedHtml;
+
+    // 恢复 select 的选中状态
+    setTimeout(() => {
+      const newSelects = this.template.querySelectorAll('select[data-query-field]') as NodeListOf<HTMLSelectElement>;
+      newSelects.forEach((select: HTMLSelectElement) => {
+        const fieldName = select.getAttribute('data-query-field');
+        if (fieldName && selectedValues[fieldName]) {
+          select.value = selectedValues[fieldName];
+        }
+      });
+    }, 0);
+
+    // 绑定自定义事件处理
+    this.bindCustomEvents();
+  }
+
+  /**
+   * 处理数据，添加索引和条件判断支持
+   */
+  private processData(content: any): any {
+    let processed = {
       ...content,
       selectOptions: Object.fromEntries(this.selectOptions()),
     };
-    // 净化 HTML 防止 XSS 攻击
-    const sanitized = DOMPurify.sanitize(html, { ADD_TAGS: ['style'], FORCE_BODY: true });
-    this.template.innerHTML = Mustache.render(sanitized, data);
+
+    if (content.rows && Array.isArray(content.rows)) {
+      processed.rows = content.rows.map((item: any, index: number) => {
+        const enhanced = {
+          ...item,
+          index: index,
+          isFirst: index === 0,
+          isLast: index === content.rows.length - 1,
+          isEven: index % 2 === 0,
+          isOdd: index % 2 !== 0,
+        };
+
+        if (this.content.conditions) {
+          Object.entries(this.content.conditions).forEach(([key, config]: [string, any]) => {
+            const { field, operator, value } = config;
+            const itemValue = item[field];
+            enhanced[key] = this.evaluateCondition(itemValue, operator, value);
+          });
+        }
+
+        return enhanced;
+      });
+      processed.items = processed.rows;
+      processed.first = processed.rows[0];
+      processed.rest = processed.rows.slice(1);
+      processed.hasItems = processed.rows.length > 0;
+      processed.hasMultiple = processed.rows.length > 1;
+    }
+
+    if (content.result && Array.isArray(content.result)) {
+      processed.result = content.result.map((item: any, index: number) => {
+        const enhanced = {
+          ...item,
+          index: index,
+          isFirst: index === 0,
+          isLast: index === content.result.length - 1,
+          isEven: index % 2 === 0,
+          isOdd: index % 2 !== 0,
+        };
+
+        if (this.content.conditions) {
+          Object.entries(this.content.conditions).forEach(([key, config]: [string, any]) => {
+            const { field, operator, value } = config;
+            const itemValue = item[field];
+            enhanced[key] = this.evaluateCondition(itemValue, operator, value);
+          });
+        }
+
+        return enhanced;
+      });
+      processed.items = processed.result;
+      processed.first = processed.result[0];
+      processed.rest = processed.result.slice(1);
+      processed.hasItems = processed.result.length > 0;
+      processed.hasMultiple = processed.result.length > 1;
+    }
+
+    return processed;
+  }
+
+  /**
+   * 评估条件表达式
+   */
+  private evaluateCondition(itemValue: any, operator: string, compareValue: any): boolean {
+    switch (operator) {
+      case '==':
+        return itemValue == compareValue;
+      case '===':
+        return itemValue === compareValue;
+      case '!=':
+        return itemValue != compareValue;
+      case '!==':
+        return itemValue !== compareValue;
+      case '>':
+        return itemValue > compareValue;
+      case '<':
+        return itemValue < compareValue;
+      case '>=':
+        return itemValue >= compareValue;
+      case '<=':
+        return itemValue <= compareValue;
+      case 'includes':
+        return String(itemValue).includes(String(compareValue));
+      case 'startsWith':
+        return String(itemValue).startsWith(String(compareValue));
+      case 'endsWith':
+        return String(itemValue).endsWith(String(compareValue));
+      default:
+        return false;
+    }
+  }
+
+  /**
+   * 绑定自定义事件处理
+   * 使用事件委托处理模板中的交互
+   */
+  private bindCustomEvents(): void {
+    this.setupLinkNavigation();
+
+    // PDF预览事件
+    const pdfButtons = this.ele.nativeElement.querySelectorAll('[data-action="previewPdf"]');
+    pdfButtons.forEach((btn: HTMLElement) => {
+      btn.addEventListener('click', (event) => {
+        event.preventDefault();
+        const url = btn.getAttribute('data-url');
+        if (url) {
+          this.pdfPreviewService.open(url);
+        }
+      });
+    });
+  }
+
+  /**
+   * 设置链接导航处理
+   * 使用 Angular Router 进行内部链接导航，防止页面刷新
+   */
+  private setupLinkNavigation(): void {
+    this.template.addEventListener('click', (event: Event) => {
+      const mouseEvent = event as MouseEvent;
+      const target = mouseEvent.target as HTMLElement;
+      const anchor = target.closest('a');
+
+      if (!anchor) {
+        return;
+      }
+
+      const href = anchor.getAttribute('href');
+      if (!href || href === '#' || href.startsWith('javascript:')) {
+        mouseEvent.preventDefault();
+        return;
+      }
+
+      if (this.isInternalLink(href)) {
+        mouseEvent.preventDefault();
+        const url = this.extractRouteUrl(href);
+        this.router.navigateByUrl(url).catch(error => {
+          console.error('Navigation failed:', error);
+          window.location.href = href;
+        });
+      }
+    });
+  }
+
+  private isInternalLink(href: string): boolean {
+    if (href.startsWith('/')) {
+      return true;
+    }
+    if (!href.includes('://') && !href.startsWith('//')) {
+      return true;
+    }
+    try {
+      const url = new URL(href, window.location.origin);
+      return url.origin === window.location.origin;
+    } catch {
+      return false;
+    }
+  }
+
+  private extractRouteUrl(href: string): string {
+    try {
+      const url = new URL(href, window.location.origin);
+      return url.pathname + url.search;
+    } catch {
+      return href;
+    }
   }
 }

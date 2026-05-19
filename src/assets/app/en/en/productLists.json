@@ -1,0 +1,294 @@
+{
+  "title": "产品展示",
+  "body": [
+    {
+      "type": "title",
+      "label": "产品展示",
+      "style": "h1",
+      "align": "center"
+    },
+    {
+      "type": "chip-list",
+      "elements": [
+        {
+          "link": {
+            "href": "/productLists",
+            "queryParams": { "id": "4" },
+            "label": "工业激光应用"
+          }
+        },
+        {
+          "link": {
+            "href": "/productLists",
+            "queryParams": { "id": "3" },
+            "label": "自动驾驶应用"
+          }
+        },
+        {
+          "link": {
+            "href": "/productLists",
+            "queryParams": { "id": "5" },
+            "label": "光纤网络应用"
+          }
+        },
+        {
+         "link": {
+            "href": "/productLists",
+            "queryParams": { "id": "6" },
+            "label": "生物医疗应用"
+          }
+        },
+        {
+          "link": {
+            "href": "/productLists",
+            "queryParams": { "id": "8" },
+            "label": "光纤传感应用"
+          }
+        },
+        {
+          "link": {
+            "label": "测试设备及其他",
+            "href": "/productLists",
+            "queryParams": { "id": "7" }
+          }
+        }
+        ,
+        {
+          "active": true,
+          "link": {
+            "classes": "inline-block px-10 py-1 bg-orange-500 text-white font-semibold rounded-full hover:bg-orange-600 hover:shadow-lg transition-all",
+            "label": "定制",
+            "dialog": {
+              "params": {
+                "width": "800px",
+                "height": "750px",
+                "disableClose": true,
+                "disableActions": false
+              },
+              "data": [
+
+
+               {
+  "type": "dynamic-form",
+  "fullWidth": false,
+  "spacer": "xl",
+  "containerClasses": "",
+  "bg": {
+    "classes": "",
+    "overlay": "",
+    "img": {
+      "src": "",
+      "alt": ""
+    }
+  },
+  "animate": {
+    "aos": {
+      "enable": true,
+      "animation": "fade-up",
+      "behaviour": {
+        "offset": 120,
+        "duration": 400,
+        "delay": 0,
+        "easing": "ease"
+      }
+    },
+    "gsap": {
+      "enable": false
+    }
+  },
+
+  "formClasses": "col-span-24 sm:col-span-12",
+  "form": {
+    "type": "formly",
+    "fullWidth": true,
+    "id": "contact",
+    "fields": [
+      {
+        "fieldGroupClassName": "grid grid-cols-1 md:grid-cols-2 gap-4",
+        "fieldGroup": [
+          {
+            "key": "name",
+            "type": "input",
+            "className": "col-span-1",
+            "props": {
+              "label": "Name",
+              "required": true
+            },
+            "validation": {
+              "messages": {
+                "required": "Name is required"
+              }
+            }
+          },
+          {
+            "key": "email",
+            "type": "input",
+            "className": "col-span-1",
+            "props": {
+              "label": "Email",
+              "required": true,
+              "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+              "maxLength": 100
+            },
+            "validation": {
+              "messages": {
+                "required": "Please enter email address",
+                "email": "Please enter a valid email address",
+                "pattern": "请输入正确的邮箱格式（例如：name@example.com）",
+                "maxLength": "邮箱地址长度不能超过100个字符"
+              }
+            }
+          },
+          {
+            "key": "telephone",
+            "type": "input",
+            "className": "col-span-1",
+            "props": {
+              "label": "Telephone",
+              "required": false
+            },
+            "validation": {
+              "messages": {
+                "required": "Please enter contact phone number"
+              }
+            }
+          },
+          {
+            "key": "company",
+            "type": "input",
+            "className": "col-span-1",
+            "props": {
+              "label": "Company name",
+              "required": true
+            },
+            "validation": {
+              "messages": {
+                "required": "Please enter company name"
+              }
+            }
+          },
+
+
+
+
+          {
+            "key": "application",
+            "type": "input",
+            "className": "col-span-1",
+            "props": {
+              "label": "应用",
+              "required": true
+            },
+            "validation": {
+              "messages": {
+                "required": "Please enter 应用"
+              }
+            }
+          },
+           {
+            "key": "function",
+            "type": "input",
+            "className": "col-span-1",
+            "props": {
+              "label": "功能",
+              "required": true
+            },
+            "validation": {
+              "messages": {
+                "required": "Please enter 功能"
+              }
+            }
+          },
+           {
+            "key": "wavelength",
+            "type": "input",
+            "className": "col-span-1",
+            "props": {
+              "label": "波长范围",
+              "required": true
+            },
+            "validation": {
+              "messages": {
+                "required": "Please enter 波长范围"
+              }
+            }
+          },
+           {
+            "key": "outputPower",
+            "type": "input",
+            "className": "col-span-1",
+            "props": {
+              "label": "输出/输入功率",
+              "required": true
+            },
+            "validation": {
+              "messages": {
+                "required": "Please enter 输出/输入功率"
+              }
+            }
+          },
+
+
+
+          {
+            "key": "requirements",
+            "type": "textarea",
+            "className": "col-span-1 md:col-span-2",
+            "props": {
+              "label": "Detailed requirements",
+              "required": true,
+              "rows": 4
+            },
+            "validation": {
+              "messages": {
+                "required": "Please enter detailed requirements"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "action": {
+    "classes": "flex justify-center my-5",
+    "submit": {
+      "label": "Submit",
+      "mode": "raised",
+      "color": "primary",
+      "icon": {
+        "svg": "send"
+      }
+    }
+  }
+}
+
+
+
+              ]
+            }
+          }
+        }
+      ]
+    },
+
+
+
+
+    {
+  "type": "custom-template",
+  "isAPI": true,
+  "api": "/app-api/product2",
+  "selectOptions": {
+    "tagTypes1": { "api": "/app-api/dict?parentId=0e28bab2-30fa-74b4-57d5-3a20ea7de51f" },
+    "tagTypes2": { "api": "/app-api/dict?parentId=28885453-ef00-7cfe-6d7b-3a20ea7f5e8a" },
+    "tagTypes3": { "api": "/app-api/dict?parentId=055efc21-13b3-ce7c-529a-3a212d5ffddf"},
+    "tagTypes4": { "api": "/app-api/dict?parentId=dcbe9d9e-bf11-972a-a504-3a21314ce912"}
+  },
+  "html":  "<div class=\"flex flex-wrap gap-8 p-4 items-center\">\n  <div class=\"flex items-center\">\n    <label class=\"text-sm text-gray-700 mr-3 whitespace-nowrap\">按产品：</label>\n    <select data-query-field=\"tagTypes1\" class=\"border border-gray-200 rounded-md px-3 py-2 text-sm outline-none hover:border-gray-300 focus:border-gray-300 transition-colors bg-white\">\n      <option value=\"\">全部</option>\n      {{#selectOptions.tagTypes1}}\n      <option value=\"{{name}}\">{{name}}</option>\n      {{/selectOptions.tagTypes1}}\n    </select>\n  </div>\n  <div class=\"flex items-center\">\n    <label class=\"text-sm text-gray-700 mr-3 whitespace-nowrap\">按波长：</label>\n    <select data-query-field=\"tagTypes2\" class=\"border border-gray-200 rounded-md px-3 py-2 text-sm outline-none hover:border-gray-300 focus:border-gray-300 transition-colors bg-white\">\n      <option value=\"\">全部</option>\n      {{#selectOptions.tagTypes2}}\n      <option value=\"{{name}}\">{{name}}</option>\n      {{/selectOptions.tagTypes2}}\n    </select>\n  </div>\n  <div class=\"flex items-center\">\n    <label class=\"text-sm text-gray-700 mr-3 whitespace-nowrap\">按功率：</label>\n    <select data-query-field=\"tagTypes3\" class=\"border border-gray-200 rounded-md px-3 py-2 text-sm outline-none hover:border-gray-300 focus:border-gray-300 transition-colors bg-white\">\n      <option value=\"\">全部</option>\n      {{#selectOptions.tagTypes3}}\n      <option value=\"{{name}}\">{{name}}</option>\n      {{/selectOptions.tagTypes3}}\n    </select>\n  </div>\n  <div class=\"flex items-center\">\n    <label class=\"text-sm text-gray-700 mr-3 whitespace-nowrap\">按保偏/非保偏：</label>\n    <select data-query-field=\"tagTypes4\" class=\"border border-gray-200 rounded-md px-3 py-2 text-sm outline-none hover:border-gray-300 focus:border-gray-300 transition-colors bg-white\">\n      <option value=\"\">全部</option>\n      {{#selectOptions.tagTypes4}}\n      <option value=\"{{name}}\">{{name}}</option>\n      {{/selectOptions.tagTypes4}}\n    </select>\n  </div>\n</div>\n                                        <div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 p-6'>{{#rows}}<a data-action='previewPdf' data-url='http://newapi.lightcomm.com/erupt-api/file/download-attachment{{pdf}}' class='inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-white border border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-600 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 ease-out cursor-pointer relative' title='{{name}}'><span class='truncate'>{{name}}</span><style>a[title]:hover::after{content:attr(title);position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:8px;padding:10px 14px;background:#1f2937;color:white;font-size:15px;border-radius:10px;white-space:nowrap;box-shadow:0 5px 15px rgba(0,0,0,0.2);z-index:9999;pointer-events:none;}</style></a>{{/rows}}</div>"
+,
+  "json": null,
+  "animate": false
+}
+
+  ]
+}

@@ -108,7 +108,9 @@ export class RouteService {
   }
 
   isAbsolute(href: string): boolean {
-    const r = new RegExp('^(?:[a-z]+:)?//', 'i');
+    //const r = new RegExp('^(?:[a-z]+:)?//', 'i');
+    // 匹配：http(s)/ftp 等带 // 的绝对地址 + tel: + mailto:     上面的修改了下
+    const r = new RegExp('^(?:[a-z]+:)?//|^tel:|^mailto:', 'i');
     return r.test(href);
   }
 }

@@ -1,0 +1,174 @@
+{
+  "title": "联系我们",
+  "body": [
+    {
+  "type": "dynamic-form",
+  "fullWidth": false,
+  "spacer": "xl",
+  "containerClasses": "",
+  "bg": {
+    "classes": "",
+    "overlay": "",
+    "img": {
+      "src": "",
+      "alt": ""
+    }
+  },
+  "animate": {
+    "aos": {
+      "enable": true,
+      "animation": "fade-up",
+      "behaviour": {
+        "offset": 120,
+        "duration": 400,
+        "delay": 0,
+        "easing": "ease"
+      }
+    },
+    "gsap": {
+      "enable": false
+    }
+  },
+  "classes": "grid grid-cols-12 items-center justify-center md:gap-10",
+  "dynamicClasses": "col-span-12 sm:col-span-6",
+  "formClasses": "col-span-12 sm:col-span-6",
+  "dynamicComponent": {
+    "type": "custom-template",
+    "fullWidth": false,
+    "isAPI": false,
+    "html": "<div class=\"py-8\">\n  <div class=\"container\">\n    <div class=\"grid grid-cols-12 gap-6\">\n      <!-- Header Section -->\n      <div class=\"col-span-12\">\n        <div class=\"flex flex-col gap-4\">\n          <h2 class=\"text-3xl font-bold text-gray-900 leading-tight\">Service Commitment</h2>\n          <p class=\"text-lg font-normal text-gray-600 leading-relaxed\">We are committed to providing every customer with a high-quality service experience</p>\n        </div>\n      </div>\n      \n      <!-- Commitment Cards Grid -->\n      <div class=\"col-span-12\">\n        <div class=\"grid grid-cols-12 gap-6 md:grid-cols-6 lg:grid-cols-6\">\n          <!-- Card 1: Quick Response -->\n          <div class=\"col-span-6 md:col-span-3 lg:col-span-3\">\n            <div class=\"bg-gray-50 rounded-lg p-6\">\n              <div class=\"flex flex-col gap-4\">\n                <i class=\"fa fa-lightbulb text-primary text-2xl\"></i>\n                <h3 class=\"text-lg font-semibold text-gray-900 my-0\">Quick Response</h3>\n                <p class=\"text-sm font-normal text-gray-600 leading-relaxed\">Reply to inquiries within 24 hours, and respond to urgent issues within 2 hours.</p>\n              </div>\n            </div>\n          </div>\n          \n          <!-- Card 2: Professional Services -->\n          <div class=\"col-span-6 md:col-span-3 lg:col-span-3\">\n            <div class=\"bg-gray-50 rounded-lg p-6\">\n              <div class=\"flex flex-col gap-4\">\n                <i class=\"fa fa-comments text-primary text-2xl\"></i>\n                <h3 class=\"text-lg font-semibold text-gray-900 my-0\">Professional Services</h3>\n                <p class=\"text-sm font-normal text-gray-600 leading-relaxed\">A team of senior experts provides professional consultation and technical support.</p>\n              </div>\n            </div>\n          </div>\n          \n          <!-- Card 3: Information Security -->\n          <div class=\"col-span-6 md:col-span-3 lg:col-span-3\">\n            <div class=\"bg-gray-50 rounded-lg p-6\">\n              <div class=\"flex flex-col gap-4\">\n                <i class=\"fa fa-shield-alt text-primary text-2xl\"></i>\n                <h3 class=\"text-lg font-semibold text-gray-900 my-0\">Information Security</h3>\n                <p class=\"text-sm font-normal text-gray-600 leading-relaxed\">Strictly protect customer information and never disclose business secrets.</p>\n              </div>\n            </div>\n          </div>\n          \n          <!-- Card 4: Long-term Cooperation -->\n          <div class=\"col-span-6 md:col-span-3 lg:col-span-3\">\n            <div class=\"bg-gray-50 rounded-lg p-6\">\n              <div class=\"flex flex-col gap-4\">\n                <i class=\"fa fa-hands-helping text-primary text-2xl\"></i>\n                <h3 class=\"text-lg font-semibold text-gray-900 my-0\">Long-term Cooperation</h3>\n                <p class=\"text-sm font-normal text-gray-600 leading-relaxed\">Establish long-term cooperative relationships and continuously create value for customers.</p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>"
+  },
+  "form": {
+    "type": "formly",
+    "fullWidth": true,
+    "id": "contact",
+    "fields": [
+      {
+        "fieldGroupClassName": "grid grid-cols-1 md:grid-cols-2 gap-4",
+        "fieldGroup": [
+          {
+            "key": "name",
+            "type": "input",
+            "className": "col-span-1",
+            "props": {
+              "label": "Name",
+              "required": true
+            },
+            "validation": {
+              "messages": {
+                "required": "Name is required"
+              }
+            }
+          },
+          {
+            "key": "email",
+            "type": "input",
+            "className": "col-span-1",
+            "props": {
+              "label": "Email",
+              "required": true,
+              "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+              "maxLength": 100
+            },
+            "validation": {
+              "messages": {
+                "required": "Please enter email address",
+                "email": "Please enter a valid email address",
+                "pattern": "请输入正确的邮箱格式（例如：name@example.com）",
+                "maxLength": "邮箱地址长度不能超过100个字符"
+              }
+            }
+          },
+          {
+            "key": "telephone",
+            "type": "input",
+            "className": "col-span-1",
+            "props": {
+              "label": "Telephone",
+              "required": false
+            },
+            "validation": {
+              "messages": {
+                "required": "Please enter contact phone number"
+              }
+            }
+          },
+          {
+            "key": "company",
+            "type": "input",
+            "className": "col-span-1",
+            "props": {
+              "label": "Company name",
+              "required": true
+            },
+            "validation": {
+              "messages": {
+                "required": "Please enter company name"
+              }
+            }
+          },
+          {
+            "key": "consultation",
+            "type": "select",
+            "className": "col-span-1",
+            "props": {
+              "label": "Type of consultation",
+              "required": true,
+              "options": [
+                {
+                  "label": "Product Consultation",
+                  "value": "product"
+                },
+                {
+                  "label": "Technical Support",
+                  "value": "technical"
+                },
+                {
+                  "label": "Business Cooperation",
+                  "value": "business"
+                },
+                {
+                  "label": "Other",
+                  "value": "other"
+                }
+              ]
+            },
+            "validation": {
+              "messages": {
+                "required": "Please select consultation type"
+              }
+            }
+          },
+          {
+            "key": "requirements",
+            "type": "textarea",
+            "className": "col-span-1 md:col-span-2",
+            "props": {
+              "label": "Detailed requirements",
+              "required": true,
+              "rows": 4
+            },
+            "validation": {
+              "messages": {
+                "required": "Please enter detailed requirements"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "action": {
+    "classes": "flex justify-center my-5",
+    "submit": {
+      "label": "Submit",
+      "mode": "raised",
+      "color": "primary",
+      "icon": {
+        "svg": "send"
+      }
+    }
+  }
+}
+  ]
+}

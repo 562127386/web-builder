@@ -8,7 +8,10 @@
 .mat-mdc-chip {
   ::ng-deep {
     a {
-      color: var(--mat-sys-on-primary);
+      color: var(--mat-sys-primary);
+      //color: var(--mat-sys-on-primary);
+    // --mat-sys-on-primary ：主色背景上的文字颜色（通常是浅色/白色）
+//--mat-sys-primary ：当前主题的主色调（如蓝色、绿色等）
     }
   }
 }

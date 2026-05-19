@@ -15,7 +15,7 @@ export class IconService {
     if (this.screenService.isPlatformServer()) {
       this.ir.addSvgIconSetLiteral(this.ds.bypassSecurityTrustHtml('<svg></svg>'));
     } else {
-      // mdi
+      // mdi  体积1m多 我先注释！！！！20260515
       // https://pictogrammers.com/docs/library/mdi/getting-started/angular/
       const mdiPath = '/assets/mdi.svg';
       this.ir.addSvgIconSet(this.ds.bypassSecurityTrustResourceUrl(mdiPath));
