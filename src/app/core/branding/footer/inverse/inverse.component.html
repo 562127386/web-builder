@@ -14,30 +14,7 @@
     <div class="container">
       <div class="footer-body">
         <div class="footer-cols">
-          @if (content?.footerBrand) {
-            <div class="brand">
-              @if (content.footerBrand.logo) {
-                <app-img [content]="content.footerBrand.logo.img" />
-              }
-              @if (content.footerBrand?.summary) {
-                <p class="m-y-sm" [innerHTML]="content.footerBrand?.summary | safeHtml"></p>
-              }
-              @if (content?.footerBrand?.social) {
-                <div class="social">
-                  @for (item of content.footerBrand.social; track item) {
-                    <a
-                      class="item"
-                      href="{{ item.href }}"
-                      target="_blank"
-                      title="{{ item.label }}"
-                    >
-                      <app-icon [content]="item.icon" />
-                    </a>
-                  }
-                </div>
-              }
-            </div>
-          }
+
 
           @if (content.mainMenu) {
             <div class="menu-col">
@@ -82,6 +59,33 @@
               <app-dynamic-component [inputs]="content.dynamic.content" />
             </div>
           }
+
+
+           @if (content?.footerBrand) {
+            <div class="brand">
+              @if (content.footerBrand.logo) {
+                <app-img [content]="content.footerBrand.logo.img" />
+              }
+              @if (content.footerBrand?.summary) {
+                <p class="m-y-sm" [innerHTML]="content.footerBrand?.summary | safeHtml"></p>
+              }
+              @if (content?.footerBrand?.social) {
+                <div class="social">
+                  @for (item of content.footerBrand.social; track item) {
+                    <a
+                      class="item"
+                      href="{{ item.href }}"
+                      target="_blank"
+                      title="{{ item.label }}"
+                    >
+                      <app-icon [content]="item.icon" />
+                    </a>
+                  }
+                </div>
+              }
+            </div>
+          }
+
         </div>
       </div>
     </div>

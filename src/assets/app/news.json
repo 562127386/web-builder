@@ -8,7 +8,7 @@
         "type": "json"
       },
       "fullWidth": true,
-      "spacer": "none",
+      "spacer": "xs",
       "bgClasses": "bg- bg-fill-width",
       "overlay": "",
       "containerClasses": "",

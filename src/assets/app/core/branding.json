@@ -101,8 +101,8 @@
         "img": {
           "src": "/assets/images/lg/wx.png",
           "alt": "朗光科技",
-          "width": 160,
-          "height": 160
+          "width": 140,
+          "height": 140
         }
       },
       "summary": "欢迎关注微信公众号"
@@ -184,17 +184,23 @@
         "label": "联系方式",
         "child": [
           {
-            "label": "0755-86157878",
+            "label": "深圳朗光科技有限公司",
             "href": "tel:0755-86157878",
             "target": "_self"
           },
-          {
-            "label": "邮箱",
+           {
+            "label": "广东省深圳市宝安区留仙一路2号高新奇产业园AD栋2楼",
             "href": "/careers/culture",
             "target": "_self"
           },
           {
-            "label": "手机号",
+            "label": "固定电话：0755-86157878",
+            "href": "tel:0755-86157878",
+            "target": "_self"
+          },
+
+          {
+            "label": "传真：0755-83434363",
             "href": "/careers/campus",
             "target": "_self"
           }

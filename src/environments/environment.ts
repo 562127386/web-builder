@@ -23,6 +23,7 @@ export const environment = {
     scope: '',
   },
   abpApi: {
-    url: 'https://localhost:44388',
+   // url: 'https://localhost:44388',
+    url: 'http://newapi.lightcomm.com',
   },
 };

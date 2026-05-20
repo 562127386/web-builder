@@ -18,6 +18,7 @@
   transform-origin: top center;
 }
 .brand {
+  margin-top: 20px;
   @apply flex-col flex-12/12 md:flex-3/12;
   ::ng-deep {
     .logo {

@@ -10,7 +10,7 @@
   "label": "首页",
   "body": [
     {
-      "fullWidth": false,
+      "fullWidth": true,
       "spacer": "none",
       "containerClasses": "!overflow-visible",
       "bg": {
@@ -40,7 +40,7 @@
         "elements": [
           {
             "type": "img",
-            "src": "/assets/images/lg/hd1.png",
+            "src": "/assets/images/lg/hd5.png",
             "style": {
               "opacity": "",
               "borderRadius": "",
@@ -49,12 +49,12 @@
               "objectFit": "fill"
             },
             "classes": "object-cover",
-            "width": 1800,
-            "height": 500
+            "width": 2800,
+            "height": 750
           },
           {
             "type": "img",
-            "src": "/assets/images/lg/hd2.png",
+            "src": "/assets/images/lg/hd6.png",
             "style": {
               "opacity": "",
               "borderRadius": "",
@@ -63,62 +63,29 @@
               "objectFit": "fill"
             },
             "classes": "object-cover",
-            "width": 1800,
-            "height": 500
-          }
-        ]
-      },
-      "left": {
-        "params": {
-          "navigation": false,
-          "slidesPerView": 1,
-          "spaceBetween": 0,
-          "pagination": false
-        },
-        "classes": "",
-        "elements": [
-          {
-            "type": "text",
-            "title": {
-              "label": "朗光科技 是什么？",
-              "classes": "mat-headline-3"
-            },
-            "classes": "text-white",
-            "body": "Storybook是一个开源的前端工具，用于开发、测试和文档化UI组件。它提供了一个独立的环境，开发人员可以在其中构建和展示单个UI组件，而无需依赖于整个应用程序的上下文。",
-            "actionsAlign": "start",
-            "actions": [
-              {
-                "href": "#",
-                "mode": "raised",
-                "label": "查看更多",
-                "pill": true,
-                "type": "btn",
-                "classes": "hover:bg-primary/10 hover:scale-105 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
-              }
-            ]
+            "width": 2800,
+            "height": 750
           },
           {
-            "type": "text",
-            "title": {
-              "label": "组件驱动开发",
-              "classes": "mat-headline-3"
+            "type": "img",
+            "src": "/assets/images/lg/hd7.png",
+            "style": {
+              "opacity": "",
+              "borderRadius": "",
+              "boxShadow": "",
+              "aspectRatio": "2 / 1",
+              "objectFit": "fill"
             },
-            "classes": "text-white",
-            "body": "Storybook采用了组件驱动开发的方法，即将UI组件作为开发的核心单元。开发人员可以在Storybook中为每个UI组件创建\"stories\"，描述组件在不同状态和交互方式下的行为和外观。这种方法能够提高组件的可重用性和可测试性。",
-            "actionsAlign": "start",
-            "actions": [
-              {
-                "href": "#",
-                "mode": "raised",
-                "label": "查看更多",
-                "pill": true,
-                "type": "btn"
-              }
-            ]
+            "classes": "object-cover",
+            "width": 2800,
+            "height": 750
           }
         ]
       }
     },
+
+
+
     {
       "fullWidth": false,
       "spacer": "sm",
@@ -327,7 +294,7 @@
         }
       ]
     },
-   {
+{
   "fullWidth": false,
   "spacer": "none",
   "containerClasses": "",
@@ -361,7 +328,7 @@
 },
     {
       "fullWidth": false,
-      "spacer": "none",
+      "spacer": "xs",
       "containerClasses": "",
       "bg": {
         "classes": "bg- ",
@@ -390,11 +357,14 @@
       "overlay": "",
       "id": "",
       "type": "custom-template",
-        "isAPI": true,
-"api": "/app-api/product2?id=1&MaxResultCount=3",
+      "isAPI": true,
+      "api": "/app-api/product2?id=1&MaxResultCount=3",
       "html": "<div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6\">\n    {{#rows}}\n    <article\n        class=\"bg-white hover:bg-gray-50 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group relative\">\n        <div class=\"w-full h-48 sm:h-56 relative overflow-hidden\">\n            <a href=\"/newDetail?id={{id}}\" class=\"block hover:brightness-95 transition-all duration-200\">\n                {{#img}}\n                <img\n          src=\"http://newapi.lightcomm.com/erupt-api/file/download-attachment{{pdf}}\"\n          alt=\"{{name}}\"\n          class=\"w-full h-full object-cover transition-transform duration-300 group-hover:scale-105\"\n        />\n        {{/img}}\n        {{^img}}\n                <img\n          src=\"http://newapi.lightcomm.com/erupt-api/file/download-attachment{{pdf}}\"\n          alt=\"{{name}}\"\n          class=\"w-full h-full object-cover transition-transform duration-300 group-hover:scale-105\"\n        />\n        {{/img}}\n            </a>\n        </div>\n\n        <div class=\"p-6 flex flex-col justify-between\">\n           \n            <h3 class=\"mb-3 relative z-10\">\n                <a href=\"/newDetail?id={{id}}\"\n                    class=\"text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200 line-clamp-2\">\n                    {{name}}\n                </a>\n            </h3>\n\n            <!-- 内容区域背景过渡 -->\n            <div class=\"relative z-10\">\n                <p class=\"text-gray-600 line-clamp-3 mb-4\">\n                    {{description}}\n                </p>\n               <a href=\"/newDetail?id={{id}}\" class=\"group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600\">\n      了解更多\n\n      <span aria-hidden=\"true\" class=\"block transition-all group-hover:ms-0.5 rtl:rotate-180\">\n        &rarr;\n      </span>\n    </a>\n            </div>\n        </div>\n    </article>\n    {{/rows}}\n\n</div>",
       "json": []
     },
+
+
+
     {
       "animate": {
         "aos": {
@@ -422,7 +392,7 @@
       "spacer": "md",
       "classes": "text-white",
       "bg": {
-        "classes": " overlay overlay-80",
+        "classes": "overlay overlay-80",
         "img": {
           "hostClasses": "",
           "src": "/assets/images/showcase/8.jpg",
@@ -432,7 +402,7 @@
       "elements": [
         {
           "type": "text",
-          "spacer": "none",
+          "spacer": "xs",
           "style": {
             "margin": "0 auto",
             "text-align": "center",
@@ -463,33 +433,66 @@
         }
       ]
     },
-    {
-      "type": "carousel-2v2",
-      "id": "",
-      "spacer": "xl",
-      "bg": {
-        "classes": " bg-shadow"
-      },
-      "classes": "",
-      "swiper": {
-        "params": {
-          "slidesPerView": 1.2,
-          "pagination": false,
-          "autoplay": {
-            "delay": 5000
-          },
-          "breakpoints": {
-            "600": {
-              "slidesPerView": 3,
-              "spaceBetween": 20
-            },
-            "960": {
-              "slidesPerView": 5,
-              "spaceBetween": 20
-            }
+
+{
+  "fullWidth": false,
+  "spacer": "none",
+  "containerClasses": "",
+  "bg": {
+    "classes": "",
+    "overlay": "",
+    "img": {
+      "src": "",
+      "alt": ""
+    }
+  },
+  "style": "style-v4",
+  "classes": "mat-headline-3 bold",
+  "animate": {
+        "aos": {
+          "enable": true,
+          "animation": "fade-up",
+          "behaviour": {
+            "offset": 120,
+            "duration": 400,
+            "delay": 0,
+            "easing": "ease"
           }
         },
-        "classes": "",
+        "gsap": {
+          "enable": false
+        }
+      },
+  "type": "title",
+  "label": "合作伙伴"
+},
+     {
+  "type": "carousel-2v2",
+  "id": "",
+  "spacer": "xl",
+  "bg": {
+    "classes": " bg-shadow"
+  },
+  "classes": "",
+  "swiper": {
+    "params": {
+      "slidesPerView": 1.2,
+      "pagination": false,
+      "autoplay": {
+        "delay": 5000
+      },
+      "breakpoints": {
+        "600": {
+          "slidesPerView": 3,
+          "spaceBetween": 20
+        },
+        "960": {
+          "slidesPerView": 5,
+          "spaceBetween": 20
+        }
+      }
+    },
+    "classes": "",
         "elements": [
           {
             "type": "img",
@@ -635,6 +638,8 @@
         }
       }
     }
+
+
   ],
   "current": true,
   "time": "2026/5/6 14:33:54"

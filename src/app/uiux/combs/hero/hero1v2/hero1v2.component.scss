@@ -1,6 +1,6 @@
 @use 'variable/breakpoint' as *;
 .hero-1-v2 {
-  @apply pt-20 md:mb-20;
+  //@apply pt-20 md:mb-20;
   .hero-inner {
     @apply relative;
     z-index: 10 !important;
@@ -14,7 +14,7 @@
 }
 .swiper-media {
   width: 100%;
-  height: 30vh;
+ // height: 30vh;
   min-height: 450px;
   .swiper-container {
     height: 100%;
@@ -52,9 +52,9 @@
 @media #{$gt-xs} {
   .swiper-media {
     position: relative;
-    top: 75px;
-    width: 66%;
-    margin: 0 0 0 34%;
+   // top: 75px;
+   // width: 66%;
+   // margin: 0 0 0 34%;
   }
   .swiper-text {
     position: absolute;
