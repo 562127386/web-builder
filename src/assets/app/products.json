@@ -1,5 +1,5 @@
 {
-  "title": "产品中心",
+  "title": "深圳朗光科技有限公司",
   "body": [
   {
       "extra": {
@@ -21,21 +21,7 @@
         "classes": "bg- bg-fill-width",
         "overlay": ""
       },
-    "animate": {
-        "aos": {
-          "enable": true,
-          "animation": "fade-up",
-          "behaviour": {
-            "offset": 120,
-            "duration": 400,
-            "delay": 0,
-            "easing": "ease"
-          }
-        },
-        "gsap": {
-          "enable": false
-        }
-      },
+    "animate": false,
       "type": "banner-simple",
       "style": "normal",
       "bannerBg": {
@@ -59,7 +45,8 @@
     "type": "json"
   },
   "type": "text",
-  "spacer": "sm",
+  "spacer": "none",
+  "actionsAlign":"left",
   "title": {
     "label": "产品分类",
     "style": "style-v4"
@@ -88,7 +75,7 @@
             "label": "光纤网络应用"
     },
     {
-      "classes": "mdc-button mat-mdc-button-base mdc-button--raised mat-mdc-raised-button mat-warn",
+      "classes": "mdc-button mat-mdc-button-base mdc-button--raised mat-mdc-raised-button mat-primary",
       "type": "link",
       "href": "/productLists",
             "queryParams": { "id": "6" },
@@ -116,7 +103,6 @@
               "params": {
                 "title":"产品定制",
                 "width": "800px",
-                "height": "700px",
                 "disableClose": true,
                 "disableActions": true
               },
@@ -164,12 +150,12 @@
             "type": "input",
             "className": "col-span-1",
             "props": {
-              "label": "Name",
+              "label": "姓名",
               "required": true
             },
             "validation": {
               "messages": {
-                "required": "Name is required"
+                "required": "请输入 姓名"
               }
             }
           },
@@ -178,7 +164,7 @@
             "type": "input",
             "className": "col-span-1",
             "props": {
-              "label": "Email",
+              "label": "邮箱",
               "required": true,
               "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
               "maxLength": 100
@@ -197,12 +183,12 @@
             "type": "input",
             "className": "col-span-1",
             "props": {
-              "label": "Telephone",
-              "required": false
+              "label": "电话号码",
+              "required": true
             },
             "validation": {
               "messages": {
-                "required": "Please enter contact phone number"
+                "required": "请输入 电话号码"
               }
             }
           },
@@ -211,12 +197,12 @@
             "type": "input",
             "className": "col-span-1",
             "props": {
-              "label": "Company name",
+              "label": "公司名称",
               "required": true
             },
             "validation": {
               "messages": {
-                "required": "Please enter company name"
+                "required": "请输入 公司名称"
               }
             }
           },
@@ -230,11 +216,11 @@
             "className": "col-span-1",
             "props": {
               "label": "应用",
-              "required": true
+              "required": false
             },
             "validation": {
               "messages": {
-                "required": "Please enter 应用"
+                "required": "请输入 应用"
               }
             }
           },
@@ -244,11 +230,11 @@
             "className": "col-span-1",
             "props": {
               "label": "功能",
-              "required": true
+              "required": false
             },
             "validation": {
               "messages": {
-                "required": "Please enter 功能"
+                "required": "请输入 功能"
               }
             }
           },
@@ -258,11 +244,11 @@
             "className": "col-span-1",
             "props": {
               "label": "波长范围",
-              "required": true
+              "required": false
             },
             "validation": {
               "messages": {
-                "required": "Please enter 波长范围"
+                "required": "请输入 波长范围"
               }
             }
           },
@@ -272,11 +258,11 @@
             "className": "col-span-1",
             "props": {
               "label": "输出/输入功率",
-              "required": true
+              "required": false
             },
             "validation": {
               "messages": {
-                "required": "Please enter 输出/输入功率"
+                "required": "请输入 输出/输入功率"
               }
             }
           },
@@ -288,13 +274,13 @@
             "type": "textarea",
             "className": "col-span-1 md:col-span-2",
             "props": {
-              "label": "Detailed requirements",
+              "label": "需求描述",
               "required": true,
               "rows": 4
             },
             "validation": {
               "messages": {
-                "required": "Please enter detailed requirements"
+                "required": "请输入 需求描述"
               }
             }
           }
@@ -305,7 +291,7 @@
   "action": {
     "classes": "flex justify-center my-5",
     "submit": {
-      "label": "Submit",
+      "label": "提交",
       "mode": "raised",
       "color": "primary",
       "icon": {
@@ -325,8 +311,14 @@
     {
   "type": "custom-template",
   "isAPI": true,
-  "api": "/app-api/dict?ParentId=0e28bab2-30fa-74b4-57d5-3a20ea7de51f",
-  "html": "<div class=\"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6\">\n    {{#rows}}\n    <article class=\"bg-white rounded-xl shadow-md overflow-hidden group relative hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 border border-gray-100 hover:border-blue-300\">\n        <div class=\"absolute inset-0 bg-gradient-to-br from-blue-50/0 via-blue-100/40 to-purple-50/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10\"></div>\n        <div class=\"w-full h-48 sm:h-56 relative overflow-hidden\">\n            <a href=\"/productLists?tagTypes1={{name}}\" class=\"block w-full h-full\">\n                {{#img}}\n                <img src=\"http://newapi.lightcomm.com/erupt-api/file/download-attachment{{icon}}\" alt=\"{{name}}\" class=\"w-full h-full object-cover transition-transform duration-700 group-hover:scale-110\" />\n                {{/img}}\n                {{^img}}\n                <img src=\"http://newapi.lightcomm.com/erupt-api/file/download-attachment{{icon}}\" alt=\"{{name}}\" class=\"w-full h-full object-cover transition-transform duration-700 group-hover:scale-110\" />\n                {{/img}}\n            </a>\n        </div>\n        <div class=\"p-6 flex flex-col justify-between relative z-10\">\n            <div class=\"flex items-center justify-between mb-3\">\n                <h3 class=\"text-xl font-semibold text-gray-800 line-clamp-1\">\n                    <a href=\"/productLists?tagTypes1={{name}}\" class=\"hover:text-blue-600 transition-all duration-300\">{{name}}</a>\n                </h3>\n                <a href=\"/productLists?tagTypes1={{name}}\" class=\"text-blue-600 hover:text-blue-800 font-medium whitespace-nowrap transition-all duration-300 hover:translate-x-1\">更多 <svg class=\"w-4 h-4 ml-1 inline\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\" /></svg></a>\n            </div>\n              </article>\n    {{/rows}}\n</div>",
+  "api": "http://newapi.lightcomm.com/app-api/dict?ParentId=0e28bab2-30fa-74b4-57d5-3a20ea7de51f",
+  "selectOptions": {
+    "tagTypes1": { "api": "http://newapi.lightcomm.com/app-api/dict?parentId=0e28bab2-30fa-74b4-57d5-3a20ea7de51f" },
+    "tagTypes2": { "api": "http://newapi.lightcomm.com/app-api/dict?parentId=28885453-ef00-7cfe-6d7b-3a20ea7f5e8a" },
+    "tagTypes3": { "api": "http://newapi.lightcomm.com/app-api/dict?parentId=055efc21-13b3-ce7c-529a-3a212d5ffddf"},
+    "tagTypes4": { "api": "http://newapi.lightcomm.com/app-api/dict?parentId=dcbe9d9e-bf11-972a-a504-3a21314ce912"}
+  },
+  "html": "                                   <div class=\"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-6\">\n    {{#rows}}\n    <article class=\"bg-white rounded-xl shadow-md overflow-hidden group relative hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 border border-gray-100 hover:border-blue-300\">\n        <div class=\"absolute inset-0 bg-gradient-to-br from-blue-50/0 via-blue-100/40 to-purple-50/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10\"></div>\n        <div class=\"w-full h-48 sm:h-56 relative overflow-hidden\">\n            <a href=\"/productLists?tagTypes1={{name}}\" class=\"block w-full h-full\">\n                {{#img}}\n                <img src=\"http://newapi.lightcomm.com/erupt-api/file/download-attachment{{icon}}\" alt=\"{{name}}\" class=\"w-full h-full object-cover transition-transform duration-700 group-hover:scale-110\" />\n                {{/img}}\n                {{^img}}\n                <img src=\"http://newapi.lightcomm.com/erupt-api/file/download-attachment{{icon}}\" alt=\"{{name}}\" class=\"w-full h-full object-cover transition-transform duration-700 group-hover:scale-110\" />\n                {{/img}}\n            </a>\n        </div>\n        <div class=\"p-2 flex flex-col justify-between relative z-10\">\n            <div class=\"flex items-center justify-between\">\n                <h4 class=\"font-semibold text-gray-800 line-clamp-1\">\n                    <a href=\"/productLists?tagTypes1={{name}}\" class=\"hover:text-blue-600 transition-all duration-300\">{{name}}</a>\n                </h4>\n                <a href=\"/productLists?tagTypes1={{name}}\" class=\"text-blue-600 hover:text-blue-800 font-medium whitespace-nowrap transition-all duration-300 hover:translate-x-1\">更多 <svg class=\"w-4 h-4 ml-1 inline\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\" /></svg></a>\n            </div>\n              </article>\n    {{/rows}}\n</div>",
   "json": null,
   "animate": false
 }

@@ -18,6 +18,7 @@
         <!-- 全屏 -->
         <button (click)="enterFullScreen()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
           <mat-icon class="text-gray-600 dark:text-gray-300">fullscreen</mat-icon>
+          <!-- <mat-icon svgIcon="fullscreen" class="text-gray-600 dark:text-gray-300"></mat-icon> -->
         </button>
         <!-- 关闭 -->
         <button (click)="closeModal()" class="p-2 rounded-full hover:bg-red-100 dark:hover:bg-red-900/30">
@@ -35,8 +36,8 @@
       <ngx-extended-pdf-viewer
         [src]="pdfUrl"
         [height]="'100%'"
-        [showDownloadButton]="false"
-        [showPrintButton]="false"
+        [showDownloadButton]="true"
+        [showPrintButton]="true"
         [showOpenFileButton]="false"
         [sidebarVisible]="false"
         [showSidebarButton]="false"

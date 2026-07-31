@@ -7,11 +7,8 @@ import {
   OnInit,
   inject,
 } from '@angular/core';
-import { IMetaEdit } from '@core/interface/IBuilder';
+import type { IMetaEdit } from '@core/interface/IBuilder';
 import { UtilitiesService } from '@core/service/utilities.service';
-import { BuilderState } from '@core/state/BuilderState';
-import { getInlineImg } from '@modules/builder/factory/getInlinImg';
-import { getInlineText } from '@modules/builder/factory/getInlineText';
 @Directive({
   // tslint:disable-next-line:directive-selector
   selector: '[contentedit]',
@@ -20,20 +17,21 @@ import { getInlineText } from '@modules/builder/factory/getInlineText';
 export class ContenteditDirective implements AfterViewInit, OnInit {
   private componentItem: Element | null = null;
   private el = inject(ElementRef);
-  private builder = inject(BuilderState);
   private util = inject(UtilitiesService);
 
   ngOnInit(): void {
     this.componentItem = this.el.nativeElement.closest('.component-item');
   }
 
-  @HostListener('blur', ['$event']) onBlur(event: any): void {
+  @HostListener('blur', ['$event']) async onBlur(event: any): Promise<void> {
     const { currentTarget } = event;
     if (this.componentItem && currentTarget && currentTarget.contentEditable === 'true') {
       currentTarget.contentEditable = 'false';
       const path = this.generatePath(currentTarget);
-      this.builder.updatePageContentByPath(path, currentTarget.innerHTML);
-      this.openMetaPanel(currentTarget, path);
+      const { BuilderState } = await import('@core/state/BuilderState');
+      const builder = inject(BuilderState);
+      builder.updatePageContentByPath(path, currentTarget.innerHTML);
+      await this.openMetaPanel(currentTarget, path);
     }
   }
 
@@ -70,11 +68,14 @@ export class ContenteditDirective implements AfterViewInit, OnInit {
     }
   }
 
-  @HostListener('click', ['$event']) onClick(event: any): void {
+  @HostListener('click', ['$event']) async onClick(event: any): Promise<void> {
     const { currentTarget } = event;
     if (this.componentItem && currentTarget) {
       const path = this.generatePath(currentTarget);
       if (currentTarget.tagName === 'IMG') {
+        const { getInlineImg } = await import('@modules/builder/factory/getInlinImg');
+        const { BuilderState } = await import('@core/state/BuilderState');
+        const builder = inject(BuilderState);
         const meta: IMetaEdit = {
           type: 'inline-editor',
           mode: 'img',
@@ -89,7 +90,7 @@ export class ContenteditDirective implements AfterViewInit, OnInit {
             tag: currentTarget.tagName,
           },
         };
-        this.builder.rightContent$.next({
+        builder.rightContent$.next({
           title: '编辑图片',
           mode: 'over',
           hasBackdrop: false,
@@ -101,14 +102,17 @@ export class ContenteditDirective implements AfterViewInit, OnInit {
         });
       } else {
         currentTarget.contentEditable = 'true';
-        this.openMetaPanel(currentTarget, path);
+        await this.openMetaPanel(currentTarget, path);
       }
       event.preventDefault();
       event.stopPropagation();
     }
   }
 
-  openMetaPanel(ele: any, path: string): void {
+  async openMetaPanel(ele: any, path: string): Promise<void> {
+    const { getInlineText } = await import('@modules/builder/factory/getInlineText');
+    const { BuilderState } = await import('@core/state/BuilderState');
+    const builder = inject(BuilderState);
     const meta: IMetaEdit = {
       type: 'inline-editor',
       mode: 'text',
@@ -121,7 +125,7 @@ export class ContenteditDirective implements AfterViewInit, OnInit {
         tag: ele.tagName,
       },
     };
-    this.builder.rightContent$.next({
+    builder.rightContent$.next({
       title: '编辑文本',
       mode: 'push',
       hasBackdrop: false,

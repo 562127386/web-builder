@@ -47,16 +47,7 @@ export class SwiperComponent implements OnInit, AfterViewInit, OnChanges {
     keyboard: true,
     mousewheel: false,
     navigation: true,
-    autoplay: true,
-    injectStyles: [
-      `
-      .swiper-button-next,
-      .swiper-button-prev {
-        height:24px;
-        width:24px;
-      }
-      `,
-    ],
+    autoplay: true
   };
   private config: any;
 

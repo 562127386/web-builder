@@ -35,7 +35,7 @@ export class ScreenService {
 
   isElementOutTopViewport(el: any): boolean {
     const rect = el.getBoundingClientRect();
-    return rect.top < -el.clientHeight && rect.bottom <= 0 /* or $(window).height() */;
+    return rect.top < 0;
   }
 
   isElementOutBottomViewport(el: any): boolean {

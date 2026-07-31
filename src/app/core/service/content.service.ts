@@ -3,8 +3,8 @@ import { Injectable, inject } from '@angular/core';
 import type { ICoreConfig, IPage } from '@core/interface/IAppConfig';
 import { CORE_CONFIG } from '@core/token/token-providers';
 import { environment } from 'src/environments/environment';
-import { Observable, lastValueFrom, of } from 'rxjs';
-import { catchError, map, shareReplay, tap } from 'rxjs/operators';
+import { Observable, BehaviorSubject, lastValueFrom, of } from 'rxjs';
+import { catchError, map, shareReplay, tap, switchMap } from 'rxjs/operators';
 import { isArray } from 'lodash-es';
 import { TagsService } from '@core/service/tags.service';
 import { ScreenState } from '@core/state/screen/ScreenState';
@@ -22,7 +22,8 @@ export class ContentService extends ApiService {
   private builderConfigCache: Observable<IBuilderConfig>;
   private coreConfigCache: Observable<ICoreConfig>;
   private uiuxCache: Observable<any[]>;
-  private brandingCache: Observable<IBranding>;
+  private brandingSubject = new BehaviorSubject<IBranding | null>(null);
+  private brandingLang: string;
 
   constructor() {
     super();
@@ -69,29 +70,60 @@ export class ContentService extends ApiService {
     }
   }
 
-  loadBranding(): Observable<IBranding> {
-    // 如果已有缓存，直接返回
-    if (this.brandingCache) {
-      return this.brandingCache;
+  loadBranding(lang?: string): Observable<IBranding> {
+    const currentLang = lang || this.getUrlPath(this.pageUrl).lang;
+
+    if (!this.brandingLang || this.brandingLang !== currentLang) {
+      this.brandingLang = currentLang;
+      let url: string;
+
+      if (environment.production) {
+        url = `${this.apiUrl}${currentLang}/api/v3/landingPage?content=/core/branding`;
+      } else {
+        url = `${this.apiUrl}/assets/app/core${currentLang}/branding.json`;
+      }
+
+      this.http.get<IBranding>(url).pipe(
+        catchError(() => of({} as IBranding))
+      ).subscribe(branding => {
+        this.brandingSubject.next(branding);
+      });
     }
 
-    const { lang } = this.getUrlPath(this.pageUrl);
+    return this.brandingSubject.asObservable().pipe(
+      switchMap(branding => {
+        if (branding) {
+          return of(branding);
+        }
+        let url: string;
+        if (environment.production) {
+          url = `${this.apiUrl}${currentLang}/api/v3/landingPage?content=/core/branding`;
+        } else {
+          url = `${this.apiUrl}/assets/app/core${currentLang}/branding.json`;
+        }
+        return this.http.get<IBranding>(url).pipe(
+          catchError(() => of({} as IBranding)),
+          tap(branding => this.brandingSubject.next(branding))
+        );
+      })
+    );
+  }
+
+  reloadBranding(lang: string): void {
+    this.brandingLang = lang;
+    let url: string;
+
     if (environment.production) {
-      this.brandingCache = this.http
-        .get<IBranding>(`${this.apiUrl}${lang}/api/v3/landingPage?content=/core/branding`)
-        .pipe(
-          catchError(() => of({} as IBranding)),
-          shareReplay(1)
-        );
+      url = `${this.apiUrl}${lang}/api/v3/landingPage?content=/core/branding`;
     } else {
-      this.brandingCache = this.http
-        .get<IBranding>(`${this.apiUrl}/assets/app/core${lang}/branding.json`)
-        .pipe(
-          catchError(() => of({} as IBranding)),
-          shareReplay(1)
-        );
+      url = `${this.apiUrl}/assets/app/core/${lang}/branding.json`;
     }
-    return this.brandingCache;
+
+    this.http.get<IBranding>(url).pipe(
+      catchError(() => of({} as IBranding))
+    ).subscribe(branding => {
+      this.brandingSubject.next(branding);
+    });
   }
 
   loadConfig(coreConfig: object): any {

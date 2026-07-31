@@ -13,7 +13,7 @@ import { DateRangeComponent } from './formly-type/date-range/date-range.componen
 import { ImgPickerComponent } from './formly-type/img-picker/img-picker.component';
 import { MatSelectComponent } from './formly-type/mat-select/mat-select.component';
 import { RepeatTypeComponent } from './formly-type/repeat.type';
-import { RichTextComponent } from './formly-type/rich-text/rich-text.component';
+//import { RichTextComponent } from './formly-type/rich-text/rich-text.component';
 import { SliderComponent } from './formly-type/slider/slider.component';
 import { TabsTypeComponent } from './formly-type/tabs/tabs.component';
 import { FormlyComponent } from './formly/formly.component';
@@ -23,18 +23,18 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatSliderModule } from '@angular/material/slider';
 import { QuillModule } from 'ngx-quill';
 import { JsonFieldType } from './formly-type/json/json.component';
-import { RichEditorComponent } from './formly-type/rich-editor/rich-editor.component';
+//import { RichEditorComponent } from './formly-type/rich-editor/rich-editor.component';
 import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 
 const components = [
   SliderComponent,
   FormlyComponent,
-  RichTextComponent,
+  //RichTextComponent,
   TabsTypeComponent,
   ImgPickerComponent,
   MatSelectComponent,
   DateRangeComponent,
-  RichEditorComponent,
+  //RichEditorComponent,
   RepeatTypeComponent,
   DatepickerComponent,
   DynamicFormComponent,
@@ -54,17 +54,17 @@ const components = [
     MatSliderModule,
     JsonFieldType,
 
-    QuillModule.forRoot(),
+   // QuillModule.forRoot(), 编辑器比较大 暂时没用
     FormlyModule.forRoot({
       types: [
-        {
-          name: 'rich-text',
-          component: RichTextComponent,
-        },
-        {
-          name: 'rich-editor',
-          component: RichEditorComponent,
-        },
+        // {
+        //   name: 'rich-text',
+        //   component: RichTextComponent,
+        // },
+        // {
+        //   name: 'rich-editor',
+        //   component: RichEditorComponent,
+        // },
         {
           name: 'mat-select',
           component: MatSelectComponent,

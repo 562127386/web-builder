@@ -71,7 +71,9 @@ export class FormService {
           RequestVerificationToken: this.getCookie('.AspNetCore.Antiforgery.UCJP0csReIw')
         });
 
-        return this.http.post(`${this.apiService.apiUrl}/app-api/submit`, data, {
+   //     return this.http.post(`${this.apiService.apiUrl}/app-api/submit`, data, {
+  // return this.http.post(`/app-api/submit`, data, {
+        return this.http.post(`http://newapi.lightcomm.com/app-api/submit`, data, {
           headers,
           withCredentials: true
         });

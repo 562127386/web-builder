@@ -1,10 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject, signal } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import type { ICoreConfig } from '@core/interface/IAppConfig';
 import type { ILanguage } from '@core/interface/IEnvironment';
 import { CORE_CONFIG, LANG } from '@core/token/token-providers';
 import { environment } from 'src/environments/environment';
+import { ContentService } from '@core/service/content.service';
+import { PlatformLocation } from '@angular/common';
 
 @Component({
     selector: 'app-lang-switch',
@@ -18,23 +20,46 @@ export class LangSwitchComponent implements OnInit {
   lang = inject<ILanguage>(LANG);
   private router = inject(Router);
   private translateService = inject(TranslateService);
+  private contentService = inject(ContentService);
+  private cd = inject(ChangeDetectorRef);
+  private platformLocation = inject(PlatformLocation);
 
-  currentLang: ILanguage;
+  currentLang = signal<ILanguage>({
+    label: '中文',
+    langCode: 'zh-hans',
+    prefix: '/',
+    default: true
+  });
   langs = environment?.langs;
   multiLang = environment?.multiLang;
 
   ngOnInit(): void {
-    this.currentLang = this.lang;
-    this.translateService.use(this.currentLang?.langCode || 'zh-hans');
+    const langFromUrl = this.getLangFromUrl();
+    if (langFromUrl) {
+      this.currentLang.set(langFromUrl);
+    } else {
+      this.currentLang.set(this.lang);
+    }
+    this.translateService.use(this.currentLang()?.langCode || 'zh-hans');
+  }
+
+  getLangFromUrl(): ILanguage | null {
+    const pathname = this.platformLocation.pathname;
+    const langCode = pathname.split('/')[1];
+    return this.langs?.find(l => l.langCode === langCode) || null;
   }
 
   onSwitchLanguage(lang: ILanguage): void {
-    this.currentLang = lang;
+    this.currentLang.set(lang);
     this.translateService.use(lang.langCode);
-    const { pathname } = window.location;
+    this.contentService.reloadBranding(lang.langCode);
+    this.cd.markForCheck();
+    const pathname = this.platformLocation.pathname;
+    const search = this.platformLocation.search;
     const url = this.removeLangPrefix(pathname);
     const langPrefix = lang.prefix === '/' ? '' : lang.prefix;
-    this.router.navigateByUrl(`${langPrefix}${url}`);
+    const queryParams = search ? `${search}` : '';
+    this.router.navigateByUrl(`${langPrefix}${url}${queryParams}`);
   }
 
   removeLangPrefix(urlPath: string): string {

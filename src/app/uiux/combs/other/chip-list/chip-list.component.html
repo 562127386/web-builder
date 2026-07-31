@@ -1,23 +1,49 @@
 @if (content) {
-  <mat-chip-listbox [ngClass]="classes">
-    @for (item of content.elements; track item) {
-      <mat-chip-option
-        color="{{ item?.color || 'primary' }}"
-        selected="{{ item?.selected ? true : false }}"
-      >
-        @if (!item.link) {
-          {{ item.label }}
-        } @else {
-          @if (item.link) {
-            <app-link [content]="item.link" />
+  <div class="mat-chip-warapper-box">
+          <mat-chip-listbox [ngClass]="classes">
+            @for (item of content.elements; track item?.label ?? item?.link?.href ?? $index; let last = $last) {
+              <!-- 非最后一个：通用样式/配置 -->
+                    @if (!last) {
+
+              <mat-chip-option
+                color="{{ item?.color || 'primary' }}"
+                selected="{{ item?.selected ? true : false }}"
+              >
+                @if (!item.link) {
+                  {{ item.label }}
+                } @else {
+                  @if (item.link) {
+                    <app-link [content]="item.link" />
+                  }
+                }
+                <ng-template #link>
+                  @if (item.link) {
+                    <app-link [content]="item.link" />
+                  }
+                </ng-template>
+              </mat-chip-option>
+            }
+              <!-- 最后一个：单独样式/配置   -->
+                <!-- @if (last && item.link) {
+                        <mat-chip-option  color="{{ item?.color || 'primary' }}"
+                selected="false">
+                              <app-link [content]="item.link" />
+                </mat-chip-option>
+                } -->
+
+
+            }
+          </mat-chip-listbox>
+
+
+
+            @if (content.elements.length) {
+              @let lastItem = content.elements.at(-1);
+              @if (lastItem && lastItem.link) {
+                <app-link class="mat-chip-custom" [content]="lastItem.link" />
+              }
           }
-        }
-        <ng-template #link>
-          @if (item.link) {
-            <app-link [content]="item.link" />
-          }
-        </ng-template>
-      </mat-chip-option>
-    }
-  </mat-chip-listbox>
+
+  </div>
+
 }

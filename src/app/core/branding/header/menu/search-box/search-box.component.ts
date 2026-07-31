@@ -14,6 +14,7 @@ import { FormService } from '@core/service/form.service';
 import { isEmpty, omitBy } from 'lodash-es';
 import { BaseComponent } from '@uiux/base/base.widget';
 import type { IHeaderSearch } from '@core/interface/branding/IBranding';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-search-box',
@@ -31,7 +32,7 @@ export class SearchBoxComponent extends BaseComponent implements OnInit {
   formService = inject(FormService);
   router = inject(Router);
   private cd = inject(ChangeDetectorRef);
-
+  private translateService=inject(TranslateService);
   ngOnInit(): void {
     this.initForm(this.content);
   }
@@ -54,7 +55,7 @@ export class SearchBoxComponent extends BaseComponent implements OnInit {
         isEmpty
       );
 
-      this.nodeService.fetch('/app-api/search', this.getApiParams(params)).subscribe(data => {
+      this.nodeService.fetch('http://newapi.lightcomm.com/app-api/search', this.getApiParams(params)).subscribe(data => {
         this.options = data.rows.map((item: any) => {
           return {
             label: item.name,
@@ -74,7 +75,10 @@ export class SearchBoxComponent extends BaseComponent implements OnInit {
 
   search(value: any): void {
     this.form.reset();
-    this.router.navigate(['search'], { queryParams: value });
+    const currentLang = this.translateService.currentLang;
+const path = currentLang === 'en' ? '/en/search' : '/search';
+this.router.navigate([path], { queryParams: value });
+    //this.router.navigate(['search'], { queryParams: value });
     this.cd.detectChanges();
   }
 }

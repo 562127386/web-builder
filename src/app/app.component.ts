@@ -9,6 +9,7 @@ import { ScreenService } from '@core/service/screen.service';
 import { ConfigService } from '@core/service/config.service';
 import { ThemeService } from '@core/service/theme.service';
 import { environment } from 'src/environments/environment';
+import { SkeletonComponent } from '@uiux/widgets/skeleton/skeleton.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

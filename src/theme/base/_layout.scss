@@ -218,6 +218,19 @@ a.anchor {
   background-color: transparent !important;
 }
 
+@media #{$lt-md} {
+  .mat-drawer-container {
+    min-height: 100vh !important;
+    height: auto !important;
+  }
+
+  .mat-drawer-content {
+    min-height: calc(100vh - 64px) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+}
+
 .video {
   &.cover {
     .vjs-poster {

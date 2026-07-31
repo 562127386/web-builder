@@ -82,14 +82,19 @@ export class CustomTemplateComponent implements AfterViewInit {
   private pdfPreviewService = inject(PdfPreviewService);
   private router = inject(Router);
 
-  ngAfterViewInit(): void {
+  async ngAfterViewInit(): Promise<void> {
     this.template = this.ele.nativeElement.querySelector('.template');
     // 生成组件唯一 ID，优先使用配置中的 id，否则自动生成
     this.componentId = this.content.id || `template-${Date.now()}`;
 
     // 加载 FontAwesome 图标库
-    const fontawesome = this.util.getLibraries('fontAwesome', 'cdn', 'style');
-    this.util.loadStyle(fontawesome);
+    if (this.coreConfig.librariesUseLocal) {
+      const fontawesome = this.util.getLibraries('fontAwesome', 'local', 'style');
+      await this.util.loadStyle(fontawesome);
+    } else {
+      const fontawesome = this.util.getLibraries('fontAwesome', 'cdn', 'style');
+      await this.util.loadStyle(fontawesome);
+    }
 
     // 初始化监听
     this.setupRouteParamsListener();   // 监听路由参数和查询参数
@@ -141,6 +146,14 @@ export class CustomTemplateComponent implements AfterViewInit {
       queryParams.keys.forEach(key => {
         params[key] = queryParams.get(key);
       });
+
+      // 处理分页参数，将 URL 中的 page 参数转换为 0-based index
+      if (params.page !== undefined) {
+        params.page = parseInt(params.page, 10) - 1;
+        if (isNaN(params.page)) {
+          delete params.page;
+        }
+      }
 
       // 如果有参数，更新查询状态
       if (Object.keys(params).length > 0) {
@@ -373,6 +386,14 @@ export class CustomTemplateComponent implements AfterViewInit {
     const { pageIndex } = pageEvent;
     const currentParams = { ...this.queryState.getQuery(this.componentId), page: pageIndex };
     this.queryState.setQuery(this.componentId, currentParams);
+
+    // 更新 URL 参数，使浏览器返回按钮能恢复分页状态
+    this.router.navigate([], {
+      queryParams: { page: pageIndex + 1 },
+      queryParamsHandling: 'merge'
+    }).catch(error => {
+      console.error('Failed to update URL with page parameter:', error);
+    });
   }
 
   /**

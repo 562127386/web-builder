@@ -13,5 +13,63 @@
     // --mat-sys-on-primary ：主色背景上的文字颜色（通常是浅色/白色）
 //--mat-sys-primary ：当前主题的主色调（如蓝色、绿色等）
     }
+
+    &:last-child{
+
+    }
+
+
+
+//     button[aria-describedby="mat-mdc-chip-13-aria-description"] {
+//   background: #409eff !important;
+// a {
+//       color:white !important }
+
+//   color: #fff !important;
+//   font-weight: bold !important;
+// }
+
   }
 }
+// .mat-mdc-chip:last-child{
+//       ::ng-deep{
+//         background-color: #409eff;
+
+//          .mat-mdc-tooltip-trigger{
+//           color: #fff;
+//         }
+//       }
+
+// }
+
+
+.mat-chip-warapper-box{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+
+  .mat-chip-custom{
+    width: 80px;
+    padding: 4px 0;
+    text-align: center;
+    border: 1px solid #409eff;
+    background-color: #409eff;
+    color: #fff;
+    border-radius: 8px;
+    animation: 1s ease-in-out;
+
+    &:hover{
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    &:active{
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    }
+
+  }
+}
+
+
+
+

@@ -4,7 +4,7 @@ import { ILanguage } from '@core/interface/IEnvironment';
 import { IPager } from '@core/interface/widgets/IWidgets';
 import { API_URL } from '@core/token/token-providers';
 import { camelCase, isArray, remove, result } from 'lodash-es';
-import { Observable, Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -43,13 +43,15 @@ export class ApiService {
   }
 
   getToken(): Observable<string> {
-    this.http.get(` https://localhost:44388/api/abp/application-configuration`, {
-      withCredentials: true
-    }).subscribe();
+    // this.http.get(` https://localhost:44388/api/abp/application-configuration`, {
+    //   withCredentials: true
+    // }).subscribe();
 
-    return this.http.get('/session/token', {
-      responseType: 'text',
-    });
+    // return this.http.get('/session/token', {
+    //   responseType: 'text',
+    // });
+
+    return of('');
   }
 
   get pageUrl(): string {

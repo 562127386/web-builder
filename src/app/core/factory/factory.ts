@@ -12,7 +12,6 @@ import { IUser } from '@core/interface/IUser';
 import { INotify } from '@core/interface/widgets/IWidgets';
 import { map, startWith, switchMap } from 'rxjs/operators';
 import { NotifyService } from '@core/service/notify.service';
-import { BuilderState } from '@core/state/BuilderState';
 import { ScreenService } from '@core/service/screen.service';
 import { NodeService } from '@core/service/node.service';
 import { IManageAssets } from '@core/interface/manage/IManage';
@@ -20,8 +19,7 @@ import { ILanguage } from '@core/interface/IEnvironment';
 import { CookieService } from 'ngx-cookie-service';
 import { ComponentService } from '@core/service/component.service';
 import { DOCUMENT, inject } from '@angular/core';
-import { IBuilderConfig } from '@core/interface/IBuilder';
-import { BuilderService } from '@core/service/builder.service';
+import type { IBuilderConfig } from '@core/interface/IBuilder';
 import { UtilitiesService } from '@core/service/utilities.service';
 import { PageDataService } from '@core/service/page-data.service';
 
@@ -50,7 +48,6 @@ export function pageContentFactory(): Observable<IPage | object | boolean> {
 
 export function builderFullScreenFactory(): Observable<boolean> {
   const router = inject(Router);
-  const builder = inject(BuilderState);
   const isFull$ = new BehaviorSubject<boolean>(false);
 
   router.events.subscribe(event => {
@@ -60,9 +57,14 @@ export function builderFullScreenFactory(): Observable<boolean> {
       }
     }
   });
-  builder.fullScreen$.subscribe(state => {
-    isFull$.next(state);
+
+  import('@core/state/BuilderState').then(({ BuilderState }) => {
+    const builder = inject(BuilderState);
+    builder.fullScreen$.subscribe(state => {
+      isFull$.next(state);
+    });
   });
+
   return isFull$;
 }
 
@@ -71,13 +73,15 @@ export function builderCurrentPageFactory(): Observable<IPage | object | boolean
   const versionKey = 'version';
   const currentPage$ = new BehaviorSubject<IPage | object | boolean>(false);
   const storage = inject(LocalStorageService);
-  const builderService = inject(BuilderService);
   const localVersion = storage.retrieve(versionKey);
 
   if (localVersion) {
     const currentPage = localVersion.find((page: IPage) => page.current === true);
     if (router.url.includes(BUILDERPATH)) {
-      builderService.checkIsLatestPage(currentPage);
+      import('@core/service/builder.service').then(({ BuilderService }) => {
+        const builderService = inject(BuilderService);
+        builderService.checkIsLatestPage(currentPage);
+      });
     }
     currentPage$.next(currentPage);
   }
@@ -93,7 +97,6 @@ export function builderCurrentPageFactory(): Observable<IPage | object | boolean
 }
 
 export function debugAnimateFactory(): Observable<boolean> {
-  const builder = inject(BuilderState);
   const storage = inject(LocalStorageService);
   const debugAnimate$ = new BehaviorSubject<boolean>(false);
   const isDebugAnimate = storage.retrieve(DEBUG_ANIMATE_KEY);
@@ -103,13 +106,16 @@ export function debugAnimateFactory(): Observable<boolean> {
     debugAnimate$.next(false);
   }
 
-  setTimeout(() => {
-    builder.renderMarkers(isDebugAnimate);
-  }, 2000);
+  import('@core/state/BuilderState').then(({ BuilderState }) => {
+    const builder = inject(BuilderState);
+    setTimeout(() => {
+      builder.renderMarkers(isDebugAnimate);
+    }, 2000);
 
-  builder.debugeAnimate$.subscribe(state => {
-    storage.store(DEBUG_ANIMATE_KEY, state);
-    debugAnimate$.next(state);
+    builder.debugeAnimate$.subscribe(state => {
+      storage.store(DEBUG_ANIMATE_KEY, state);
+      debugAnimate$.next(state);
+    });
   });
 
   return debugAnimate$;

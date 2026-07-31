@@ -1,7 +1,7 @@
 {
   "status": true,
   "message": "",
-  "title": "首页",
+  "title": "深圳朗光科技有限公司",
   "uuid": "2e78f5f4-75d5-48c8-9867-52316ab289d5",
   "nid": "440",
   "vid": "2733",
@@ -17,10 +17,10 @@
         "classes": "bg-center overlay overlay-80",
         "overlay": "",
         "img": {
-          "src": "/assets/images/hero/bg-pattern-hero.png",
+          "src": "",
           "alt": "",
           "classes": "bg-cover",
-          "mobile": "/assets/images/hero/bg-pattern-hero.png"
+          "mobile": ""
         }
       },
       "animate":false,
@@ -45,12 +45,12 @@
               "opacity": "",
               "borderRadius": "",
               "boxShadow": "",
-              "aspectRatio": "2 / 1",
+
               "objectFit": "fill"
             },
             "classes": "object-cover",
-            "width": 2800,
-            "height": 750
+       "width": 2800,
+            "height": 600
           },
           {
             "type": "img",
@@ -59,12 +59,11 @@
               "opacity": "",
               "borderRadius": "",
               "boxShadow": "",
-              "aspectRatio": "2 / 1",
               "objectFit": "fill"
             },
             "classes": "object-cover",
-            "width": 2800,
-            "height": 750
+       "width": 2800,
+            "height": 600
           },
           {
             "type": "img",
@@ -73,12 +72,25 @@
               "opacity": "",
               "borderRadius": "",
               "boxShadow": "",
-              "aspectRatio": "2 / 1",
               "objectFit": "fill"
             },
             "classes": "object-cover",
-            "width": 2800,
-            "height": 750
+       "width": 2800,
+            "height": 600
+          },
+          {
+            "type": "img",
+            "src": "/assets/images/lg/hd8.png",
+            "style": {
+              "opacity": "",
+              "borderRadius": "",
+              "boxShadow": "",
+
+              "objectFit": "fill"
+            },
+            "classes": "object-cover",
+       "width": 2800,
+            "height": 600
           }
         ]
       }
@@ -88,7 +100,7 @@
 
     {
       "fullWidth": false,
-      "spacer": "sm",
+      "spacer": "none",
       "containerClasses": "",
       "bg": {
         "classes": "",
@@ -98,21 +110,7 @@
           "alt": ""
         }
       },
-      "animate": {
-        "aos": {
-          "enable": true,
-          "animation": "zoom-out-up",
-          "behaviour": {
-            "offset": 120,
-            "duration": 400,
-            "delay": 0,
-            "easing": "ease"
-          }
-        },
-        "gsap": {
-          "enable": false
-        }
-      },
+      "animate": false,
       "type": "showcase-2v1",
       "row": 4,
       "classes": "",
@@ -136,7 +134,7 @@
             "label": "工业激光应用"
           },
           "user": "朗光",
-          "time": "2022/09/27",
+          "time": "工业激光应用",
           "feature": {
             "fullIcon": "fullscreen",
             "openIcon": "open_in_new",
@@ -161,7 +159,7 @@
             "label": "自动驾驶应用"
           },
           "user": "朗光",
-          "time": "2022/09/27",
+          "time": "自动驾驶应用",
           "feature": {
             "fullIcon": "fullscreen",
             "openIcon": "open_in_new",
@@ -186,7 +184,7 @@
             "label": "光纤网络应用"
           },
           "user": "朗光",
-          "time": "2022/09/27",
+          "time": "光纤网络应用",
           "feature": {
             "fullIcon": "fullscreen",
             "openIcon": "open_in_new",
@@ -211,7 +209,7 @@
             "label": "生物医疗应用"
           },
           "user": "朗光",
-          "time": "2022/09/27",
+          "time": "生物医疗应用",
           "feature": {
             "fullIcon": "fullscreen",
             "openIcon": "open_in_new",
@@ -236,7 +234,7 @@
             "label": "光纤传感应用"
           },
           "user": "朗光",
-          "time": "2022/09/27",
+          "time": "光纤传感应用",
           "feature": {
             "fullIcon": "fullscreen",
             "openIcon": "open_in_new",
@@ -260,7 +258,7 @@
             }
           },
           "user": "朗光",
-          "time": "2022/09/27",
+          "time": "测试设备及其他",
           "moreLabel": "详情",
           "feature": {
             "link": "/productLists?id=7",
@@ -358,8 +356,8 @@
       "id": "",
       "type": "custom-template",
       "isAPI": true,
-      "api": "/app-api/product2?id=1&MaxResultCount=3",
-      "html": "<div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6\">\n    {{#rows}}\n    <article\n        class=\"bg-white hover:bg-gray-50 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group relative\">\n        <div class=\"w-full h-48 sm:h-56 relative overflow-hidden\">\n            <a href=\"/newDetail?id={{id}}\" class=\"block hover:brightness-95 transition-all duration-200\">\n                {{#img}}\n                <img\n          src=\"http://newapi.lightcomm.com/erupt-api/file/download-attachment{{pdf}}\"\n          alt=\"{{name}}\"\n          class=\"w-full h-full object-cover transition-transform duration-300 group-hover:scale-105\"\n        />\n        {{/img}}\n        {{^img}}\n                <img\n          src=\"http://newapi.lightcomm.com/erupt-api/file/download-attachment{{pdf}}\"\n          alt=\"{{name}}\"\n          class=\"w-full h-full object-cover transition-transform duration-300 group-hover:scale-105\"\n        />\n        {{/img}}\n            </a>\n        </div>\n\n        <div class=\"p-6 flex flex-col justify-between\">\n           \n            <h3 class=\"mb-3 relative z-10\">\n                <a href=\"/newDetail?id={{id}}\"\n                    class=\"text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200 line-clamp-2\">\n                    {{name}}\n                </a>\n            </h3>\n\n            <!-- 内容区域背景过渡 -->\n            <div class=\"relative z-10\">\n                <p class=\"text-gray-600 line-clamp-3 mb-4\">\n                    {{description}}\n                </p>\n               <a href=\"/newDetail?id={{id}}\" class=\"group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600\">\n      了解更多\n\n      <span aria-hidden=\"true\" class=\"block transition-all group-hover:ms-0.5 rtl:rotate-180\">\n        &rarr;\n      </span>\n    </a>\n            </div>\n        </div>\n    </article>\n    {{/rows}}\n\n</div>",
+      "api": "http://newapi.lightcomm.com/app-api/product2?id=1&MaxResultCount=3",
+      "html": "<div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6\">\n    {{#rows}}\n    <article\n        class=\"bg-white hover:bg-gray-50 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group relative\">\n        <div class=\"w-full h-48 sm:h-56 relative overflow-hidden\">\n            <a href=\"/newDetail?id={{id}}\" class=\"block hover:brightness-95 transition-all duration-200\">\n                {{#img}}\n                <img\n          src=\"http://newapi.lightcomm.com/erupt-api/file/download-attachment{{pdf}}\"\n          alt=\"{{name}}\"\n          class=\"w-full h-full object-cover transition-transform duration-300 group-hover:scale-105\"\n        />\n        {{/img}}\n        {{^img}}\n                <img\n          src=\"http://newapi.lightcomm.com/erupt-api/file/download-attachment{{pdf}}\"\n          alt=\"{{name}}\"\n          class=\"w-full h-full object-cover transition-transform duration-300 group-hover:scale-105\"\n        />\n        {{/img}}\n            </a>\n        </div>\n\n        <div class=\"p-4 flex flex-col justify-between\">\n           \n            <h3 class=\"mb-3 relative z-10\">\n                <a href=\"/newDetail?id={{id}}\"\n                    class=\"text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200 line-clamp-2\">\n                    {{name}}\n                </a>\n            </h3>\n\n            <!-- 内容区域背景过渡 -->\n            <div class=\"relative z-10\">\n                <p class=\"text-gray-600 line-clamp-3 mb-4\">\n                    {{description}}\n                </p>\n               <a href=\"/newDetail?id={{id}}\" class=\"group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600\">\n      了解更多\n\n      <span aria-hidden=\"true\" class=\"block transition-all group-hover:ms-0.5 rtl:rotate-180\">\n        &rarr;\n      </span>\n    </a>\n            </div>\n        </div>\n    </article>\n    {{/rows}}\n\n</div>",
       "json": []
     },
 
@@ -411,24 +409,7 @@
           "body": "<p style=\"display: inline-block; margin-bottom: 0px;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;深圳朗光科技有限公司由清华大学光电子博士、国际光纤光学专家岳超瑜博士创办于2001年，从事新型电子信息产业光电器件和设备的研究开发、生产和销售，经过十几年的经营发展，已经成为在光电器件领域拥有很高知名度，在多项光电子器件关键技术保持先发优势，部分产品属国内首创、国际前列地位的集团化优势企业，特别是光耦合器、高功率光纤合束器等高功率产品的技术和产能世界领先，已经取代了进口产品，实现了国产化和产业化。 朗光科技的产品和研发课题涵盖了光纤传输各个重点领域，全部在《国家重点扶持的高新技术领域》目录中，其科技含量和发展潜力获得了国家、省市各部委以及社会机构的广泛认可，获得政府资助成立的“高功率光器件研发实验室”正与高校、中科院研究所联合参与国家重点课题攻关。</p>",
           "actionsAlign": "center center",
           "actions": [
-            {
-              "type": "btn-video",
-              "color": "primary",
-              "video": {
-                "type": "video",
-                "options": {
-                  "controls": true,
-                  "aspectRatio": "16:9",
-                  "poster": "/assets/video/poster01.png",
-                  "sources": [
-                    {
-                      "src": "/assets/video/storybook.mp4",
-                      "type": "video/mp4"
-                    }
-                  ]
-                }
-              }
-            }
+
           ]
         }
       ]
@@ -469,11 +450,11 @@
      {
   "type": "carousel-2v2",
   "id": "",
-  "spacer": "xl",
+  "spacer": "none",
   "bg": {
     "classes": " bg-shadow"
   },
-  "classes": "",
+  "classes": " mb-6",
   "swiper": {
     "params": {
       "slidesPerView": 1.2,
@@ -639,6 +620,13 @@
       }
     }
 
+
+    ,{
+  "spacer": "none",
+  "type": "text",
+  "body": "&nbsp;",
+  "animate": false
+}
 
   ],
   "current": true,

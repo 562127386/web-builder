@@ -82,7 +82,7 @@
     },
     "actions": [],
     "params": {
-      "themeSwitch": true,
+      "themeSwitch": false,
       "userInfo": false,
       "menuHoverOpen": true
     }
@@ -185,12 +185,12 @@
         "child": [
           {
             "label": "深圳朗光科技有限公司",
-            "href": "tel:0755-86157878",
+            "href": "",
             "target": "_self"
           },
            {
             "label": "广东省深圳市宝安区留仙一路2号高新奇产业园AD栋2楼",
-            "href": "/careers/culture",
+            "href": "",
             "target": "_self"
           },
           {
@@ -201,7 +201,7 @@
 
           {
             "label": "传真：0755-83434363",
-            "href": "/careers/campus",
+            "href": "",
             "target": "_self"
           }
         ]
@@ -234,23 +234,9 @@
       }
     ],
     "footerBottom": {
-      "left": "© 2024 朗光科技有限公司 版权所有 | 粤ICP备12345678号",
+      "left": "© 2024 朗光科技有限公司 版权所有 | 粤ICP备2022110230号",
       "right": [
-        {
-          "label": "隐私政策",
-          "href": "/privacy",
-          "target": "_blank"
-        },
-        {
-          "label": "服务条款",
-          "href": "/terms",
-          "target": "_blank"
-        },
-        {
-          "label": "网站地图",
-          "href": "/sitemap",
-          "target": "_blank"
-        }
+
       ]
     },
     "content": {
@@ -260,27 +246,16 @@
       },
       "middle": {
         "spacer": "md",
-        "body": "<p>全国服务热线：<strong>400-888-8888</strong></p><p>邮箱：contact@langguang.com</p>"
+        "body": "<p>全国服务热线：<strong>0755-86157878</strong></p><p>邮箱：contact@langguang.com</p>"
       }
     },
     "socialLinks": [
-      {
-        "icon": "github",
-        "href": "#"
-      },
-      {
-        "icon": "linkedin",
-        "href": "#"
-      },
-      {
-        "icon": "twitter",
-        "href": "#"
-      }
+
     ],
     "copyright": "2024 朗光科技. 保留所有权利.",
     "contact": {
       "address": "深圳市南山区科技园88号",
-      "phone": "400-888-8888",
+      "phone": "0755-86157878",
       "email": "contact@langguang.com"
     }
   },

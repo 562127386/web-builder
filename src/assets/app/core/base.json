@@ -59,6 +59,7 @@
       "interval": 120000
     }
   },
+  "librariesUseLocal":true,
   "animate": true,
   "pageSize": 10,
   "paginationSize": 5

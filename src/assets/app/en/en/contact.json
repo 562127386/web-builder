@@ -1,169 +1,60 @@
 {
-  "title": "联系我们",
+  "title": "Lightcomm-Contact",
   "body": [
- {
-  "fullWidth": false,
-  "spacer": "sm",
-  "bgClasses": "bg-primary bg-fill-width",
-  "overlay": "overlay overlay-80",
-  "containerClasses": "text-white",
-  "id": "",
-  "bg": {
-    "img": {
-      "src": "",
-      "alt": "",
-      "classes": "object-fit"
-    },
-    "classes": "bg-primary bg-fill-width",
-    "overlay": "overlay overlay-80"
-  },
-  "horizontal": "center",
-  "vertical": "center",
-  "alignItems": "center",
-  "wrapperClass": "",
-  "animate": {
-    "aos": {
-      "enable": true,
-      "animation": "fade-up",
-      "behaviour": {
-        "offset": 120,
-        "duration": 400,
-        "delay": 0,
-        "easing": "ease"
-      }
-    },
-    "gsap": {
-      "enable": false
-    }
-  },
-  "classes": "",
-  "type": "layout-builder",
-  "elements": [
     {
-      "row": {
-        "xs": 12,
-        "sm": 12,
-        "md": 4,
-        "lg": 4
+      "extra": {
+        "uuid": "6175d67e-aa0b-43b6-b6a3-bc76abba6318",
+        "id": "801",
+        "type": "json"
       },
-      "horizontal": "start",
-      "vertical": "stretch",
-      "gap": {
-        "xs": "4",
-        "sm": "4",
-        "md": "8",
-        "lg": "8"
-      },
+      "fullWidth": true,
+      "spacer": "none",
+      "bgClasses": "bg- bg-fill-width",
+      "overlay": "",
+      "containerClasses": "",
+      "id": "",
       "bg": {
         "img": {
           "src": "",
-          "alt": "",
-          "classes": "object-fit"
+          "alt": ""
         },
-        "overlay": "",
-        "classes": "bg-fill-width"
+        "classes": "bg- bg-fill-width",
+        "overlay": ""
       },
-      "classes": "",
-      "blockClasses": "",
-      "animate": {
+    "animate": {
         "aos": {
+          "enable": true,
+          "animation": "fade-up",
+          "behaviour": {
+            "offset": 120,
+            "duration": 400,
+            "delay": 0,
+            "easing": "ease"
+          }
+        },
+        "gsap": {
           "enable": false
         }
       },
-      "style": {
-        "borderRadius": "none"
-      },
-      "layoutAlign": "start start",
-      "elements": [
-        {
-          "style": "style-v4",
-          "classes": "mat-headline-1 bold",
-          "typed": {
-            "enable": false,
-            "config": {
-              "typeSpeed": 120
-            },
-            "strings": [
-              {
-                "label": "web builder"
-              }
-            ]
-          },
-          "animate": {
-            "aos": {
-              "enable": false
-            }
-          },
-          "type": "title",
-          "label": "<p style=\"display: inline-block; margin-bottom: 0px;\">联系我们</p>"
-        }
-      ]
-    },
-    {
-      "row": {
-        "xs": 12,
-        "sm": 12,
-        "md": 8,
-        "lg": 8
-      },
-      "horizontal": "start",
-      "vertical": "stretch",
-      "gap": {
-        "xs": "4",
-        "sm": "4",
-        "md": "4",
-        "lg": "4"
-      },
-      "bg": {
+      "type": "banner-simple",
+      "style": "normal",
+      "bannerBg": {
+        "classes": "bg-fill-width",
         "img": {
-          "src": "",
-          "alt": "",
-          "classes": "object-fit"
-        },
-        "overlay": "",
-        "classes": "bg-fill-width"
-      },
-      "classes": "",
-      "blockClasses": "",
-      "animate": {
-        "aos": {
-          "enable": false
+          "hostClasses": "bg-center",
+          "src": "/assets/images/lg/bg2.png",
+          "alt": ""
         }
       },
-      "style": {
-        "borderRadius": "none"
-      },
-      "layoutAlign": "start start",
-      "elements": [
-        {
-          "src": "/assets/images/lg/wx.png",
-          "alt": "alt",
-          "classes": "mover",
-          "hostClasses": "",
-          "width": 150,
-          "height": 150,
-          "style": {
-            "aspectRatio": "4 / 3",
-            "objectFit": "contain",
-            "opacity": "",
-            "borderRadius": "",
-            "boxShadow": ""
-          },
-          "animate": {
-            "aos": {
-              "enable": false
-            }
-          },
-          "type": "img"
-        }
-      ]
-    }
-  ]
-},
+      "title": "Contact",
+      "breadcrumb": []
+    },
+
+
  {
       "type": "custom-template",
       "isAPI": true,
-      "api": "/app-api/new?id=17",
+      "api": "http://newapi.lightcomm.com/app-api/en/new?id=17",
 
     "html": " {{#rows}}\n <article class=\"overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg\">\n   <div class=\"bg-white p-4 sm:p-6\">\n\n  <h1 class=\"mt-0.5  text-gray-900\">{{name}}</h1>\n   <p class=\"mt-2 line-clamp-3 text-sm/relaxed text-gray-500\">\n{{{content}}}\n    </p>\n  </div>\n</article> {{/rows}}",
         "json": null,

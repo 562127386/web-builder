@@ -2,7 +2,7 @@
   <div class="comment-form m-bottom">
     <a class="anchor" id="comment"></a>
     <app-title [content]="content.editor?.title" />
-    <div class="editor">
+    <!--暂时先注释编辑器 <div class="editor">
       @if (screenService.isPlatformBrowser()) {
         <quill-editor
           (onEditorCreated)="editorCreated($event)"
@@ -12,7 +12,7 @@
           [styles]="{ height: content.editor?.height || '250px' }"
         />
       }
-    </div>
+    </div> -->
     <div class="actions p-y-sm p-x-sm">
       <button
         (click)="onSubmit(commentContent)"

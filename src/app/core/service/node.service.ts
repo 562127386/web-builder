@@ -33,6 +33,8 @@ export class NodeService extends ApiService {
     return this.coreConfig.apiUrl;
   }
 
+  private newApiUrl="http://newapi.lightcomm.com";
+
   fetch(api: string, params: string, langCode?: string): Observable<any> {
     let apiParams = '';
     let lang = '';
@@ -43,10 +45,18 @@ export class NodeService extends ApiService {
       lang = `/${langCode}`;
     }
     const hasApiParam = api.indexOf('?') > 0;
-    if (api.startsWith('/api/') || api.startsWith('/app-api/')) {
+   // debugger
+  if (api.startsWith('/api/') || api.startsWith('/app-api/')) {
+      // apiParams = hasApiParam
+      //   ? `${this.apiUrl}${lang}${api}&${params}`
+      //   : `${this.apiUrl}${lang}${api}?${params}`;
       apiParams = hasApiParam
-        ? `${this.apiUrl}${lang}${api}&${params}`
-        : `${this.apiUrl}${lang}${api}?${params}`;
+        ? `${this.newApiUrl}${lang}${api}&${params}`
+        : `${this.newApiUrl}${lang}${api}?${params}`;
+    } else if (api.startsWith('http:')) {
+      apiParams = hasApiParam
+        ? `${api}&${params}`
+        : `${api}?${params}`;
     } else {
       apiParams = hasApiParam
         ? `${this.apiUrl}${lang}/api/v1/${api}&${params}`

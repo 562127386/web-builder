@@ -1,5 +1,5 @@
 {
-  "title": "新闻详情",
+  "title": "Lightcomm-News Details",
   "body": [
 
     {
@@ -14,12 +14,11 @@
     "overlay": true,
     "overlayColor": "rgba(0, 0, 0, 0.5)"
   },
-  "title": " &emsp;新闻中心",
+  "title": " &emsp;News",
   "subTitle": "",
   "breadcrumb": [
-    { "label": "首页", "href": "/", "icon": { "svg": "home", "color": "primary" } },
-    { "label": "新闻中心", "href": "/news", "icon": { "svg": "shopping-cart" } },
-    { "label": "详情", "href": "#", "classes": "active", "icon": { "svg": "file-text", "style": "w-4 h-4" } }
+    { "label": "Home", "href": "/en/home", "icon": { "svg": "home", "color": "primary" } },
+    { "label": "News", "href": "/en/news", "classes": "active"}
   ]
 },
 
@@ -27,7 +26,7 @@
     {
       "type": "custom-template",
       "isAPI": true,
-      "api": "/app-api/new",
+      "api": "http://newapi.lightcomm.com/app-api/en/new",
 
       "html": "{{#rows}}\n <article class=\"overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg\">\n   <div class=\"bg-white p-4 sm:p-6\">\n  \n  <h1 class=\"mt-0.5  text-gray-900\">{{name}}</h1>\n   <div class=\"time\">{{ publishDate }}</div>  <p class=\"mt-2 line-clamp-3 text-sm/relaxed text-gray-500\">\n{{{content}}}\n    </p>\n  </div>\n</article> {{/rows}}",
       "json": null,

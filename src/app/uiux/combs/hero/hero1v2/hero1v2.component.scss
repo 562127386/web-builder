@@ -15,7 +15,7 @@
 .swiper-media {
   width: 100%;
  // height: 30vh;
-  min-height: 450px;
+  min-height: 400px;
   .swiper-container {
     height: 100%;
   }
@@ -68,5 +68,13 @@
     .sub-title {
       font-size: 20px;
     }
+  }
+}
+
+
+//小屏幕时不显示
+@media #{$lt-sm} {
+  .hero-1-v2 {
+    display: none;
   }
 }

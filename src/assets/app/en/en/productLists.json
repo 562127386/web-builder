@@ -1,69 +1,106 @@
 {
-  "title": "产品展示",
+  "title": "Lightcomm-Our Products",
   "body": [
+   {
+      "extra": {
+        "uuid": "6175d67e-aa0b-43b6-b6a3-bc76abba6318",
+        "id": "801",
+        "type": "json"
+      },
+      "fullWidth": true,
+      "spacer": "none",
+      "bgClasses": "bg- bg-fill-width",
+      "overlay": "",
+      "containerClasses": "",
+      "id": "",
+      "bg": {
+        "img": {
+          "src": "",
+          "alt": ""
+        },
+        "classes": "bg- bg-fill-width",
+        "overlay": ""
+      },
+    "animate": false,
+      "type": "banner-simple",
+      "style": "normal",
+      "bannerBg": {
+        "classes": "bg-fill-width",
+        "img": {
+          "hostClasses": "bg-center",
+          "src": "/assets/images/lg/bg2.png",
+          "alt": ""
+        }
+      },
+      "title": "Our Products",
+      "breadcrumb": []
+    },
+
+
     {
       "type": "title",
-      "label": "产品展示",
+      "label": "Our Products",
       "style": "h1",
       "align": "center"
     },
+
     {
       "type": "chip-list",
       "elements": [
         {
           "link": {
-            "href": "/productLists",
+            "href": "/en/productLists",
             "queryParams": { "id": "4" },
-            "label": "工业激光应用"
+            "label": "For Industrial Laser"
           }
         },
         {
           "link": {
-            "href": "/productLists",
+            "href": "/en/productLists",
             "queryParams": { "id": "3" },
-            "label": "自动驾驶应用"
+            "label": "For Autonomous Vehicle"
           }
         },
         {
           "link": {
-            "href": "/productLists",
+            "href": "/en/productLists",
             "queryParams": { "id": "5" },
-            "label": "光纤网络应用"
+            "label": "For Optical Network"
           }
         },
         {
          "link": {
-            "href": "/productLists",
+            "href": "/en/productLists",
             "queryParams": { "id": "6" },
-            "label": "生物医疗应用"
+            "label": "For Bio-Medical Equipments"
           }
         },
         {
           "link": {
-            "href": "/productLists",
+            "href": "/en/productLists",
             "queryParams": { "id": "8" },
-            "label": "光纤传感应用"
+            "label": "For Fiber Sensing"
           }
         },
         {
           "link": {
-            "label": "测试设备及其他",
-            "href": "/productLists",
+            "label": "Test Equipments & Others",
+            "href": "/en/productLists",
             "queryParams": { "id": "7" }
           }
-        }
-        ,
+        },
         {
           "active": true,
           "link": {
-            "classes": "inline-block px-10 py-1 bg-orange-500 text-white font-semibold rounded-full hover:bg-orange-600 hover:shadow-lg transition-all",
-            "label": "定制",
+            "classes": "",
+            "label": "Customize",
             "dialog": {
               "params": {
+                "title":"Customize",
                 "width": "800px",
-                "height": "750px",
+
                 "disableClose": true,
-                "disableActions": false
+                "disableActions": true
               },
               "data": [
 
@@ -71,7 +108,7 @@
                {
   "type": "dynamic-form",
   "fullWidth": false,
-  "spacer": "xl",
+  "spacer": "none",
   "containerClasses": "",
   "bg": {
     "classes": "",
@@ -81,21 +118,7 @@
       "alt": ""
     }
   },
-  "animate": {
-    "aos": {
-      "enable": true,
-      "animation": "fade-up",
-      "behaviour": {
-        "offset": 120,
-        "duration": 400,
-        "delay": 0,
-        "easing": "ease"
-      }
-    },
-    "gsap": {
-      "enable": false
-    }
-  },
+  "animate": false,
 
   "formClasses": "col-span-24 sm:col-span-12",
   "form": {
@@ -145,7 +168,7 @@
             "className": "col-span-1",
             "props": {
               "label": "Telephone",
-              "required": false
+              "required": true
             },
             "validation": {
               "messages": {
@@ -176,12 +199,12 @@
             "type": "input",
             "className": "col-span-1",
             "props": {
-              "label": "应用",
-              "required": true
+              "label": "Application",
+              "required": false
             },
             "validation": {
               "messages": {
-                "required": "Please enter 应用"
+                "required": "Please enter application"
               }
             }
           },
@@ -190,12 +213,12 @@
             "type": "input",
             "className": "col-span-1",
             "props": {
-              "label": "功能",
-              "required": true
+              "label": "Function",
+              "required": false
             },
             "validation": {
               "messages": {
-                "required": "Please enter 功能"
+                "required": "Please enter function"
               }
             }
           },
@@ -204,12 +227,12 @@
             "type": "input",
             "className": "col-span-1",
             "props": {
-              "label": "波长范围",
-              "required": true
+              "label": "Wavelength",
+              "required": false
             },
             "validation": {
               "messages": {
-                "required": "Please enter 波长范围"
+                "required": "Please enter wavelength"
               }
             }
           },
@@ -218,12 +241,12 @@
             "type": "input",
             "className": "col-span-1",
             "props": {
-              "label": "输出/输入功率",
-              "required": true
+              "label": "OutputPower",
+              "required": false
             },
             "validation": {
               "messages": {
-                "required": "Please enter 输出/输入功率"
+                "required": "Please enter outputPower"
               }
             }
           },
@@ -272,23 +295,21 @@
     },
 
 
-
-
     {
   "type": "custom-template",
   "isAPI": true,
-  "api": "/app-api/product2",
+  "api": "http://newapi.lightcomm.com/app-api/product2",
   "selectOptions": {
-    "tagTypes1": { "api": "/app-api/dict?parentId=0e28bab2-30fa-74b4-57d5-3a20ea7de51f" },
-    "tagTypes2": { "api": "/app-api/dict?parentId=28885453-ef00-7cfe-6d7b-3a20ea7f5e8a" },
-    "tagTypes3": { "api": "/app-api/dict?parentId=055efc21-13b3-ce7c-529a-3a212d5ffddf"},
-    "tagTypes4": { "api": "/app-api/dict?parentId=dcbe9d9e-bf11-972a-a504-3a21314ce912"}
+    "tagTypes1": { "api": "http://newapi.lightcomm.com/app-api/dict?parentId=0e28bab2-30fa-74b4-57d5-3a20ea7de51f" },
+    "tagTypes2": { "api": "http://newapi.lightcomm.com/app-api/dict?parentId=28885453-ef00-7cfe-6d7b-3a20ea7f5e8a" },
+    "tagTypes3": { "api": "http://newapi.lightcomm.com/app-api/dict?parentId=055efc21-13b3-ce7c-529a-3a212d5ffddf"},
+    "tagTypes4": { "api": "http://newapi.lightcomm.com/app-api/dict?parentId=dcbe9d9e-bf11-972a-a504-3a21314ce912"}
   },
-  "html":  "<div class=\"flex flex-wrap gap-8 p-4 items-center\">\n  <div class=\"flex items-center\">\n    <label class=\"text-sm text-gray-700 mr-3 whitespace-nowrap\">按产品：</label>\n    <select data-query-field=\"tagTypes1\" class=\"border border-gray-200 rounded-md px-3 py-2 text-sm outline-none hover:border-gray-300 focus:border-gray-300 transition-colors bg-white\">\n      <option value=\"\">全部</option>\n      {{#selectOptions.tagTypes1}}\n      <option value=\"{{name}}\">{{name}}</option>\n      {{/selectOptions.tagTypes1}}\n    </select>\n  </div>\n  <div class=\"flex items-center\">\n    <label class=\"text-sm text-gray-700 mr-3 whitespace-nowrap\">按波长：</label>\n    <select data-query-field=\"tagTypes2\" class=\"border border-gray-200 rounded-md px-3 py-2 text-sm outline-none hover:border-gray-300 focus:border-gray-300 transition-colors bg-white\">\n      <option value=\"\">全部</option>\n      {{#selectOptions.tagTypes2}}\n      <option value=\"{{name}}\">{{name}}</option>\n      {{/selectOptions.tagTypes2}}\n    </select>\n  </div>\n  <div class=\"flex items-center\">\n    <label class=\"text-sm text-gray-700 mr-3 whitespace-nowrap\">按功率：</label>\n    <select data-query-field=\"tagTypes3\" class=\"border border-gray-200 rounded-md px-3 py-2 text-sm outline-none hover:border-gray-300 focus:border-gray-300 transition-colors bg-white\">\n      <option value=\"\">全部</option>\n      {{#selectOptions.tagTypes3}}\n      <option value=\"{{name}}\">{{name}}</option>\n      {{/selectOptions.tagTypes3}}\n    </select>\n  </div>\n  <div class=\"flex items-center\">\n    <label class=\"text-sm text-gray-700 mr-3 whitespace-nowrap\">按保偏/非保偏：</label>\n    <select data-query-field=\"tagTypes4\" class=\"border border-gray-200 rounded-md px-3 py-2 text-sm outline-none hover:border-gray-300 focus:border-gray-300 transition-colors bg-white\">\n      <option value=\"\">全部</option>\n      {{#selectOptions.tagTypes4}}\n      <option value=\"{{name}}\">{{name}}</option>\n      {{/selectOptions.tagTypes4}}\n    </select>\n  </div>\n</div>\n                                        <div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3'>{{#rows}}<a data-action='previewPdf' data-url='http://newapi.lightcomm.com/erupt-api/file/download-attachment{{pdf}}' class='inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-white border border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-600 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 ease-out cursor-pointer relative' title='{{name}}'><span class='truncate'>{{name}}</span><style>a[title]:hover::after{content:attr(title);position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:8px;padding:10px 14px;background:#1f2937;color:white;font-size:15px;border-radius:10px;white-space:nowrap;box-shadow:0 5px 15px rgba(0,0,0,0.2);z-index:9999;pointer-events:none;}</style></a>{{/rows}}</div>"
+  "html":  "<div class=\"flex flex-wrap gap-4 p-4 items-center\">\n  <div class=\"flex items-center\">\n    <label class=\"text-sm text-gray-700 mr-3 whitespace-nowrap\">Choose By Function:</label>\n    <select data-query-field=\"tagTypes1\" class=\"border border-gray-200 rounded-md px-3 py-2 text-sm outline-none hover:border-gray-300 focus:border-gray-300 transition-colors bg-white\">\n      <option value=\"\">ALL</option>\n      {{#selectOptions.tagTypes1}}\n      <option value=\"{{name}}\">{{code}}</option>\n      {{/selectOptions.tagTypes1}}\n    </select>\n  </div>\n  <div class=\"flex items-center\">\n    <label class=\"text-sm text-gray-700 mr-3 whitespace-nowrap\">Choose By Wavelength:</label>\n    <select data-query-field=\"tagTypes2\" class=\"border border-gray-200 rounded-md px-3 py-2 text-sm outline-none hover:border-gray-300 focus:border-gray-300 transition-colors bg-white\">\n      <option value=\"\">ALL</option>\n      {{#selectOptions.tagTypes2}}\n      <option value=\"{{name}}\">{{code}}</option>\n      {{/selectOptions.tagTypes2}}\n    </select>\n  </div>\n  <div class=\"flex items-center\">\n    <label class=\"text-sm text-gray-700 mr-3 whitespace-nowrap\">Choose by Power:</label>\n    <select data-query-field=\"tagTypes3\" class=\"border border-gray-200 rounded-md px-3 py-2 text-sm outline-none hover:border-gray-300 focus:border-gray-300 transition-colors bg-white\">\n      <option value=\"\">ALL</option>\n      {{#selectOptions.tagTypes3}}\n      <option value=\"{{name}}\">{{code}}</option>\n      {{/selectOptions.tagTypes3}}\n    </select>\n  </div>\n  <div class=\"flex items-center\">\n    <label class=\"text-sm text-gray-700 mr-3 whitespace-nowrap\">PM or Non-PM:</label>\n    <select data-query-field=\"tagTypes4\" class=\"border border-gray-200 rounded-md px-3 py-2 text-sm outline-none hover:border-gray-300 focus:border-gray-300 transition-colors bg-white\">\n      <option value=\"\">ALL</option>\n      {{#selectOptions.tagTypes4}}\n      <option value=\"{{name}}\">{{code}}</option>\n      {{/selectOptions.tagTypes4}}\n    </select>\n  </div>\n</div>\n                                        <div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3  mb-6'>{{#rows}}<a data-action='previewPdf' data-url='http://newapi.lightcomm.com/erupt-api/file/download-attachment{{pdf}}' class='inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-white border border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-600 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 ease-out cursor-pointer relative' title='{{name}}'><span class='truncate'>{{name}}</span><style>a[title]:hover::after{content:attr(title);position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:8px;padding:10px 14px;background:#1f2937;color:white;font-size:15px;border-radius:10px;white-space:nowrap;box-shadow:0 5px 15px rgba(0,0,0,0.2);z-index:9999;pointer-events:none;}</style></a>{{/rows}}</div>"
 ,
   "json": null,
-  "animate": false
-}
+   "animate": false
+    }
 
   ]
 }

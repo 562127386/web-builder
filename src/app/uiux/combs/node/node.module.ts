@@ -34,7 +34,9 @@ const components = [
 ];
 @NgModule({
   declarations: [...components],
-  imports: [ShareModule, WidgetsModule, FormModule, ShowcaseModule, QuillModule.forRoot()],
+  imports: [ShareModule, WidgetsModule, FormModule, ShowcaseModule//, QuillModule.forRoot() 编辑器比较大 暂时没用
+
+  ],
   exports: [
     ArticleComponent,
     QuestionComponent,

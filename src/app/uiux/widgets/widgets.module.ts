@@ -140,14 +140,9 @@ const components = [
 @NgModule({
   declarations: [...components, SafeUrlPipe, DataSourcePipe, SafeHtmlPipe, LayoutToolbarComponent],
   imports: [
-    MatBadgeModule,
     ShareModule,
     LightgalleryModule,
     CdkTableModule,
-    MatNativeDateModule,
-    MatCheckboxModule,
-    MatSortModule,
-    ClipboardModule,
     NgOptimizedImage,
   ],
   exports: [...components, SafeUrlPipe, DataSourcePipe, SafeHtmlPipe],

@@ -1,45 +1,250 @@
-.app-loader,
-.app-loader:after {
-  border-radius: 50%;
-  width: 10em;
-  height: 10em;
-  z-index: 999;
+$neon-blue: #00f5ff;
+$neon-purple: #bf00ff;
+$neon-pink: #ff00aa;
+$neon-green: #00ff88;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0a0a0f;
 }
 
-.app-loader {
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(0, 245, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(191, 0, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 20%, rgba(255, 0, 170, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%);
+}
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 60px;
   position: fixed;
-  top: calc(50vh - 50px);
-  left: calc(50% - 5em);
-  font-size: 7px;
-  text-indent: -9999em;
-  border-top: 1em solid var(--mat-sys-primary);
-  border-right: 1em solid var(--mat-sys-primary);
-  border-bottom: 1em solid var(--mat-sys-primary);
-  border-left: 1em solid rgba(250, 250, 250, 0.85);
-  transform: translateZ(0);
-  animation: load8 1.1s infinite linear;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
 }
 
-@-webkit-keyframes load8 {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
+.loader-grid {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 8px;
+}
 
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+.loader-cell {
+  background: rgba(0, 245, 255, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 245, 255, 0.2);
+  animation: cellPulse 2s ease-in-out infinite;
+  box-shadow:
+    inset 0 0 10px rgba(0, 245, 255, 0.1),
+    0 0 20px rgba(0, 245, 255, 0);
+
+  &:nth-child(1) { animation-delay: 0s; }
+  &:nth-child(2) { animation-delay: 0.1s; }
+  &:nth-child(3) { animation-delay: 0.2s; }
+  &:nth-child(4) { animation-delay: 0.3s; }
+  &:nth-child(5) {
+    animation-delay: 0.4s;
+    background: rgba(0, 245, 255, 0.2);
+    border-color: rgba(0, 245, 255, 0.4);
+  }
+  &:nth-child(6) { animation-delay: 0.5s; }
+  &:nth-child(7) { animation-delay: 0.6s; }
+  &:nth-child(8) { animation-delay: 0.7s; }
+  &:nth-child(9) { animation-delay: 0.8s; }
+}
+
+.loader-center-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, $neon-blue, $neon-purple);
+  animation: centerPulse 1.5s ease-in-out infinite;
+  box-shadow:
+    0 0 30px $neon-blue,
+    0 0 60px $neon-purple,
+    0 0 90px rgba(0, 245, 255, 0.3);
+}
+
+.loader-center-ring::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: #0a0a0f;
+}
+
+.loader-center-ring::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, $neon-blue, $neon-purple);
+  animation: centerRotate 3s linear infinite;
+}
+
+.loader-scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, $neon-blue, transparent);
+  animation: scanLine 2s linear infinite;
+  opacity: 0.5;
+}
+
+.loader-text {
+  font-family: 'Orbitron', 'Inter', system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  animation: textGlow 2s ease-in-out infinite;
+  text-shadow:
+    0 0 10px $neon-blue,
+    0 0 20px $neon-blue,
+    0 0 40px $neon-purple;
+}
+
+.loader-subtext {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  letter-spacing: 2px;
+  animation: subtextFade 2s ease-in-out infinite;
+}
+
+.loader-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.loader-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: $neon-blue;
+  animation: particleFloat 3s ease-in-out infinite;
+
+  @for $i from 1 through 8 {
+    &:nth-child(#{$i}) {
+      left: #{10 + $i * 10}%;
+      top: #{20 + ($i % 3) * 20}%;
+      animation-delay: #{$i * 0.3}s;
+      background: if($i % 2 == 0, $neon-purple, $neon-blue);
+    }
   }
 }
 
-@keyframes load8 {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
+@keyframes cellPulse {
+  0%, 100% {
+    background: rgba(0, 245, 255, 0.1);
+    border-color: rgba(0, 245, 255, 0.2);
+    box-shadow:
+      inset 0 0 10px rgba(0, 245, 255, 0.1),
+      0 0 20px rgba(0, 245, 255, 0);
   }
+  50% {
+    background: rgba(0, 245, 255, 0.3);
+    border-color: rgba(0, 245, 255, 0.6);
+    box-shadow:
+      inset 0 0 20px rgba(0, 245, 255, 0.3),
+      0 0 40px rgba(0, 245, 255, 0.2);
+  }
+}
 
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+@keyframes centerPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow:
+      0 0 30px $neon-blue,
+      0 0 60px $neon-purple,
+      0 0 90px rgba(0, 245, 255, 0.3);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow:
+      0 0 50px $neon-blue,
+      0 0 100px $neon-purple,
+      0 0 150px rgba(0, 245, 255, 0.5);
+  }
+}
+
+@keyframes centerRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes scanLine {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(400%); }
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow:
+      0 0 10px $neon-blue,
+      0 0 20px $neon-blue,
+      0 0 40px $neon-purple;
+  }
+  50% {
+    text-shadow:
+      0 0 20px $neon-blue,
+      0 0 40px $neon-blue,
+      0 0 80px $neon-purple;
+  }
+}
+
+@keyframes subtextFade {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-40px) translateX(-5px);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translateY(-20px) translateX(-10px);
+    opacity: 0.8;
   }
 }

@@ -12,7 +12,7 @@ import { NodeService } from '@core/service/node.service';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 import { of, ReplaySubject } from 'rxjs';
 import { catchError, take } from 'rxjs/operators';
-import * as mdi from '@mdi/js';
+//import * as mdi from '@mdi/js';  图标太多体积太大
 
 @Component({
   selector: 'app-mat-select',
@@ -52,17 +52,18 @@ export class MatSelectComponent extends FieldType<FieldTypeConfig> implements On
   getOptionsFromApi(): void {
     const { api, type, nocache, options = [] } = this.fieldConfig.props;
     if (type === 'icon') {
-      const icons = Object.keys(mdi)
-        .filter(key => key.startsWith('mdi'))
-        .map(key => {
-          const name = key.replace('mdi', '');
-          const hyphenated = name.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-          return {
-            label: `${hyphenated}`,
-            value: `${hyphenated}`,
-          };
-        });
-      this.setOptions(icons);
+      //图标太多体积太大 下面先注释
+      // const icons = Object.keys(mdi)
+      //   .filter(key => key.startsWith('mdi'))
+      //   .map(key => {
+      //     const name = key.replace('mdi', '');
+      //     const hyphenated = name.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+      //     return {
+      //       label: `${hyphenated}`,
+      //       value: `${hyphenated}`,
+      //     };
+      //   });
+      // this.setOptions(icons);
     } else {
       this.nodeService
         .fetch(api || '', nocache ? 'noCache=true' : '')

@@ -1,4 +1,5 @@
 {
+  "title":"深圳朗光科技有限公司",
   "type": "page",
   "config": {
     "title": "搜索",
@@ -22,7 +23,7 @@
           }
         }
       },
-      "api": "/app-api/search?MaxResultCount=12",
+      "api": "http://newapi.lightcomm.com/app-api/search?MaxResultCount=12",
       "label": {
         "clear": "清除",
         "filter": "筛选",

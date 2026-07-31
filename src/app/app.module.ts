@@ -36,6 +36,7 @@ import {
   NOTIFY_CONTENT,
 } from '@core/token/token-providers';
 import { PageModule } from '@modules/page/page.module';
+import { SkeletonComponent } from '@uiux/widgets/skeleton/skeleton.component';
 import {
   apiUrlFactory,
   brandingFactory,
@@ -53,7 +54,7 @@ import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { environment } from 'src/environments/environment';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SkeletonComponent],
   bootstrap: [AppComponent],
   imports: [
     AppRoutingModule,

@@ -52,8 +52,9 @@ export class FullCalendarComponent extends BaseComponent implements OnInit {
     }
   }
 
-  initCalendar(): void {
-    this.options = Object.assign(this.calendarState.default, this.content.calendar.options, {
+  async initCalendar(): Promise<void> {
+    const defaultOptions = await this.calendarState.initCalendar();
+    this.options = Object.assign(defaultOptions, this.content.calendar.options, {
       datesSet: this.handleDates.bind(this),
     });
     this.theme = this.content?.calendar?.theme || {};
@@ -64,14 +65,14 @@ export class FullCalendarComponent extends BaseComponent implements OnInit {
     this.getEvents(value);
   }
 
-  getEvents(options?: any): void {
+  async getEvents(options?: any): Promise<void> {
     if (options?.date) {
       options.date = formatDate(options.date, 'yyyy-MM-dd', 'en-US');
     }
     const state = this.getParamsState(this.form.value, options);
     const params = this.getApiParams(state);
     const api = this.content?.calendar?.api ?? '';
-    this.initCalendar();
+    await this.initCalendar();
     if (this.content.calendar?.options?.events) {
       this.options.events = this.content.calendar.options.events;
       this.initEvents();

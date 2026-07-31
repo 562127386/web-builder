@@ -14,7 +14,8 @@ import { ScreenState } from '../../state/screen/ScreenState';
 
 import { ContentState } from '@core/state/ContentState';
 import { BRANDING } from '@core/token/token-providers';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, fromEvent } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import type { IBranding } from '@core/interface/branding/IBranding';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 @Component({
@@ -53,20 +54,65 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     if (this.screenService.isPlatformBrowser()) {
-      this.screenState.scroll$.pipe(takeUntilDestroyed(this.destoryRef)).subscribe(() => {
-        if (this.isBuilderMode) {
-          return;
-        }
-        if (this.menu) {
-          this.sticky.set(this.screenService.isElementOutTopViewport(this.menu.nativeElement));
-        }
-        this.listenSticky(this.sticky());
-        if (this.headerMode?.transparent) {
-          this.windowScroll();
-        }
-      });
+      const scrollContainer = this.getScrollContainer();
+      fromEvent(scrollContainer, 'scroll')
+        .pipe(debounceTime(100), takeUntilDestroyed(this.destoryRef))
+        .subscribe(() => {
+          this.handleScroll();
+        });
+      this.handleScroll();
       this.initBanner();
     }
+  }
+
+  private getScrollContainer(): HTMLElement | Window {
+    const drawerContent = this.doc.querySelector('.mat-drawer-content');
+    if (drawerContent) {
+      return drawerContent as HTMLElement;
+    }
+    const mainContainer = this.doc.getElementById('main-container');
+    if (mainContainer) {
+      return mainContainer;
+    }
+    return window;
+  }
+
+  private handleScroll(): void {
+    if (this.isBuilderMode) {
+      return;
+    }
+    let shouldSticky = this.isNearBottom();
+    if (this.menu) {
+      const isOutTop = this.screenService.isElementOutTopViewport(this.menu.nativeElement);
+      shouldSticky = shouldSticky || isOutTop;
+    }
+    this.sticky.set(shouldSticky);
+    this.listenSticky(this.sticky());
+    if (this.headerMode?.transparent) {
+      this.windowScroll();
+    }
+  }
+
+  isNearBottom(): boolean {
+    const scrollContainer = this.getScrollContainer();
+    let scrollTop: number;
+    let containerHeight: number;
+    let contentHeight: number;
+
+    if ('innerHeight' in scrollContainer) {
+      scrollTop = scrollContainer.scrollY || this.doc.documentElement.scrollTop;
+      containerHeight = scrollContainer.innerHeight || this.doc.documentElement.clientHeight;
+      contentHeight = Math.max(
+        this.doc.body.scrollHeight,
+        this.doc.documentElement.scrollHeight
+      );
+    } else {
+      scrollTop = scrollContainer.scrollTop;
+      containerHeight = scrollContainer.clientHeight;
+      contentHeight = scrollContainer.scrollHeight;
+    }
+
+    return scrollTop + containerHeight >= contentHeight - 100;
   }
 
   listenSticky(state: boolean): void {

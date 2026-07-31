@@ -1,43 +1,29 @@
 {
   "status": true,
   "message": "",
-  "title": "home",
+  "title": "Lightcomm-Home",
   "uuid": "2e78f5f4-75d5-48c8-9867-52316ab289d5",
   "nid": "440",
   "vid": "2733",
   "changed": "1739003158",
   "langcode": "en",
-  "label": "home",
+  "label": "Home",
   "body": [
     {
-      "fullWidth": false,
+      "fullWidth": true,
       "spacer": "none",
       "containerClasses": "!overflow-visible",
       "bg": {
         "classes": "bg-center overlay overlay-80",
         "overlay": "",
         "img": {
-          "src": "/assets/images/hero/bg-pattern-hero.png",
+          "src": "",
           "alt": "",
           "classes": "bg-cover",
-          "mobile": "/assets/images/hero/bg-pattern-hero.png"
+          "mobile": ""
         }
       },
-      "animate": {
-        "aos": {
-          "enable": true,
-          "animation": "zoom-out-up",
-          "behaviour": {
-            "offset": 120,
-            "duration": 400,
-            "delay": 0,
-            "easing": "ease"
-          }
-        },
-        "gsap": {
-          "enable": false
-        }
-      },
+      "animate":false,
       "type": "hero-1v2",
       "bgClasses": "bg-center overlay overlay-80",
       "overlay": "",
@@ -54,88 +40,69 @@
         "elements": [
           {
             "type": "img",
-            "src": "/assets/images/lg/hd1.png",
+            "src": "/assets/images/lg/hd5.png",
             "style": {
               "opacity": "",
               "borderRadius": "",
               "boxShadow": "",
-              "aspectRatio": "2 / 1",
+
               "objectFit": "fill"
             },
             "classes": "object-cover",
-            "width": 1800,
-            "height": 500
+       "width": 2800,
+            "height": 600
           },
           {
             "type": "img",
-            "src": "/assets/images/lg/hd2.png",
+            "src": "/assets/images/lg/hd6.png",
             "style": {
               "opacity": "",
               "borderRadius": "",
               "boxShadow": "",
-              "aspectRatio": "2 / 1",
+
               "objectFit": "fill"
             },
             "classes": "object-cover",
-            "width": 1800,
-            "height": 500
-          }
-        ]
-      },
-      "left": {
-        "params": {
-          "navigation": false,
-          "slidesPerView": 1,
-          "spaceBetween": 0,
-          "pagination": false
-        },
-        "classes": "",
-        "elements": [
-          {
-            "type": "text",
-            "title": {
-              "label": "朗光科技 what？",
-              "classes": "mat-headline-3"
-            },
-            "classes": "text-white",
-            "body": "Storybook是一个开源的前端工具，用于开发、测试和文档化UI组件。它提供了一个独立的环境，开发人员可以在其中构建和展示单个UI组件，而无需依赖于整个应用程序的上下文。",
-            "actionsAlign": "start",
-            "actions": [
-              {
-                "href": "#",
-                "mode": "raised",
-                "label": "查看更多",
-                "pill": true,
-                "type": "btn",
-                "classes": "hover:bg-primary/10 hover:scale-105 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
-              }
-            ]
+       "width": 2800,
+            "height": 600
           },
           {
-            "type": "text",
-            "title": {
-              "label": "组件驱动开发",
-              "classes": "mat-headline-3"
+            "type": "img",
+            "src": "/assets/images/lg/hd7.png",
+            "style": {
+              "opacity": "",
+              "borderRadius": "",
+              "boxShadow": "",
+
+              "objectFit": "fill"
             },
-            "classes": "text-white",
-            "body": "Storybook采用了组件驱动开发的方法，即将UI组件作为开发的核心单元。开发人员可以在Storybook中为每个UI组件创建\"stories\"，描述组件在不同状态和交互方式下的行为和外观。这种方法能够提高组件的可重用性和可测试性。",
-            "actionsAlign": "start",
-            "actions": [
-              {
-                "href": "#",
-                "mode": "raised",
-                "label": "查看更多",
-                "pill": true,
-                "type": "btn"
-              }
-            ]
+            "classes": "object-cover",
+       "width": 2800,
+            "height": 600
+          },
+          {
+            "type": "img",
+            "src": "/assets/images/lg/hd8.png",
+            "style": {
+              "opacity": "",
+              "borderRadius": "",
+              "boxShadow": "",
+
+              "objectFit": "fill"
+            },
+            "classes": "object-cover",
+            "width": 2800,
+            "height": 600
           }
         ]
       }
     },
+
+
+
     {
       "fullWidth": false,
-      "spacer": "xl",
+      "spacer": "none",
       "containerClasses": "",
       "bg": {
         "classes": "",
@@ -145,174 +112,160 @@
           "alt": ""
         }
       },
-      "animate": {
-        "aos": {
-          "enable": true,
-          "animation": "zoom-out-up",
-          "behaviour": {
-            "offset": 120,
-            "duration": 400,
-            "delay": 0,
-            "easing": "ease"
-          }
-        },
-        "gsap": {
-          "enable": false
-        }
-      },
+      "animate": false,
       "type": "showcase-2v1",
       "row": 4,
       "classes": "",
       "text": {
         "title": {
-          "label": "<p style=\"display: inline-block; margin-bottom: 0px;\">产品中心</p>",
+          "label": "<p style=\"display: inline-block; margin-bottom: 0px;\">Products</p>",
           "style": "style-v1",
           "classes": "mat-headline-3 bold"
         },
         "classes": "text-center",
-        "body": "<p style=\"display: inline-block; margin-bottom: 0px;\">Products</p>"
+        "body": "<p style=\"display: inline-block; margin-bottom: 0px;\">产品中心</p>"
       },
       "elements": [
         {
           "type": "card-1v1",
           "link": {
-            "href": "/productLists",
+            "href": "/en/productLists",
             "queryParams": {
               "id": "4"
             },
-            "label": "工业激光应用gyjgyy"
+            "label": "For Industrial Laser"
           },
           "user": "朗光",
-          "time": "2022/09/27",
+          "time": "For Industrial Laser",
           "feature": {
             "fullIcon": "fullscreen",
             "openIcon": "open_in_new",
-            "link": "/productLists?id=4",
+            "link": "/en/productLists?id=4",
             "ratios": "media-4-3",
             "img": {
-              "href": "/productLists?id=4",
+              "href": "/en/productLists?id=4",
               "classes": "object-fit",
               "src": "/assets/images/lg/cp1.jpeg",
               "alt": "alt"
             }
           },
-          "moreLabel": "详情"
+          "moreLabel": "Detail"
         },
         {
           "type": "card-1v1",
           "link": {
-            "href": "/productLists",
+            "href": "/en/productLists",
             "queryParams": {
               "id": "3"
             },
-            "label": "自动驾驶应用"
+            "label": "For Autonomous Vehicle"
           },
           "user": "朗光",
-          "time": "2022/09/27",
+          "time": "For Autonomous Vehicle",
           "feature": {
             "fullIcon": "fullscreen",
             "openIcon": "open_in_new",
-            "link": "/productLists?id=3",
+            "link": "/en/productLists?id=3",
             "ratios": "media-4-3",
             "img": {
-              "href": "/productLists?id=3",
+              "href": "/en/productLists?id=3",
               "classes": "object-fit",
               "src": "/assets/images/lg/cp2.jpeg",
               "alt": "alt"
             }
           },
-          "moreLabel": "详情"
+          "moreLabel": "Detail"
         },
         {
           "type": "card-1v1",
           "link": {
-            "href": "/productLists",
+            "href": "/en/productLists",
             "queryParams": {
               "id": "5"
             },
-            "label": "光纤网络应用"
+            "label": "For Optical Network"
           },
           "user": "朗光",
-          "time": "2022/09/27",
+          "time": "For Optical Network",
           "feature": {
             "fullIcon": "fullscreen",
             "openIcon": "open_in_new",
-            "link": "/productLists?id=5",
+            "link": "/en/productLists?id=5",
             "ratios": "media-4-3",
             "img": {
-              "href": "/productLists?id=5",
+              "href": "/en/productLists?id=5",
               "classes": "object-fit",
               "src": "/assets/images/lg/cp3.jpeg",
               "alt": "alt"
             }
           },
-          "moreLabel": "详情"
+          "moreLabel": "Detail"
         },
         {
           "type": "card-1v1",
           "link": {
-            "href": "/productLists",
+            "href": "/en/productLists",
             "queryParams": {
               "id": "6"
             },
-            "label": "生物医疗应用"
+            "label": "For Bio-Medical Equipments"
           },
           "user": "朗光",
-          "time": "2022/09/27",
+          "time": "For Bio-Medical Equipments",
           "feature": {
             "fullIcon": "fullscreen",
             "openIcon": "open_in_new",
-            "link": "/productLists?id=6",
+            "link": "/en/productLists?id=6",
             "ratios": "media-4-3",
             "img": {
-              "href": "/productLists?id=6",
+              "href": "/en/productLists?id=6",
               "classes": "object-fit",
               "src": "/assets/images/lg/cp4.jpeg",
               "alt": "alt"
             }
           },
-          "moreLabel": "详情"
+          "moreLabel": "Detail"
         },
         {
           "type": "card-1v1",
           "link": {
-            "href": "/productLists",
+            "href": "/en/productLists",
             "queryParams": {
               "id": "8"
             },
-            "label": "光纤传感应用"
+            "label": "For Fiber Sensing"
           },
           "user": "朗光",
-          "time": "2022/09/27",
+          "time": "For Fiber Sensing",
           "feature": {
             "fullIcon": "fullscreen",
             "openIcon": "open_in_new",
-            "link": "/productLists?id=8",
+            "link": "/en/productLists?id=8",
             "ratios": "media-4-3",
             "img": {
-              "href": "/productLists?id=8",
+              "href": "/en/productLists?id=8",
               "classes": "object-fit",
               "src": "/assets/images/lg/cp5.jpeg",
               "alt": "alt"
             }
           },
-          "moreLabel": "详情"
+          "moreLabel": "Detail"
         },
         {
           "link": {
-            "label": "测试设备及其他",
-            "href": "/productLists",
+            "label": "Test Equipments & Others",
+            "href": "/en/productLists",
             "queryParams": {
               "id": "7"
             }
           },
           "user": "朗光",
-          "time": "2022/09/27",
-          "moreLabel": "详情",
+          "time": "Test Equipments & Others",
+          "moreLabel": "Detail",
           "feature": {
-            "link": "/productLists?id=7",
+            "link": "/en/productLists?id=7",
             "img": {
-              "href": "/productLists?id=7",
+              "href": "/en/productLists?id=7",
               "src": "/assets/images/lg/cp6.jpeg",
               "classes": "object-fit",
               "alt": "alt"
@@ -341,21 +294,24 @@
         }
       ]
     },
-    {
-      "extra": {
-        "uuid": "29882d15-702c-4300-bb69-d78e5aeb07d3",
-        "id": "200",
-        "type": "json"
-      },
-      "fullWidth": false,
-      "spacer": "xl",
-      "bgClasses": "bg-white bg-fill-width",
-      "overlay": "",
-      "containerClasses": "",
-      "animate": {
+{
+  "fullWidth": false,
+  "spacer": "none",
+  "containerClasses": "",
+  "bg": {
+    "classes": "",
+    "overlay": "",
+    "img": {
+      "src": "",
+      "alt": ""
+    }
+  },
+  "style": "style-v4",
+  "classes": "mat-headline-3 bold",
+  "animate": {
         "aos": {
           "enable": true,
-          "animation": "zoom-out-up",
+          "animation": "fade-up",
           "behaviour": {
             "offset": 120,
             "duration": 400,
@@ -367,191 +323,48 @@
           "enable": false
         }
       },
-      "id": "",
+  "type": "title",
+  "label": "News"
+},
+    {
+      "fullWidth": false,
+      "spacer": "xs",
+      "containerClasses": "",
       "bg": {
+        "classes": "bg- ",
+        "overlay": "",
         "img": {
           "src": "",
           "alt": ""
-        },
-        "classes": "bg-white bg-fill-width",
-        "overlay": ""
+        }
       },
-      "title": {
-        "style": "style-v5",
-        "classes": "mat-display-3",
-        "typed": {
-          "enable": false,
-          "config": {
-            "typeSpeed": 120
-          },
-          "strings": [
-            {
-              "label": "web builder"
-            }
-          ]
-        },
-        "label": "新闻中心"
-      },
-      "swiper": {
-        "params": {
-          "direction": "horizontal",
-          "breakpoints": [
-            {
-              "slidesPerView": 3,
-              "spaceBetween": 20
-            },
-            {
-              "slidesPerView": 4,
-              "spaceBetween": 20
-            }
-          ],
-          "effect": "slide",
-          "speed": 300,
-          "pagination": false,
-          "navigation": false,
-          "centeredSlides": false,
-          "loop": false,
-          "autoplay": false,
-          "mousewheel": false,
-          "slidesPerView": 1.2,
-          "spaceBetween": 10
-        },
-        "classes": "p-bottom",
-        "elements": [
-          {
-            "type": "custom-template",
-            "isAPI": true,
-            "api": "/app-api/product2?id=1",
-            "html": "<div class=\"card-no-shadow\">\n    {{#rows}}\n    <article\n        class=\"bg-white hover:bg-gray-50 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group relative\">\n        <div class=\"w-full h-48 sm:h-56 relative overflow-hidden\">\n            <a href=\"/newDetail?id={{id}}\" class=\"block hover:brightness-95 transition-all duration-200\">\n                {{#img}}\n                <img\n          src=\"http://newapi.lightcomm.com/erupt-api/file/download-attachment{{pdf}}\"\n          alt=\"{{name}}\"\n          class=\"w-full h-full object-cover transition-transform duration-300 group-hover:scale-105\"\n        />\n        {{/img}}\n        {{^img}}\n                <img\n          src=\"http://newapi.lightcomm.com/erupt-api/file/download-attachment{{pdf}}\"\n          alt=\"{{name}}\"\n          class=\"w-full h-full object-cover transition-transform duration-300 group-hover:scale-105\"\n        />\n        {{/img}}\n            </a>\n        </div>\n\n        <div class=\"p-6 flex flex-col justify-between\">\n           \n            <h3 class=\"mb-3 relative z-10\">\n                <a href=\"/newDetail?id={{id}}\"\n                    class=\"text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200 line-clamp-2\">\n                    {{name}}\n                </a>\n            </h3>\n\n            <!-- 内容区域背景过渡 -->\n            <div class=\"relative z-10\"> <a href=\"/newDetail?id={{id}}\" class=\"group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600\">\n      了解更多\n\n      <span aria-hidden=\"true\" class=\"block transition-all group-hover:ms-0.5 rtl:rotate-180\">\n        &rarr;\n      </span>\n    </a>\n            </div>\n        </div>\n    </article>\n    {{/rows}}\n\n</div>",
-            "json": null,
-            "animate": false
-          },
-          {
-            "type": "card",
-            "link": {
-              "href": "#",
-              "label": "知乎社区问答平台"
-            },
-            "classes": "card-no-shadow",
-            "body": "面向广大用户提供知识分享和交流的问答社区，具有简洁清晰的界面设计和消息通知系统，支持多种方式的分享和交流。",
-            "feature": {
-              "fullIcon": "fullscreen",
-              "openIcon": "open_in_new",
-              "link": "#",
-              "ratios": "media-4-3",
-              "img": {
-                "classes": "object-fit",
-                "src": "/assets/images/showcase/5.jpg",
-                "alt": "alt"
-              }
-            }
-          },
-          {
-            "type": "card",
-            "link": {
-              "href": "#",
-              "label": "Shopify电商平台"
-            },
-            "classes": "card-no-shadow",
-            "body": "提供全面电商解决方案的科技公司的官方网站，拥有富有创意的设计和易于使用的交互功能，让用户轻松创建自己的电商网站并实现商业目标。",
-            "feature": {
-              "fullIcon": "fullscreen",
-              "openIcon": "open_in_new",
-              "link": "#",
-              "ratios": "media-4-3",
-              "img": {
-                "classes": "object-fit",
-                "src": "/assets/images/showcase/6.jpg",
-                "alt": "alt"
-              }
-            }
-          },
-          {
-            "type": "card",
-            "classes": "card-no-shadow",
-            "link": {
-              "href": "#",
-              "label": "酷狗音乐web版"
-            },
-            "body": "支持在线听歌的音乐网站，提供海量音乐资源，拥有个性化的推荐和电台功能。",
-            "moreLabel": "Learn More",
-            "feature": {
-              "fullIcon": "fullscreen",
-              "openIcon": "open_in_new",
-              "link": "#",
-              "ratios": "media-4-3",
-              "img": {
-                "classes": "object-fit",
-                "src": "/assets/images/showcase/1.jpg",
-                "alt": "alt"
-              }
-            }
-          },
-          {
-            "type": "card",
-            "link": {
-              "href": "#",
-              "label": "全职高手小说官网"
-            },
-            "classes": "card-no-shadow",
-            "body": "基于网络文学改编的小说官网，为读者提供轻松愉悦的用户界面和舒适的阅读体验。",
-            "feature": {
-              "fullIcon": "fullscreen",
-              "openIcon": "open_in_new",
-              "link": "#",
-              "ratios": "media-4-3",
-              "img": {
-                "classes": "object-fit",
-                "src": "/assets/images/showcase/2.jpg",
-                "alt": "alt"
-              }
-            }
-          },
-          {
-            "type": "card",
-            "link": {
-              "href": "#",
-              "label": "匠人联盟电商平台"
-            },
-            "classes": "card-no-shadow",
-            "body": "面向手工艺爱好者的电商平台，提供独立设计师的手工作品和教程，让用户可以轻松地DIY定制自己的物品。",
-            "feature": {
-              "fullIcon": "fullscreen",
-              "openIcon": "open_in_new",
-              "link": "#",
-              "ratios": "media-4-3",
-              "img": {
-                "classes": "object-fit",
-                "src": "/assets/images/showcase/3.jpg",
-                "alt": "alt"
-              }
-            }
-          },
-          {
-            "type": "card",
-            "link": {
-              "href": "#",
-              "label": "美之味食品官网"
-            },
-            "classes": "card-no-shadow",
-            "body": "为用户提供极致美食品味体验的食品官网，展现诱人的图片和独特的设计，吸引用户的注意力并增加销售。",
-            "feature": {
-              "fullIcon": "fullscreen",
-              "openIcon": "open_in_new",
-              "link": "#",
-              "ratios": "media-4-3",
-              "img": {
-                "classes": "object-fit",
-                "src": "/assets/images/showcase/4.jpg",
-                "alt": "alt"
-              }
-            }
+      "animate": {
+        "aos": {
+          "enable": true,
+          "animation": "fade-up",
+          "behaviour": {
+            "offset": 120,
+            "duration": 400,
+            "delay": 0,
+            "easing": "ease"
           }
-        ]
+        },
+        "gsap": {
+          "enable": false
+        }
       },
-      "type": "carousel-1v2",
-      "classes": ""
+      "bgClasses": "bg- ",
+      "overlay": "",
+      "id": "",
+      "type": "custom-template",
+      "isAPI": true,
+      "api": "http://newapi.lightcomm.com/app-api/en/product2page?id=1&MaxResultCount=3",
+      "html": "<div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6\">\n    {{#rows}}\n    <article\n        class=\"bg-white hover:bg-gray-50 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group relative\">\n        <div class=\"w-full h-48 sm:h-56 relative overflow-hidden\">\n            <a href=\"/en/newDetail?id={{id}}\" class=\"block hover:brightness-95 transition-all duration-200\">\n                {{#img}}\n                <img\n          src=\"http://newapi.lightcomm.com/erupt-api/file/download-attachment{{pdf}}\"\n          alt=\"{{name}}\"\n          class=\"w-full h-full object-cover transition-transform duration-300 group-hover:scale-105\"\n        />\n        {{/img}}\n        {{^img}}\n                <img\n          src=\"http://newapi.lightcomm.com/erupt-api/file/download-attachment{{pdf}}\"\n          alt=\"{{name}}\"\n          class=\"w-full h-full object-cover transition-transform duration-300 group-hover:scale-105\"\n        />\n        {{/img}}\n            </a>\n        </div>\n\n        <div class=\"p-4 flex flex-col justify-between\">\n           \n            <h3 class=\"mb-3 relative z-10\">\n                <a href=\"/en/newDetail?id={{id}}\"\n                    class=\"font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200 line-clamp-2\">\n                    {{name}}\n                </a>\n            </h3>\n\n            <!-- 内容区域背景过渡 -->\n            <div class=\"relative z-10\">\n                <p class=\"text-gray-600 line-clamp-3 mb-4\">\n                    {{description}}\n                </p>\n               <a href=\"/en/newDetail?id={{id}}\" class=\"group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600\">\n      More\n\n      <span aria-hidden=\"true\" class=\"block transition-all group-hover:ms-0.5 rtl:rotate-180\">\n        &rarr;\n      </span>\n    </a>\n            </div>\n        </div>\n    </article>\n    {{/rows}}\n\n</div>",
+      "json": []
     },
+
+
+
     {
       "animate": {
         "aos": {
@@ -571,7 +384,7 @@
       "type": "showcase-1v3",
       "text": {
         "title": {
-          "label": "<p style=\"display: inline-block; margin-bottom: 0px;\">关于我们</p>",
+          "label": "<p style=\"display: inline-block; margin-bottom: 0px;\">About Us</p>",
           "style": "style-v1",
           "classes": "mat-headline-3"
         }
@@ -579,7 +392,7 @@
       "spacer": "md",
       "classes": "text-white",
       "bg": {
-        "classes": " overlay overlay-80",
+        "classes": "overlay overlay-80",
         "img": {
           "hostClasses": "",
           "src": "/assets/images/showcase/8.jpg",
@@ -589,64 +402,80 @@
       "elements": [
         {
           "type": "text",
-          "spacer": "none",
+          "spacer": "xs",
           "style": {
             "margin": "0 auto",
             "text-align": "center",
             "width": "1200px"
           },
-          "body": "<p style=\"display: inline-block; margin-bottom: 0px;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;深圳朗光科技有限公司由清华大学光电子博士、国际光纤光学专家岳超瑜博士创办于2001年，从事新型电子信息产业光电器件和设备的研究开发、生产和销售，经过十几年的经营发展，已经成为在光电器件领域拥有很高知名度，在多项光电子器件关键技术保持先发优势，部分产品属国内首创、国际前列地位的集团化优势企业，特别是光耦合器、高功率光纤合束器等高功率产品的技术和产能世界领先，已经取代了进口产品，实现了国产化和产业化。 朗光科技的产品和研发课题涵盖了光纤传输各个重点领域，全部在《国家重点扶持的高新技术领域》目录中，其科技含量和发展潜力获得了国家、省市各部委以及社会机构的广泛认可，获得政府资助成立的“高功率光器件研发实验室”正与高校、中科院研究所联合参与国家重点课题攻关。</p>",
+          "body": "<p style=\"display: inline-block; margin-bottom: 0px;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Lightcomm Technology Co., Ltd. was founded in 2001 by Dr. Yue Chao-yu, a doctor of optoelectronics from Tsinghua University and an international fiber optics expert. It is engaged in the research, development, production and sales of optoelectronic devices and equipment in the new electronic information industry. After more than ten years of business development, it has become a well-known company in the field of optoelectronic devices. In a number of key technologies of optoelectronic devices to maintain the first-mover advantage, some of the products are domestic initiative, the international forefront position of the group of advantages, especially optical coupler, high-power fiber bundler and other high-power products technology and production capacity of the world's leading, has replaced the imported products, to achieve localization and industrialization.</p>",
           "actionsAlign": "center center",
           "actions": [
-            {
-              "type": "btn-video",
-              "color": "primary",
-              "video": {
-                "type": "video",
-                "options": {
-                  "controls": true,
-                  "aspectRatio": "16:9",
-                  "poster": "/assets/video/poster01.png",
-                  "sources": [
-                    {
-                      "src": "/assets/video/storybook.mp4",
-                      "type": "video/mp4"
-                    }
-                  ]
-                }
-              }
-            }
+
           ]
         }
       ]
     },
-    {
-      "type": "carousel-2v2",
-      "id": "",
-      "spacer": "xl",
-      "bg": {
-        "classes": " bg-shadow"
-      },
-      "classes": "",
-      "swiper": {
-        "params": {
-          "slidesPerView": 1.2,
-          "pagination": false,
-          "autoplay": {
-            "delay": 5000
-          },
-          "breakpoints": {
-            "600": {
-              "slidesPerView": 3,
-              "spaceBetween": 20
-            },
-            "960": {
-              "slidesPerView": 5,
-              "spaceBetween": 20
-            }
+
+{
+  "fullWidth": false,
+  "spacer": "none",
+  "containerClasses": "",
+  "bg": {
+    "classes": "",
+    "overlay": "",
+    "img": {
+      "src": "",
+      "alt": ""
+    }
+  },
+  "style": "style-v4",
+  "classes": "mat-headline-3 bold",
+  "animate": {
+        "aos": {
+          "enable": true,
+          "animation": "fade-up",
+          "behaviour": {
+            "offset": 120,
+            "duration": 400,
+            "delay": 0,
+            "easing": "ease"
           }
         },
-        "classes": "",
+        "gsap": {
+          "enable": false
+        }
+      },
+  "type": "title",
+  "label": "Partners"
+},
+     {
+  "type": "carousel-2v2",
+  "id": "",
+  "spacer": "none",
+  "bg": {
+    "classes": " bg-shadow"
+  },
+  "classes": " mb-6",
+  "swiper": {
+    "params": {
+      "slidesPerView": 1.2,
+      "pagination": false,
+      "autoplay": {
+        "delay": 5000
+      },
+      "breakpoints": {
+        "600": {
+          "slidesPerView": 3,
+          "spaceBetween": 20
+        },
+        "960": {
+          "slidesPerView": 5,
+          "spaceBetween": 20
+        }
+      }
+    },
+    "classes": "",
         "elements": [
           {
             "type": "img",
@@ -792,6 +621,15 @@
         }
       }
     }
+
+
+    ,{
+  "spacer": "none",
+  "type": "text",
+  "body": "&nbsp;",
+  "animate": false
+}
+
   ],
   "current": true,
   "time": "2026/5/6 14:33:54"

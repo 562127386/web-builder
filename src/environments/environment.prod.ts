@@ -1,7 +1,9 @@
 import { IEnvironment } from '../app/core/interface/IEnvironment';
 
 export const environment: IEnvironment = {
-  apiUrl: 'http://web.lightcomm.com:8087',
+ // apiUrl: 'http://web.lightcomm.com:8087',
+//    apiUrl: 'http://www.lightcomm.com',
+     apiUrl: '',
   production: false,
   port: 4200,
   cache: true,

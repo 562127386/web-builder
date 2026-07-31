@@ -6,7 +6,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { AutocloseComponent } from './autoclose/autoclose.component';
 import { BaseModule } from '@uiux/base/base.module';
 import { JsoneditorComponent } from './jsoneditor/jsoneditor.component';
-import { CodeEditorComponent } from './code-editor/code-editor.component';
+//import { CodeEditorComponent } from './code-editor/code-editor.component';
 import { CustomTemplateComponent } from './custom-template/custom-template.component';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 import { FormModule } from '../form/form.module';
@@ -19,7 +19,7 @@ import { IframeComponent } from './iframe/iframe.component';
 const components = [
   AutocloseComponent,
   JsoneditorComponent,
-  CodeEditorComponent,
+  //CodeEditorComponent,
   CustomTemplateComponent,
   FlagComponent,
   DownloadComponent,
@@ -30,7 +30,9 @@ const components = [
 
 @NgModule({
   declarations: [...components],
-  imports: [ShareModule, WidgetsModule, FormModule, MatChipsModule, MonacoEditorModule.forRoot()],
+  imports: [ShareModule, WidgetsModule, FormModule, MatChipsModule//, MonacoEditorModule.forRoot() 优化网站打包体积
+
+  ],
   exports: [...components],
 })
 export class OtherModule extends BaseModule {

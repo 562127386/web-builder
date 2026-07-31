@@ -98,7 +98,7 @@
             "size": "lg",
             "color": "primary"
           },
-          "href": "tel:400-888-8888"
+          "href": "tel:0755-86157878"
         }
       ]
     },
@@ -244,7 +244,7 @@
       }
     ],
     "footerBottom": {
-      "left": "© 2024 朗光科技有限公司 版权所有 | 粤ICP备12345678号",
+      "left": "© 2024 朗光科技有限公司 版权所有 | 粤ICP备2022110230号",
       "right": [
         {
           "label": "隐私政策",
@@ -270,7 +270,7 @@
       },
       "middle": {
         "spacer": "md",
-        "body": "<p>全国服务热线：<strong>400-888-8888</strong></p><p>邮箱：contact@langguang.com</p>"
+        "body": "<p>全国服务热线：<strong>0755-86157878</strong></p><p>邮箱：contact@langguang.com</p>"
       }
     },
     "socialLinks": [
@@ -290,7 +290,7 @@
     "copyright": "2024 朗光科技. 保留所有权利.",
     "contact": {
       "address": "深圳市南山区科技园88号",
-      "phone": "400-888-8888",
+      "phone": "0755-86157878",
       "email": "contact@langguang.com"
     }
   },

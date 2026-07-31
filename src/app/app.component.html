@@ -1,6 +1,4 @@
 @if (loading()) {
-  <div class="app-loading">
-    <div class="app-loader absolute">{{ 'APP.LOADING' | translate }}</div>
-  </div>
+  <app-skeleton></app-skeleton>
 }
 <router-outlet />

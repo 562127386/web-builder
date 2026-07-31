@@ -19,7 +19,7 @@
             @if (header.mainMenu) {
               <div class="menu-inner">
                 <div class="main-menu">
-                  @for (menu of header.mainMenu; track menu) {
+                  @for (menu of header.mainMenu; track menu?.label ?? $index) {
                     <div class="item">
                       @if (header.params) {
                         <app-item-menu [params]="header.params" [content]="menu" />
@@ -34,7 +34,7 @@
             }
             @if (header.actions) {
               <div class="actions">
-                @for (action of header.actions; track action) {
+                @for (action of header.actions; track action?.label ?? action?.href ?? $index) {
                   <button color="primary" mat-raised-button>
                     <app-link [content]="action" />
                   </button>
@@ -64,8 +64,9 @@
             <app-logo [content]="header.logo" />
           }
           <span class="spacer"></span>
-          <app-switch-theme />
-          <app-user-menu class="user-menu-drawer" />
+          <!--手机端先不显示这2个 组件   <app-switch-theme />
+          <app-user-menu class="user-menu-drawer" /> -->
+          <app-lang-switch />
         }
         <button mat-icon-button (click)="onToggle()" aria-label="menu icon">
           @if (!isDrawer) {

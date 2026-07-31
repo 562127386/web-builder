@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '@core/guards/auth.guard';
 import { PreviewComponent } from '@modules/builder/preview/preview.component';
 import { PageComponent } from '@modules/page/page/page.component';
@@ -124,7 +124,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       scrollPositionRestoration: 'enabled',
-      preloadingStrategy: PreloadAllModules,
+      // preloadingStrategy: PreloadAllModules,  // 预加载所有模块
       onSameUrlNavigation: 'reload',
     }),
   ],

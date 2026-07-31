@@ -6,6 +6,7 @@
     font-size: 1rem;
     padding: 1.5rem 1.5rem;
     line-height: 1;
+
     &.active {
       &:after {
         position: absolute;
@@ -20,6 +21,9 @@
     }
   }
 }
+:host ::ng-deep .mat-mdc-tooltip-trigger{
+  width: max-content;
+}
 :host-context(.is-pc-header) {
   .item-menu {
     &:hover {
@@ -27,6 +31,9 @@
         opacity: 1;
         visibility: inherit;
         transition: all 0.3s ease-in-out;
+      }
+      .mat-mdc-tooltip-trigger{
+        width: max-content;
       }
     }
   }
